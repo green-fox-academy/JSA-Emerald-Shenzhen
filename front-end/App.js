@@ -1,11 +1,11 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { style } from './AppStyle'
-
+import { LoanHome } from './LoanHome/LoanHome'
 export default function App() {
   return (
     <View style={style.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <LoanHome />
     </View>
   )
 }
