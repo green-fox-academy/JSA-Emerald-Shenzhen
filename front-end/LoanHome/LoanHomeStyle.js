@@ -37,9 +37,6 @@ const style = StyleSheet.create({
     fontSize: 24,
     color: '#444444',
     marginVertical: 15
-  },
-  NextButton: {
-    
   }
 })
 
