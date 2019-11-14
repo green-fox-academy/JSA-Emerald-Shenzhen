@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, View, Image } from 'react-native'
 import { style } from './LoanCardStyle'
-import navImage from '../assets/nav.png'
 
 function LoadCard() {
   return (

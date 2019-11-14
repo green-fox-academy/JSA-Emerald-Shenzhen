@@ -1,9 +1,12 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-  loanHome: {
+  loanHomeScroll: {
     paddingHorizontal: 10,
-    paddingTop: 75
+    marginTop: 75,
+    flex: 1,
+    zIndex: 1,
+    elevation: 1
   },
   navigator: {
     position: 'absolute',
@@ -23,7 +26,7 @@ const style = StyleSheet.create({
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
 
-    elevation: 10
+    elevation: 5
   },
   navigatorText: {
     color: '#fff',
@@ -34,6 +37,9 @@ const style = StyleSheet.create({
     fontSize: 24,
     color: '#444444',
     marginVertical: 15
+  },
+  NextButton: {
+    
   }
 })
 

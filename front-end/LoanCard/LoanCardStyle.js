@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native'
 const style = StyleSheet.create({
   loanCard: {
+    flex: 1,
+    zIndex: -1,
     height: 250,
     width: '100%',
     padding: 4,
