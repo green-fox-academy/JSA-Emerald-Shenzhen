@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../app");
 
-const mockData = {
+const data = {
   products: [
     {
       id: 1,
@@ -16,7 +16,7 @@ const mockData = {
   ]
 };
 
-const mockError = {
+const error = {
   error: "Authentication header is missing!"
 };
 
@@ -31,12 +31,12 @@ describe("GET /products", () => {
         Authentication: "Bearer token"
       });
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual(mockData);
+    expect(res.body).toEqual(data);
   });
 
   it("should return error", async () => {
     const res = await request(app).get("/products");
     expect(res.statusCode).toEqual(401);
-    expect(res.body).toEqual(mockError);
+    expect(res.body).toEqual(error);
   });
 });

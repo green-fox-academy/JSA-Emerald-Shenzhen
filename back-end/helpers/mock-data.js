@@ -1,4 +1,4 @@
-const mockData = {
+const data = {
   products: [
     {
       id: 1,
@@ -13,8 +13,8 @@ const mockData = {
   ]
 };
 
-const mockError = {
+const error = {
   error: "Authentication header is missing!"
 };
 
-module.exports = { mockData, mockError };
+module.exports = { data, error };
