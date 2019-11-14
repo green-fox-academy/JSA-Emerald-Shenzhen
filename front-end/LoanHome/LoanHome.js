@@ -1,20 +1,19 @@
 import React from 'react'
-import { Text, ScrollView, View, Button } from 'react-native'
+import { Text, ScrollView, View } from 'react-native'
 import { style } from './LoanHomeStyle'
 import { LoadCard } from '../LoanCard/LoanCard'
 import { LoanStaticButton } from '../LoanStaticButton/LoanStaticButton'
 
-function LoanHome() {
+function LoanHome({ loanList }) {
   return (
     <View style={{ height: '100%', flex: 1, position: 'relative' }}>
       <ScrollView style={style.loanHomeScroll}>
         <Text style={style.header}>Current active contracts</Text>
-        <LoadCard />
-        <LoadCard />
-        <LoadCard />
-        <LoadCard />
+        {loanList.map((loan, index) => {
+          return <LoadCard key={index} loan={loan} />
+        })}
       </ScrollView>
-      <LoanStaticButton />
+      <LoanStaticButton buttonAction={() => alert('nothing added')} />
     </View>
   )
 }

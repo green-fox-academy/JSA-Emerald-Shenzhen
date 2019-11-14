@@ -59,7 +59,7 @@ const style = StyleSheet.create({
     fontSize: 12,
     color: '#7A7A7A'
   },
-  loadCardDownPayNow: {
+  payNowButton: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',

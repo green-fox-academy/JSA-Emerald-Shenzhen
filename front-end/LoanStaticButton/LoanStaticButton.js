@@ -3,15 +3,15 @@ import { Text, TouchableOpacity, TouchableNativeFeedback, View } from 'react-nat
 import { style } from './LoanStaticButtonStyle'
 import { Platform } from '@unimodules/core'
 
-function LoanStaticButton() {
+function LoanStaticButton({ buttonAction }) {
   return Platform.OS === 'android' ? (
-    <TouchableNativeFeedback background={TouchableNativeFeedback.SelectableBackground()}>
+    <TouchableNativeFeedback onPress={buttonAction} background={TouchableNativeFeedback.SelectableBackground()}>
       <View style={style.loanButtonNativeFeedback}>
         <Text style={style.text}>+ New Loan</Text>
       </View>
     </TouchableNativeFeedback>
   ) : (
-    <TouchableOpacity activeOpacity={0.5} style={style.loanButtonOpacity}>
+    <TouchableOpacity onPress={buttonAction} activeOpacity={0.5} style={style.loanButtonOpacity}>
       <Text style={style.text}>+ New Loan</Text>
     </TouchableOpacity>
   )
