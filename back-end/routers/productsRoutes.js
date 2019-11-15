@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { authenticate } = require("../services/productsService");
+const { authenticate } = require("../services/authService");
 const mock = require("../helpers/mock-data");
 
 router.route("/").get((req, res) => {

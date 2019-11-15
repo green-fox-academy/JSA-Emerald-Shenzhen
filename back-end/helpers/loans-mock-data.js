@@ -1,4 +1,4 @@
-const mockData = {
+const data = {
   "loans": [
     {
       id: 1,
@@ -22,4 +22,4 @@ const authFailedError = {
   error: "User is not allowed to do this action!"
 };
 
-module.exports = { mockData, authMissingError, authFailedError };
+module.exports = { data, authMissingError, authFailedError };

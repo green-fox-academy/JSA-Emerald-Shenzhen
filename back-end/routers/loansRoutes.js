@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const { authenticate } = require("../services/loansService");
-const { mockData, authMissingError, authFailedError } = require("../helpers/loans-mock-data");
+const { authenticate } = require("../services/authService");
+const mock = require("../helpers/loans-mock-data");
 
 router.route("/").get((req, res) => {
   const { headers } = req;
   if (!headers.authentication){
-    return res.status(401).json(authMissingError);
+    return res.status(401).json(mock.authMissingError);
   };
   if (authenticate(headers)) {
-    return res.json(mockData);
+    return res.json(mock.data);
   };
-  res.status(403).json(authFailedError);
+  res.status(403).json(mock.authFailedError);
 });
 
 module.exports = router;
