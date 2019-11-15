@@ -6,6 +6,8 @@ import {
     TextInput,
     View,
     Platform,
+    ScrollView,
+    TouchableOpacity
 } from 'react-native';
 import { Header, Button, Icon } from 'react-native-elements';
 

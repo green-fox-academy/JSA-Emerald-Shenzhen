@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import NewLoan from './NewLoan/View';
+import NewLoan from './NewLoan/NewLoan';
 
 export default function App() {
   return (
