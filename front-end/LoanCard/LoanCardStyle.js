@@ -19,21 +19,11 @@ const style = StyleSheet.create({
     marginBottom: 20
   },
   loanCardUpPart: {
-    padding: 15,
-    backgroundColor: '#E3F2FD',
-    height: 180
-  },
-  loanCardDownPart: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#fFF',
-    padding: 15,
-    height: 60
+    backgroundColor: '#E3F2FD'
   },
   loanId: {
     fontSize: 18,
+    marginTop: 10,
     color: '#7A7A7A'
   },
   loanType: {
@@ -45,25 +35,26 @@ const style = StyleSheet.create({
     fontSize: 15,
     color: '#000'
   },
-  loadCardUpRemaining: {
-    flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'space-around'
-  },
+
   loanPrice: {
     fontSize: 36,
-    color: '#FC815E'
+    color: '#FC815E',
+    alignSelf: 'flex-end'
   },
   loanRemaining: {
     paddingRight: 5,
     fontSize: 12,
+    alignSelf: 'flex-end',
     color: '#7A7A7A'
   },
-  payNowButton: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: "flex-end"
+  payNowButtonText: {
+    color: '#000',
+    margin: 0,
+    paddingLeft: 20
+  },
+  payNowButtonImg: {
+    position: "absolute",
+    left: -10
   }
 })
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { style } from './AppStyle'
 import { LoanHome } from './LoanHome/LoanHome'
 import { LoanNav } from './LoanNav/LoanNav'
@@ -26,7 +26,6 @@ export default function App() {
       {isReady ? (
         <Container>
           <LoanNav />
-          <Text>111</Text>
           <LoanHome loanList={loanList.loans} />
         </Container>
       ) : (
