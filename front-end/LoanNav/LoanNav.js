@@ -1,14 +1,23 @@
 import React from 'react'
-import { Text, View, Image } from 'react-native'
 import { style } from './LoanNavStyle'
-import navImage from '../assets/nav.png'
+import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base'
+import { Platform } from '@unimodules/core'
 
 function LoanNav() {
   return (
-    <View style={style.navigator}>
-      <Image source={navImage} />
-      <Text style={style.navigatorText}>Loans</Text>
-    </View>
+    <>
+      <Header style={style.navigator}>
+        <Left style={Platform.OS === 'ios' ? style.arrowBack : null}>
+          <Button transparent>
+            <Icon style={style.navigatorText} name="menu" />
+          </Button>
+        </Left>
+        <Body style={style.navigatorText}>
+          <Title style={style.navigatorText}>Loans</Title>
+        </Body>
+        <Right></Right>
+      </Header>
+    </>
   )
 }
 export { LoanNav }
