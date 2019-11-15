@@ -1,19 +1,19 @@
 import React from 'react'
-import { Text, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native'
+import { Text } from 'react-native'
 import { style } from './LoanStaticButtonStyle'
-import { Platform } from '@unimodules/core'
+import { Fab } from 'native-base'
 
 function LoanStaticButton({ buttonAction }) {
-  return Platform.OS === 'android' ? (
-    <TouchableNativeFeedback onPress={buttonAction} background={TouchableNativeFeedback.SelectableBackground()}>
-      <View style={style.loanButton}>
-        <Text style={style.text}>+ New Loan</Text>
-      </View>
-    </TouchableNativeFeedback>
-  ) : (
-    <TouchableOpacity onPress={buttonAction} activeOpacity={0.5} style={style.loanButton}>
+  return (
+    <Fab
+      onPress={buttonAction}
+      active={true}
+      direction="up"
+      style={style.loanButton}
+      position="bottomRight"
+    >
       <Text style={style.text}>+ New Loan</Text>
-    </TouchableOpacity>
+    </Fab>
   )
 }
 

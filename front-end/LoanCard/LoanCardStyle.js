@@ -1,23 +1,5 @@
 import { StyleSheet } from 'react-native'
 const style = StyleSheet.create({
-  loanCard: {
-    flex: 1,
-    zIndex: -1,
-    height: 250,
-    width: '100%',
-    padding: 4,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    borderColor: '#000',
-    borderStyle: 'solid',
-    elevation: 5,
-    marginBottom: 20
-  },
   loanCardUpPart: {
     backgroundColor: '#E3F2FD'
   },
@@ -35,7 +17,6 @@ const style = StyleSheet.create({
     fontSize: 15,
     color: '#000'
   },
-
   loanPrice: {
     fontSize: 36,
     color: '#FC815E',
