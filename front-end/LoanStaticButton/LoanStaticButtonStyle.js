@@ -12,4 +12,4 @@ const style = StyleSheet.create({
   }
 })
 
-export { style }
+export default style

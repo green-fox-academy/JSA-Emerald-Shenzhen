@@ -1,16 +1,17 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const app = express();
-const { PATHS } = require("./config");
-const productsRoutes = require("./routers/productsRoutes");
+require('dotenv').config()
+const express = require('express')
+const cors = require('cors')
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static("public"));
+const app = express()
+const { PATHS } = require('./config')
+const productsRoutes = require('./routers/productsRoutes')
 
-app.use(PATHS.products, productsRoutes);
+app.use(cors())
+app.use(express.json())
+app.use(express.static('public'))
 
-app.get("*", (req, res) => res.send("Page Not found 404"));
+app.use(PATHS.products, productsRoutes)
 
-module.exports = app;
+app.get('*', (req, res) => res.send('Page Not found 404'))
+
+module.exports = app

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const style = StyleSheet.create({
   loanHomeScroll: {
     paddingHorizontal: 10,
-    flex: 1,
+    flex: 1
   },
   navigator: {
     position: 'absolute',
@@ -37,4 +37,4 @@ const style = StyleSheet.create({
   }
 })
 
-export { style }
+export default style

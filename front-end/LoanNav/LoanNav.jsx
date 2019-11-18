@@ -1,7 +1,7 @@
 import React from 'react'
-import { style } from './LoanNavStyle'
 import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base'
 import { Platform } from '@unimodules/core'
+import style from './LoanNavStyle'
 
 function LoanNav() {
   return (
@@ -14,8 +14,9 @@ function LoanNav() {
       <Body style={style.navigatorText}>
         <Title style={style.navigatorText}>Loans</Title>
       </Body>
-      <Right></Right>
+      <Right />
     </Header>
   )
 }
-export { LoanNav }
+
+export default LoanNav

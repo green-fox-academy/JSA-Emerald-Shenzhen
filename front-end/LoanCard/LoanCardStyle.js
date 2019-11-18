@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+
 const style = StyleSheet.create({
   loanCardUpPart: {
     backgroundColor: '#E3F2FD'
@@ -34,9 +35,9 @@ const style = StyleSheet.create({
     paddingLeft: 20
   },
   payNowButtonImg: {
-    position: "absolute",
+    position: 'absolute',
     left: -10
   }
 })
 
-export { style }
+export default style

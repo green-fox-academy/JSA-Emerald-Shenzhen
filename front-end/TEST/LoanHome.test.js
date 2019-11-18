@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { loanList } from '../fakeLoanData'
-import { LoanHome } from '../LoanHome/LoanHome'
+import loanList from '../fakeLoanData'
+import LoanHome from '../LoanHome/LoanHome'
 
 describe('<LoanHome />', () => {
   it('<LoanHome > renders correctly', () => {

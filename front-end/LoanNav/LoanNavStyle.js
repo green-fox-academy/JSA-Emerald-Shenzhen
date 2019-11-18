@@ -4,9 +4,9 @@ const style = StyleSheet.create({
   navigator: {
     backgroundColor: '#2296F3',
     height: 75,
-    paddingTop: 20,
+    paddingTop: 20
   },
-  arrowBack:{
+  arrowBack: {
     marginLeft: 20
   },
   navigatorText: {
@@ -15,4 +15,4 @@ const style = StyleSheet.create({
   }
 })
 
-export { style }
+export default style
