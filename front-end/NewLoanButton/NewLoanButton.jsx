@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Text } from 'react-native'
 import { Fab } from 'native-base'
-import style from './LoanStaticButtonStyle'
+import style from './NewLoanButtonStyle'
 
-function LoanStaticButton({ buttonAction }) {
+function NewLoanButton({ buttonAction }) {
   return (
     <Fab
       onPress={buttonAction}
@@ -18,8 +18,8 @@ function LoanStaticButton({ buttonAction }) {
   )
 }
 
-LoanStaticButton.propTypes = {
+NewLoanButton.propTypes = {
   buttonAction: PropTypes.func.isRequired
 }
 
-export default LoanStaticButton
+export default NewLoanButton

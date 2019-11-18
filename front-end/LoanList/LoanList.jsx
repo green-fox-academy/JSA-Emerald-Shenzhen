@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Text, ScrollView, View } from 'react-native'
-import style from './LoanHomeStyle'
+import style from './LoanListStyle'
 import LoadCard from '../LoanCard/LoanCard'
-import LoanStaticButton from '../LoanStaticButton/LoanStaticButton'
+import NewLoanButton from '../NewLoanButton/NewLoanButton'
 
 function LoanHome({ loanList }) {
   return (
@@ -15,7 +15,7 @@ function LoanHome({ loanList }) {
         })}
       </ScrollView>
       {/* eslint-disable-next-line no-console */}
-      <LoanStaticButton buttonAction={() => console.log('nothing added')} />
+      <NewLoanButton buttonAction={() => console.log('nothing added')} />
     </View>
   )
 }

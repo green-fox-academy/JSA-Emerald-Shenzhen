@@ -4,7 +4,7 @@ import { Container } from 'native-base'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
 import style from './AppStyle'
-import LoanHome from './LoanHome/LoanHome'
+import LoanList from './LoanList/LoanList'
 import LoanNav from './LoanNav/LoanNav'
 import loanList from './fakeLoanData'
 
@@ -24,10 +24,10 @@ export default function App() {
       .catch(err => console.error(err))
   }, [])
 
-  return isReady && loanList ? (
+  return isReady ? (
     <Container style={style.container}>
       <LoanNav />
-      <LoanHome loanList={loanList.loans} />
+      <LoanList loanList={loanList.loans} />
     </Container>
   ) : (
     <AppLoading />
