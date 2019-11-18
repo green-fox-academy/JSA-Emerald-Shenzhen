@@ -27,7 +27,7 @@ export default function NewLoan() {
                         <Input />
                     </Item>
                     <Card transparent style={{ borderBottomColor: '#E3E3E3', borderBottomWidth: 1 }}>
-                        <Label style={{ fontSize: 15, margin: 10, marginLeft: 15 }}>Selected Product</Label>
+                        <Label style={{ fontSize: 15, margin: 10, marginLeft: 15 }}>Selected Product:</Label>
                         <Picker
                             mode="dropdown"
                             iosIcon={<Icon name="arrow-down" />}
