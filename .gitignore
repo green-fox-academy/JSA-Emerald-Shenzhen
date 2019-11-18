@@ -1,3 +1,2 @@
 .DS_store
-.prettierrc
-node_modules/**/*
+node_modules/
