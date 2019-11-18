@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { View } from 'react-native'
 import { style } from './AppStyle'
 import { LoanHome } from './LoanHome/LoanHome'
 import { LoanNav } from './LoanNav/LoanNav'
