@@ -6,7 +6,7 @@ import { Container } from 'native-base'
 import { AppLoading } from 'expo'
 import Roboto from 'native-base/Fonts/Roboto.ttf'
 import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf'
-// import NewLoan from './NewLoan/NewLoan'
+import NewLoan from './NewLoan/NewLoan'
 
 const styles = StyleSheet.create({
   container: {
