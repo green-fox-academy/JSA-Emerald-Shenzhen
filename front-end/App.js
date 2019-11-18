@@ -21,16 +21,12 @@ export default function App() {
       .catch(err => console.error(err))
   }, [])
 
-  return (
-    <View style={style.container}>
-      {isReady ? (
-        <Container>
-          <LoanNav />
-          <LoanHome loanList={loanList.loans} />
-        </Container>
-      ) : (
-        <AppLoading />
-      )}
-    </View>
+  return isReady ? (
+    <Container style={style.container}>
+      <LoanNav />
+      <LoanHome loanList={loanList.loans} />
+    </Container>
+  ) : (
+    <AppLoading />
   )
 }

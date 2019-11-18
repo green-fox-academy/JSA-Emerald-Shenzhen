@@ -1,4 +1,19 @@
-module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react'],
-  plugins: ['@babel/plugin-proposal-class-properties']
+module.exports = function(api) {
+  api.cache(true)
+  return {
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          targets: {
+            node: 'current'
+          }
+        }
+      ],
+      'babel-preset-expo',
+      'module:react-native-dotenv'
+    ],
+    sourceMaps: true,
+    plugins: ['@babel/transform-react-jsx-source']
+  }
 }
