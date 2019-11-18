@@ -1,7 +1,8 @@
 const PATHS = {
-  products: "/products"
-};
+  products: '/products',
+  loans: '/loans'
+}
 
 module.exports = {
   PATHS
-};
+}
