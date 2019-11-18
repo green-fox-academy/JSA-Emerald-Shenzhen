@@ -1,10 +1,11 @@
 {
-  "name": "JSA-Emerald-Shenzhen",
+  "name": "jsa-emerald-shenzhen",
   "version": "1.0.0",
   "description": "## Wiki",
   "main": "index.js",
   "dependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
