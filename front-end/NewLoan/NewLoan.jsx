@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, Platform } from 'react-native'
-import { Container, Header, Left, Body, Title, Content, Button, Icon, Form, Item, Input, Label, Card, CardItem, Picker } from 'native-base'
+import { Container, Header, Left, Body, Title, Content, Button, Icon, Form, Item, Input, Label, Card, Picker } from 'native-base'
+
+import PaymentDetails from './PaymentDetails'
+import ProductDescription from './ProductDescription'
 
 export default function NewLoan() {
     const [selected, setSelected] = useState();
@@ -50,30 +53,8 @@ export default function NewLoan() {
                         </Item>
                     </Item>
                 </Form>
-                <Card>
-                    <CardItem style={{ backgroundColor: '#E8EAF6' }}>
-                        <Icon name='md-calendar' />
-                        <Body>
-                            <Text> 3% yearly interest rate </Text>
-                            <Text>Fixed low interest rate for students only</Text>
-                        </Body>
-                        <Icon name='md-information-circle' />
-                    </CardItem>
-                </Card>
-                <Card transparent>
-                    <CardItem>
-                        <Body>
-                            <Text style={{ fontSize: 50 }}>$ 86.84</Text>
-                            <Text>paid monthly</Text>
-                        </Body>
-                    </CardItem>
-                    <CardItem>
-                        <Body>
-                            <Text style={{ fontSize: 30 }}>$ 390.61</Text>
-                            <Text>interest paid altogether</Text>
-                        </Body>
-                    </CardItem>
-                </Card>
+                <ProductDescription />
+                <PaymentDetails />
             </Content>
             <Button rounded style={styles.NextButton} >
                 <Icon name="md-arrow-forward"></Icon>
