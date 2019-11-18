@@ -5,9 +5,6 @@
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": ["ios", "android", "web"],
-    "packagerOpts": {
-      "sourceExts": ["js", "json", "ts", "tsx", "jsx"]
-    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,13 +21,7 @@
       "supportsTablet": true
     },
     "packagerOpts": {
-      "sourceExts": [
-        "js",
-        "json",
-        "ts",
-        "tsx",
-        "jsx"
-      ],
+      "sourceExts": ["js", "json", "ts", "tsx", "jsx"],
       "config": "metro.config.js"
     }
   }

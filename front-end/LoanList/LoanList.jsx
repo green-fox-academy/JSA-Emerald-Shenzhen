@@ -5,7 +5,7 @@ import style from './LoanListStyle'
 import LoadCard from '../LoanCard/LoanCard'
 import NewLoanButton from '../NewLoanButton/NewLoanButton'
 
-function LoanHome({ loanList }) {
+function LoanList({ loanList }) {
   return (
     <View style={{ height: '100%', flex: 1, position: 'relative' }}>
       <ScrollView style={style.loanHomeScroll}>
@@ -20,7 +20,7 @@ function LoanHome({ loanList }) {
   )
 }
 
-LoanHome.propTypes = {
+LoanList.propTypes = {
   loanList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
-export default LoanHome
+export default LoanList
