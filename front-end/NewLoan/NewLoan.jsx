@@ -1,196 +1,96 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, View, Platform } from 'react-native'
-import { Container, Header, Left, Body, Title, Content, Button, Icon } from 'native-base'
+import React, { useState } from 'react'
+import { StyleSheet, Text, Platform } from 'react-native'
+import { Container, Header, Left, Body, Title, Content, Button, Icon, Form, Item, Input, Label, Card, CardItem, Picker } from 'native-base'
 
-export default class NewLoan extends Component {
-    render() {
-        return (
-            <Container style={styles.container}>
-                {/* <Header
-                    placement="left"
-                    leftComponent={{ icon: 'arrow-back', color: '#fff' }}
-                    centerComponent={{ text: 'New Loan', style: { color: '#fff' } }}
-                    containerStyle={styles.Header}
-                /> */}
-                <Header>
-                    <Left>
-                        <Button transparent>
-                            <Icon name='arrow-back' />
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title>New Loan</Title>
-                    </Body>
-                    {/* <Right>
-                        <Button transparent>
-                            <Icon name='menu' />
-                        </Button>
-                    </Right> */}
-                </Header>
-                <Content>
-                    <View style={styles.HowMuchDoYouNeed}>
-                        <Text style={styles.HowMuchDoYouNeedLabel}>How much do you need ?</Text>
-                        <TextInput style={styles.input} placeholder='$XXXX'></TextInput>
-                    </View>
-                    <View style={styles.SelectedProduct}>
-                        <Text style={styles.SelectedProductLabel}>Selected Product</Text>
-                        <TextInput style={styles.input} placeholder='Student Loan'></TextInput>
-                    </View>
-                    <View style={styles.Duration}>
-                        <Text style={styles.DurationLabel}>Duration</Text>
-                        <TextInput style={styles.input} placeholder='5 years fixed'></TextInput>
-                    </View>
-                    <View style={styles.Description} >
-                        <Icon name='md-calendar' size={30} color='gray' containerStyle={styles.DescriptionContactsIcon} />
-                        <View style={styles.DescriptionLabel}>
-                            <Text>3% yearly interest rate</Text>
+export default function NewLoan() {
+    const [selected, setSelected] = useState();
+
+    return (
+        <Container style={styles.container}>
+            <Header style={styles.Header}>
+                <Left style={{ maxWidth: '15%' }}>
+                    <Button transparent>
+                        <Icon name='arrow-back' />
+                    </Button>
+                </Left>
+                <Body>
+                    <Title>New Loan</Title>
+                </Body>
+            </Header>
+            <Content style={{ padding: 10 }} contentContainerStyle={{ justifyContent: 'space-between' }}>
+                <Form style={{ marginBottom: 10 }}>
+                    <Item stackedLabel last>
+                        <Label>How much do you need ?</Label>
+                        <Input />
+                    </Item>
+                    <Card transparent style={{ borderBottomColor: '#E3E3E3', borderBottomWidth: 1 }}>
+                        <Label style={{ fontSize: 15, margin: 10, marginLeft: 15 }}>Selected Product</Label>
+                        <Picker
+                            mode="dropdown"
+                            iosIcon={<Icon name="arrow-down" />}
+                            placeholder="Student loan"
+                            placeholderStyle={{ color: "#bfc6ea" }}
+                            placeholderIconColor="#007aff"
+                            style={{ marginLeft: 10, marginRight: 10, }}
+                            selectedValue={selected}
+                            onValueChange={e => setSelected(e.target.value)}
+                        >
+                            <Picker.Item label="Wallet" value="key0" />
+                            <Picker.Item label="ATM Card" value="key1" />
+                            <Picker.Item label="Debit Card" value="key2" />
+                            <Picker.Item label="Credit Card" value="key3" />
+                            <Picker.Item label="Net Banking" value="key4" />
+                        </Picker>
+                    </Card>
+                    <Item stackedLabel last>
+                        <Label>Duration</Label>
+                        <Item disabled>
+                            <Input disabled placeholder='5 years fixed' />
+                            <Icon name='information-circle' style={{ marginRight: 25 }} />
+                        </Item>
+                    </Item>
+                </Form>
+                <Card>
+                    <CardItem style={{ backgroundColor: '#E8EAF6' }}>
+                        <Icon name='md-calendar' />
+                        <Body>
+                            <Text> 3% yearly interest rate </Text>
                             <Text>Fixed low interest rate for students only</Text>
-                        </View>
-                        <Icon name='md-information-circle' size={30} color='gray' containerStyle={styles.DescriptionInfoIcon} />
-                    </View>
-                    <View style={styles.MonthlyPaid}>
-                        <Text style={styles.MonthlyPaidData}>$ 86.84</Text>
-                        <Text style={styles.MonthlyPaidLabel}>paid monthly</Text>
-                    </View>
-                    <View style={styles.InterestPaid}>
-                        <Text style={styles.InterestPaidData}>$ 390.61</Text>
-                        <Text style={styles.InterestPaidLabel}>interest paid altogether</Text>
-                    </View>
-                    <Button
-                        icon={
-                            <Icon
-                                name="chevron-right"
-                                size={30}
-                                color="white"
-                                type='FontAwesome'
-                                style={styles.NextButtonIcon}
-                            />
-                        }
-                        title="NEXT"
-                        titleStyle={styles.NextButtonTitle}
-                        buttonStyle={styles.NextButton}
-                    />
-                </Content>
-            </Container>
-        );
-    }
+                        </Body>
+                        <Icon name='md-information-circle' />
+                    </CardItem>
+                </Card>
+                <Card transparent>
+                    <CardItem>
+                        <Body>
+                            <Text style={{ fontSize: 50 }}>$ 86.84</Text>
+                            <Text>paid monthly</Text>
+                        </Body>
+                    </CardItem>
+                    <CardItem>
+                        <Body>
+                            <Text style={{ fontSize: 30 }}>$ 390.61</Text>
+                            <Text>interest paid altogether</Text>
+                        </Body>
+                    </CardItem>
+                </Card>
+            </Content>
+            <Button rounded style={styles.NextButton} >
+                <Icon name="md-arrow-forward"></Icon>
+                <Text style={styles.NextButtonTitle}>NEXT</Text>
+            </Button>
+        </Container >
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         margin: 0,
-        // borderColor: 'red',
-        // borderWidth: 1,
     },
     Header: {
-        padding: 0,
-        marginTop: Platform.OS === 'ios' ? 20 : 40,
-    },
-    HowMuchDoYouNeed: {
-        marginLeft: 10,
-        marginRight: 10,
-        marginBottom: 10,
-        flex: 1,
-        maxHeight: 100,
-    },
-    HowMuchDoYouNeedLabel: {
-        height: 40,
-        fontSize: 30,
-    },
-    SelectedProduct: {
-        flex: 1,
-        maxHeight: 100,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    SelectedProductLabel: {
-        height: 30,
-        fontSize: 20,
-    },
-    Duration: {
-        flex: 1,
-        maxHeight: 100,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    DurationLabel: {
-        height: 30,
-        fontSize: 20,
-    },
-    input: {
-        height: 50,
-        fontSize: 20,
-        borderColor: 'gray',
-        borderBottomWidth: 1,
-        margin: 10,
-        minHeight: 50,
-    },
-    Description: {
-        backgroundColor: '#E8EAF6',
-        flexDirection: 'row',
-        alignItems: 'center',
-        alignContent: 'stretch',
-        // maxHeight: 50,
-        padding: 10,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    DescriptionContactsIcon: {
-        flex: 1,
-        // alignSelf: 'flex-start',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        maxHeight: 50,
-        // minHeight: 50,
-        maxWidth: 30,
-        padding: 0,
-        // borderColor: 'red',
-        // borderWidth: 1,
-    },
-    DescriptionLabel: {
-        flex: 2,
-        alignSelf: 'stretch',
-        paddingLeft: 15,
-        // borderColor: 'red',
-        // borderWidth: 1,
-    },
-    DescriptionInfoIcon: {
-        flex: 1,
-        // alignSelf: 'flex-end',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        maxHeight: 50,
-        // minHeight: 50,
-        maxWidth: 30,
-        // borderColor: 'red',
-        // borderWidth: 1,
-    },
-    MonthlyPaid: {
-        flex: 1,
-        maxHeight: 100,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    MonthlyPaidData: {
-        fontSize: 40
-    },
-    MonthlyPaidLabel: {
-        fontSize: 20,
-        color: 'gray',
-    },
-    InterestPaid: {
-        flex: 1,
-        maxHeight: 100,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    InterestPaidData: {
-        fontSize: 30
-    },
-    InterestPaidLabel: {
-        fontSize: 20,
-        color: 'gray',
+        marginTop: Platform.OS === 'ios' ? 20 : 20,
+        backgroundColor: '#3796F3'
     },
     NextButton: {
         flex: 1,
@@ -209,14 +109,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.34,
         shadowRadius: 6.27,
         elevation: 5,
-        position: 'absolute',
-        bottom: -50,
-        right: 10
-    },
-    NextButtonIcon: {
         marginRight: 10,
+        position: 'absolute',
+        bottom: 13,
+        right: 5
     },
     NextButtonTitle: {
-        fontSize: 25
+        fontSize: 25,
+        color: 'white'
     }
 });

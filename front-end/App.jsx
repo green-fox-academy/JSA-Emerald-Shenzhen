@@ -1,11 +1,10 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import NewLoan from './NewLoan/NewLoan.jsx'
-
-import { AppLoading } from 'expo'
+import React, { useState, useEffect } from 'react'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
+import { StyleSheet } from 'react-native'
 import { Container } from 'native-base'
+import { AppLoading } from 'expo'
+import NewLoan from './NewLoan/NewLoan.jsx'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,32 +12,30 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReady: false,
-    };
-  }
+export default function App() {
+  const [isReady, setIsReady] = useState(false);
 
-  async componentDidMount() {
-    await Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-      ...Ionicons.font,
-    });
-    this.setState({ isReady: true });
-  }
-
-  render() {
-    if (!this.state.isReady) {
-      return <AppLoading />;
+  useEffect(() => {
+    async function loadExpoFonts() {
+      await Font.loadAsync({
+        Roboto: require('native-base/Fonts/Roboto.ttf'),
+        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+        ...Ionicons.font,
+      });
+      setIsReady(true);
     }
+    loadExpoFonts();
+  });
 
+  if (!isReady) {
     return (
-      <Container style={styles.container}>
-        <NewLoan />
-      </Container >
+      <AppLoading />
     );
   }
+
+  return (
+    <Container style={styles.container}>
+      <NewLoan />
+    </Container >
+  );
 }
