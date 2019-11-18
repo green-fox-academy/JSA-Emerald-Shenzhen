@@ -29,11 +29,5 @@
     "babel-preset-expo": "^7.1.0",
     "jest-expo": "^35.0.0"
   },
-  "jest": {
-    "preset": "jest-expo",
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "private": true
-  }
+  "private": true
 }

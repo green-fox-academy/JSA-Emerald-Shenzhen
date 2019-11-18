@@ -1,9 +1,9 @@
 const express = require('express')
 
-const router = express.Router()
-
-const { authenticate } = require('../services/productsService')
+const { authenticate } = require('../services/authService')
 const mock = require('../helpers/mock-data')
+
+const router = express.Router()
 
 router.route('/').get((req, res) => {
   const { headers } = req
