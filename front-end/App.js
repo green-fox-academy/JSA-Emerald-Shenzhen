@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { AppLoading } from 'expo'
 import { Ionicons } from '@expo/vector-icons'
 import * as Font from 'expo-font'
-// --------------delete------------
 import { Container } from 'native-base'
 import loanList from './helpers/fakeLoanData'
 import style from './AppStyle'
 import LoanList from './src/components/LoanList/LoanList'
 import LoanNav from './src/components/LoanNav/LoanNav'
-// --------------delete------------
+
 const Roboto = require('native-base/Fonts/Roboto.ttf')
 const RobotoMedium = require('native-base/Fonts/Roboto_medium.ttf')
 
