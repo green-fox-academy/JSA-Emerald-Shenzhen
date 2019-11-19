@@ -5,22 +5,54 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest --watch --coverage=false --changedSince=origin/master",
+    "testDebug": "jest -o --watch --coverage=false",
+    "testFinal": "jest",
+    "updateSnapshots": "jest -u --coverage=false"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
     "expo": "^35.0.0",
     "expo-font": "~7.0.0",
     "native-base": "^2.13.8",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "react": "16.8.6",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-elements": "^1.2.7",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.7"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.1.0"
+    "babel-preset-expo": "^7.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest-expo": "^35.0.0",
+    "react-test-renderer": "^16.12.0",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.5.0"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base|react-clone-referenced-element|(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
+    ],
+    "unmockedModulePathPatterns": [
+      "node_modules/react/",
+      "node_modules/enzyme/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
+    ]
+  }
 }
