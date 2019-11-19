@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { AppLoading } from 'expo'
-import { Container } from 'native-base'
-import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
+import * as Font from 'expo-font'
+// --------------delete------------
+import { Container } from 'native-base'
+import loanList from './helpers/fakeLoanData'
 import style from './AppStyle'
-import LoanList from './LoanList/LoanList'
-import LoanNav from './LoanNav/LoanNav'
-import loanList from './fakeLoanData'
-
+import LoanList from './src/components/LoanList/LoanList'
+import LoanNav from './src/components/LoanNav/LoanNav'
+// --------------delete------------
 const Roboto = require('native-base/Fonts/Roboto.ttf')
 const RobotoMedium = require('native-base/Fonts/Roboto_medium.ttf')
 
-export default function App() {
+export default function Loan() {
   const [isReady, setReady] = useState(false)
   useEffect(() => {
     Font.loadAsync({
@@ -23,7 +24,6 @@ export default function App() {
       // eslint-disable-next-line no-console
       .catch(err => console.error(err))
   }, [])
-
   return isReady ? (
     <Container style={style.container}>
       <LoanNav />
