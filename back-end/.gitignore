@@ -1,3 +1,4 @@
 node_modules/
 .env
 .prettierrc
+ec2.pem
