@@ -1,4 +1,4 @@
 module.exports = {
-    "up": "",
-    "down": ""
+  up: '',
+  down: ''
 }

@@ -7,9 +7,7 @@ import Roboto from 'native-base/Fonts/Roboto.ttf'
 import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf'
 
 import styles from './AppStyle'
-import LoanList from './LoanList/LoanList'
-import LoanNav from './LoanNav/LoanNav'
-import loanList from './fakeLoanData'
+import Loan from './src/components/Loan/Loan'
 
 import NewLoan from './src/components/NewLoan/NewLoan'
 
@@ -32,8 +30,7 @@ export default function App() {
 
   return isReady ? (
     <Container style={styles.container}>
-      <LoanNav />
-      <LoanList loanList={loanList.loans} />
+      <Loan />
       <NewLoan />
     </Container>
   ) : (

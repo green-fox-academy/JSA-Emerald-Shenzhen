@@ -40,6 +40,17 @@
     "@babel/preset-env": "^7.7.1",
     "babel-jest": "^24.9.0"
   },
+  "expo": {
+    "packagerOpts": {
+      "sourceExts": [
+        "js",
+        "json",
+        "ts",
+        "tsx",
+        "jsx"
+      ]
+    }
+  },
   "private": true,
   "jest": {
     "preset": "jest-expo",
@@ -47,7 +58,7 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!react-native|native-base|react-clone-referenced-element|(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|react-native|native-base|react-clone-referenced-element|(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
     ],
     "unmockedModulePathPatterns": [
       "node_modules/react/",
