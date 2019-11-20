@@ -11,7 +11,7 @@ const MainPage = ({ navigation }) => {
     <Container>
       <Content>
         <Button onPress={handlePress}>
-          <Text>Go to the homepage of Load Section</Text>
+          <Text>Go to the homepage of Loan Section</Text>
         </Button>
       </Content>
     </Container>
