@@ -26,14 +26,12 @@ export default function App() {
     loadExpoFonts()
   })
 
-  const appLoading = <AppLoading />
-
   return isReady ? (
     <Container style={styles.container}>
       <Loan />
       <NewLoan />
     </Container>
   ) : (
-    appLoading
+    <AppLoading />
   )
 }
