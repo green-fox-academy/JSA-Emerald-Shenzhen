@@ -1,4 +1,4 @@
-const loanList = {
+const data = {
   loans: [
     {
       id: 1,
@@ -47,4 +47,4 @@ const loanList = {
   ]
 }
 
-export default loanList
+export default data

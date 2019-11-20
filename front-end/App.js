@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
-import { Container } from 'native-base'
 import { AppLoading } from 'expo'
 import Roboto from 'native-base/Fonts/Roboto.ttf'
 import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf'
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
-import Loan from './src/components/Loan/Loan'
+import LoanList from './src/components/LoanList/LoanList'
 import NewLoan from './src/components/NewLoan/NewLoan'
+import MainPage from './src/components/MainPage/MainPage'
+
+const AppStack = createStackNavigator(
+  {
+    MainPage,
+    LoanList,
+    NewLoan
+  },
+  {
+    initialRouteName: 'MainPage',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#2296F3'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
+  }
+)
+
+const AppContainer = createAppContainer(AppStack)
 
 export default function App() {
   const [isReady, setIsReady] = useState(false)
@@ -24,12 +48,5 @@ export default function App() {
     loadExpoFonts()
   })
 
-  return isReady ? (
-    <Container>
-      <Loan />
-      <NewLoan />
-    </Container>
-  ) : (
-    <AppLoading />
-  )
+  return isReady ? <AppContainer /> : <AppLoading />
 }

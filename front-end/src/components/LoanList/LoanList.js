@@ -1,26 +1,39 @@
 import React from 'react'
+import { Container, Content, Text } from 'native-base'
 import PropTypes from 'prop-types'
-import { Text, ScrollView, View } from 'react-native'
+
 import style from './LoanListStyle'
+import data from '../../../helpers/fakeLoanData'
+
 import LoadCard from '../LoanCard/LoanCard'
 import NewLoanButton from '../NewLoanButton/NewLoanButton'
 
-function LoanList({ loanList }) {
+function LoanList({ navigation }) {
   return (
-    <View style={{ height: '100%', flex: 1, position: 'relative' }}>
-      <ScrollView style={style.loanHomeScroll}>
+    <Container style={{ height: '100%', flex: 1, position: 'relative' }}>
+      <Content style={style.loanHomeScroll}>
         <Text style={style.header}>Current active contracts</Text>
-        {loanList.map(loan => {
+        {data.loans.map(loan => {
           return <LoadCard key={loan.id} loan={loan} />
         })}
-      </ScrollView>
-      {/* eslint-disable-next-line no-console */}
-      <NewLoanButton buttonAction={() => console.log('nothing added')} />
-    </View>
+      </Content>
+      <NewLoanButton
+        buttonAction={() => {
+          navigation.navigate('NewLoan')
+        }}
+      />
+    </Container>
   )
 }
 
-LoanList.propTypes = {
-  loanList: PropTypes.arrayOf(PropTypes.any).isRequired
+LoanList.navigationOptions = {
+  title: 'Loans'
 }
+
+LoanList.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
+}
+
 export default LoanList
