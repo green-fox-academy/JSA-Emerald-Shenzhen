@@ -18,12 +18,17 @@ function init() {
 }
 
 // eslint-disable-next-line consistent-return
-function selectByUserId(id) {
-  if (!connection) return { error: 'connection is down' }
-  connection.query('SELECT FROM loans WHERE userId=?', id, (error, result) => {
-    if (error) return { error }
-    return result
-  })
+async function selectByUserId(id) {
+  if (!connection) return { error: 'connection missing' }
+  const sqlResult = await connection.query(
+    'SELECT FROM loans WHERE userId=?',
+    id,
+    (error, result) => {
+      if (error) return { error }
+      return result
+    }
+  )
+  return sqlResult
 }
 
 module.exports = {

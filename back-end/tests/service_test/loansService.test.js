@@ -1,4 +1,4 @@
-const { getLoansWithUserId } = require('../../services/loanService')
+const { getLoansWithUserId } = require('../../services/loansService')
 const db = require('../../services/dbService')
 
 // mocking the hold dbService
