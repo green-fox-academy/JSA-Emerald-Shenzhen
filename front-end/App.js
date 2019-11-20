@@ -6,9 +6,7 @@ import { AppLoading } from 'expo'
 import Roboto from 'native-base/Fonts/Roboto.ttf'
 import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf'
 
-import styles from './AppStyle'
 import Loan from './src/components/Loan/Loan'
-
 import NewLoan from './src/components/NewLoan/NewLoan'
 
 export default function App() {
@@ -26,14 +24,12 @@ export default function App() {
     loadExpoFonts()
   })
 
-  const appLoading = <AppLoading />
-
   return isReady ? (
-    <Container style={styles.container}>
+    <Container>
       <Loan />
       <NewLoan />
     </Container>
   ) : (
-    appLoading
+    <AppLoading />
   )
 }
