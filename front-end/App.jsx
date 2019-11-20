@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
-import { StyleSheet } from 'react-native'
 import { Container } from 'native-base'
 import { AppLoading } from 'expo'
 import Roboto from 'native-base/Fonts/Roboto.ttf'
 import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf'
-import NewLoan from './src/components/NewLoan/NewLoan'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
+import styles from './AppStyle'
+import LoanList from './LoanList/LoanList'
+import LoanNav from './LoanNav/LoanNav'
+import loanList from './fakeLoanData'
+
+import NewLoan from './src/components/NewLoan/NewLoan'
 
 export default function App() {
   const [isReady, setIsReady] = useState(false)
@@ -29,13 +28,15 @@ export default function App() {
     loadExpoFonts()
   })
 
-  if (!isReady) {
-    return <AppLoading />
-  }
+  const appLoading = <AppLoading />
 
-  return (
+  return isReady ? (
     <Container style={styles.container}>
+      <LoanNav />
+      <LoanList loanList={loanList.loans} />
       <NewLoan />
     </Container>
+  ) : (
+    appLoading
   )
 }

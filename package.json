@@ -1,11 +1,12 @@
 {
-  "name": "JSA-Emerald-Shenzhen",
+  "name": "jsa-emerald-shenzhen",
   "version": "1.0.0",
   "description": "## Wiki",
   "main": "index.js",
   "dependencies": {
     "prettier": "^1.19.1",
-    "react-native-vector-icons": "^6.6.0"
+    "react-native-vector-icons": "^6.6.0",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
