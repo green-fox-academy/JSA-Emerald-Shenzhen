@@ -9,7 +9,7 @@ import NewLoanButton from '../NewLoanButton/NewLoanButton'
 
 function LoanList() {
   return (
-    <Container style={{ height: '100%', flex: 1, position: 'relative' }}>
+    <Container>
       <Content style={style.loanHomeScroll}>
         <Text style={style.header}>Current active contracts</Text>
         {data.loans.map(loan => {
