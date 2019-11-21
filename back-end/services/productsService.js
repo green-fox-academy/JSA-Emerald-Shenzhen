@@ -1,9 +1,9 @@
-const connectToDB = require('../db/connectToDB')
+const connectToDBFile = require('../db/connectToDB')
 
 const getAllProducts = (req, res) => {
   const query = 'SELECT * FROM products;'
 
-  connectToDB.mysqldb.query(query, (err, data) => {
+  connectToDBFile.mysqldb.query(query, (err, data) => {
     if (err) {
       res.status(400).send(err)
     }
