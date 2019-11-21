@@ -1,14 +1,16 @@
-const checkAccept = headers => {
-  const { accept } = headers
-  return accept === 'application/json'
+const getAllProducts = (req, res) => {
+  const query = 'SELECT * FROM products;'
+
+  query(query, (err, data) => {
+    // eslint-disable-next-line no-unused-expressions
+    err
+      ? res.status(400).send(err)
+      : res.format({
+        'application/json': function () {
+          res.status(200).json({ products: data })
+        }
+      })
+  })
 }
 
-const authenticate = headers => {
-  const { authentication } = headers
-  return authentication === 'Bearer token'
-}
-
-module.exports = {
-  checkAccept,
-  authenticate
-}
+module.exports = { getAllProducts }
