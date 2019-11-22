@@ -1,18 +1,26 @@
 const express = require('express')
-
 const { authenticate } = require('../services/authService')
-const productsService = require('../services/productsService')
-const mock = require('../helpers/mock-data')
+const { getAllProducts } = require('../services/productsService')
+const ERROR = require('../helpers/errors')
 
 const router = express.Router()
 
 router.route('/').get((req, res) => {
   const { headers } = req
-  if (!authenticate(headers)) {
-    res.status(401).send(mock.error)
-    return
+  if (!headers.authentication) {
+    return res.status(401).json({ error: ERROR.authMissingError })
   }
-  productsService.getAllProducts(req, res)
+  if (!authenticate(headers)) {
+    return res.status(401).send({ error: ERROR.authMissingError })
+  }
+
+  const data = getAllProducts()
+  res.format({
+    'application/json': () => {
+      res.status(200).json({ products: data })
+    }
+  })
+  return res
 })
 
 module.exports = router

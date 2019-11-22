@@ -7,10 +7,6 @@ const { PATHS } = require('./config')
 const productsRoutes = require('./routers/productsRoutes')
 const loansRoutes = require('./routers/loansRoutes')
 
-const connectToDB = require('./db/connectToDB')
-// connect to database
-connectToDB.connectToDB()
-
 app.use(cors())
 app.use(express.json())
 app.use(express.static('public'))
