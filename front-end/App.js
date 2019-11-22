@@ -43,6 +43,8 @@ export default function App() {
       <AppContainer />
     </Provider>
   ) : (
-    <AppLoading />
+    <Provider store={store}>
+      <AppLoading />
+    </Provider>
   )
 }
