@@ -17,4 +17,4 @@ conn.getConnection(error => {
   if (error) console.error('Failed to connect to database')
 })
 
-migration.init(conn, `${__dirname}/db/migrations`)
+migration.init(conn, `${__dirname}/migrations`)
