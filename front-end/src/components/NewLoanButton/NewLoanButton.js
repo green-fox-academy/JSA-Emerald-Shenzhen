@@ -1,13 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
 import { Text } from 'react-native'
 import { Fab } from 'native-base'
+import { NavigationContext } from 'react-navigation'
 import style from './NewLoanButtonStyle'
 
-function NewLoanButton({ buttonAction }) {
+function NewLoanButton() {
+  const navigation = useContext(NavigationContext)
+  const handlePress = () => {
+    navigation.navigate('NewLoan')
+  }
+
   return (
     <Fab
-      onPress={buttonAction}
+      onPress={handlePress}
       active
       direction="up"
       style={style.loanButton}
@@ -16,10 +21,6 @@ function NewLoanButton({ buttonAction }) {
       <Text style={style.text}>+ New Loan</Text>
     </Fab>
   )
-}
-
-NewLoanButton.propTypes = {
-  buttonAction: PropTypes.func.isRequired
 }
 
 export default NewLoanButton
