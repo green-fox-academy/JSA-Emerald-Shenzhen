@@ -1,17 +1,16 @@
 const express = require('express')
-
 const { authenticate } = require('../services/authService')
-const mock = require('../helpers/mock-data')
+const ERROR = require('../helpers/errors')
 
 const router = express.Router()
 
 router.route('/').get((req, res) => {
   const { headers } = req
   if (!authenticate(headers)) {
-    res.status(401).send(mock.error)
+    res.status(401).send({ error: ERROR.authMissingError })
     return
   }
-  res.status(200).send(mock.data)
+  res.status(200).send({})
 })
 
 module.exports = router

@@ -1,4 +1,17 @@
 const data = {
+  loans: [
+    {
+      id: 1,
+      type: {
+        id: 1,
+        slug: 'student',
+        name: 'Student Loan',
+        duration: '5 years fixed',
+        interest: 0.03
+      },
+      remaining: 3400
+    }
+  ],
   products: [
     {
       id: 1,
@@ -12,9 +25,4 @@ const data = {
     }
   ]
 }
-
-const error = {
-  error: 'Authentication header is missing!'
-}
-
-module.exports = { data, error }
+module.exports = data

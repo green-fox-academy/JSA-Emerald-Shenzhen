@@ -1,5 +1,10 @@
 const request = require('supertest')
-const app = require('../app')
+const app = require('../../app')
+const loanService = require('../../services/loansService')
+
+// mocking the servic
+jest.mock('../../services/loansService')
+loanService.getLoansWithUserId.mockReturnValue({ loans: 'you have got a list of loans' })
 
 describe('GET /loans', () => {
   describe('Vaild request', () => {
