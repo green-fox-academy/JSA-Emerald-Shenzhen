@@ -14,7 +14,8 @@ router.route('/').get(async (req, res) => {
     return res.status(403).json({ error: ERROR.authFailedError })
   }
 
-  const LoansData = await getLoansWithUserId()
+  const LoansData = await getLoansWithUserId(req.query.id)
+
   if (LoansData.error) return res.status(400).json({ error: LoansData.error })
   // return the result if everything is good
   return res.status(200).json(LoansData)

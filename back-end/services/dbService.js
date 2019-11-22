@@ -14,17 +14,17 @@ const dbService = {
       console.log(`database is connected`)
     })
   },
-  selectByUserId: async id => {
-    if (!this.connection) return { error: 'connection missing' }
-    const sqlResult = await this.connection.query(
-      'SELECT FROM loans WHERE userId=?',
-      id,
-      (error, result) => {
-        if (error) return { error }
-        return result
-      }
-    )
-    return sqlResult
+  selectLoansByUserId: id => {
+    const SQL = `SELECT * FROM loan${id ? ' WHERE userId=?;' : ';'}`
+
+    return new Promise((resolve, reject) => {
+      if (!this.connection) reject(new Error('connection missing'))
+
+      this.connection.query(SQL, id, (error, result) => {
+        if (error) reject(error)
+        resolve(result)
+      })
+    })
   }
 }
 
