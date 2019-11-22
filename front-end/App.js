@@ -1,5 +1,4 @@
 import React from 'react'
-import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
 import { AppLoading } from 'expo'
 import Roboto from 'native-base/Fonts/Roboto.ttf'
@@ -36,6 +35,6 @@ const AppStack = createStackNavigator(
 const AppContainer = createAppContainer(AppStack)
 
 export default function App() {
-  const isReady = useFonts(Font, { Roboto, RobotoMedium, ...Ionicons.font })
+  const isReady = useFonts({ Roboto, RobotoMedium, ...Ionicons.font })
   return isReady ? <AppContainer /> : <AppLoading />
 }

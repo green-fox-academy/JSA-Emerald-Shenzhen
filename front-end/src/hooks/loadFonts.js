@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react'
+import * as Font from 'expo-font'
 
-function useFonts(expoFont, fonts) {
+function useFonts(fonts) {
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
     async function loadExpoFonts() {
-      try {
-        await expoFont.loadAsync({
-          ...fonts
-        })
-        setIsReady(true)
-      } catch (error) {
-        console.log('Wrong font lib')
-      }
+      await Font.loadAsync({
+        ...fonts
+      })
+      setIsReady(true)
     }
     loadExpoFonts()
   })
