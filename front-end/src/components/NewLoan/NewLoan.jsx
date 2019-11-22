@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, Platform } from 'react-native'
 import {
   Container,
-  Header,
-  Left,
-  Body,
-  Title,
   Content,
   Button,
   Icon,
@@ -14,65 +9,21 @@ import {
   Input,
   Label,
   Card,
-  Picker
+  Picker,
+  Text
 } from 'native-base'
+
+import style from './NewLoanStyle'
 
 import PaymentDetails from './PaymentDetails'
 import ProductDescription from './ProductDescription'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 0
-  },
-  Header: {
-    marginTop: Platform.OS === 'ios' ? 20 : 20,
-    backgroundColor: '#3796F3'
-  },
-  NextButton: {
-    flex: 1,
-    alignSelf: 'flex-end',
-    maxHeight: 100,
-    minHeight: 70,
-    backgroundColor: '#F66F43',
-    width: 150,
-    height: 70,
-    borderRadius: 35,
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 5,
-    marginRight: 10,
-    position: 'absolute',
-    bottom: 13,
-    right: 5
-  },
-  NextButtonTitle: {
-    fontSize: 25,
-    color: 'white'
-  }
-})
 
 export default function NewLoan() {
   const [selected, setSelected] = useState()
 
   return (
-    <Container style={styles.container}>
-      <Header style={styles.Header}>
-        <Left style={{ maxWidth: '15%' }}>
-          <Button transparent>
-            <Icon name="arrow-back" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>New Loan</Title>
-        </Body>
-      </Header>
-      <Content style={{ padding: 10 }} contentContainerStyle={{ justifyContent: 'space-between' }}>
+    <Container>
+      <Content style={{ padding: 10 }}>
         <Form style={{ marginBottom: 10 }}>
           <Item stackedLabel last>
             <Label>How much do you need ?</Label>
@@ -108,10 +59,14 @@ export default function NewLoan() {
         <ProductDescription />
         <PaymentDetails />
       </Content>
-      <Button rounded style={styles.NextButton}>
+      <Button rounded style={style.NextButton}>
         <Icon name="md-arrow-forward" />
-        <Text style={styles.NextButtonTitle}>NEXT</Text>
+        <Text style={style.NextButtonTitle}>NEXT</Text>
       </Button>
     </Container>
   )
+}
+
+NewLoan.navigationOptions = {
+  title: 'New Loan'
 }
