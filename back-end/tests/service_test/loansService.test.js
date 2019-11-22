@@ -1,7 +1,6 @@
 const { getLoansWithUserId } = require('../../services/loansService')
 const db = require('../../services/dbService')
 
-// mocking the hold dbService
 jest.mock('../../services/dbService')
 db.selectByUserId.mockReturnValue(3)
 
