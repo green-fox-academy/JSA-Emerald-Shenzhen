@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
 import { AppLoading } from 'expo'
@@ -10,6 +10,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import LoanList from './src/components/LoanList/LoanList'
 import NewLoan from './src/components/NewLoan/NewLoan'
 import MainPage from './src/components/MainPage/MainPage'
+
+import useFonts from './src/hooks/loadFonts'
 
 const AppStack = createStackNavigator(
   {
@@ -34,19 +36,6 @@ const AppStack = createStackNavigator(
 const AppContainer = createAppContainer(AppStack)
 
 export default function App() {
-  const [isReady, setIsReady] = useState(false)
-
-  useEffect(() => {
-    async function loadExpoFonts() {
-      await Font.loadAsync({
-        Roboto,
-        RobotoMedium,
-        ...Ionicons.font
-      })
-      setIsReady(true)
-    }
-    loadExpoFonts()
-  })
-
+  const isReady = useFonts(Font, { Roboto, RobotoMedium, ...Ionicons.font })
   return isReady ? <AppContainer /> : <AppLoading />
 }
