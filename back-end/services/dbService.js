@@ -14,27 +14,27 @@ const dbService = {
       console.log(`database is connected`)
     })
   },
-  selectByUserId: async id => {
-    if (!this.connection) return { error: 'connection missing' }
-    const sqlResult = await this.connection.query(
-      'SELECT FROM loans WHERE userId=?',
-      id,
-      (error, result) => {
-        if (error) return { error }
-        return result
-      }
-    )
-    return sqlResult
-  },
-  selectProductModels: () => {
-    const query = 'SELECT * FROM products;'
+  selectLoansByUserId: id => {
+    const SQL = `SELET * FROM loan${id ? ' WHERE userId=?;' : ';'}`
 
-    this.connection.query(query, (error, data) => {
-      if (error) {
-        return error
-      }
-      console.log(`data = ${data}`)
-      return data
+    return new Promise((resolve, reject) => {
+      if (!this.connection) reject(new Error('connection missing'))
+
+      this.connection.query(SQL, id, (error, result) => {
+        if (error) reject(error)
+        resolve(result)
+      })
+    })
+  },
+  selectAllProductModels: () => {
+    const SQL = `SELECT * FROM products;`
+
+    return new Promise((resolve, reject) => {
+      if (!this.connection) reject(new Error('connection missing'))
+      this.connection.query(SQL, (error, result) => {
+        if (error) reject(error)
+        resolve(result)
+      })
     })
   }
 }

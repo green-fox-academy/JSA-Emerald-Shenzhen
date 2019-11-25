@@ -1,9 +1,13 @@
-const dbService = require('./dbService')
+const { selectAllProductModels } = require('./dbService')
 
-const getAllProducts = () => {
-  const data = dbService.selectProductModels()
-  console.log(data)
-  return data
+const getAllProductModels = async () => {
+  try {
+    const sqlProductModels = await selectAllProductModels()
+
+    return sqlProductModels
+  } catch (error) {
+    return { error }
+  }
 }
 
-module.exports = { getAllProducts }
+module.exports = { getAllProductModels }
