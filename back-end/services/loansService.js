@@ -9,14 +9,16 @@ const getLoansWithProductsByUserId = async userId => {
       return {
         id: loan.id,
         userId: loan.userId,
-        type: sqlProducts[loan.productId + 1],
+        type: sqlProducts.filter(product => {
+          return product.id === loan.productId
+        }),
         remaining: loan
       }
     })
 
     return result
   } catch (error) {
-    return { error }
+    return { error: error.toString() }
   }
 }
 
