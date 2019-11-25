@@ -1,70 +1,78 @@
 const request = require('supertest')
 const app = require('../../app')
+const productsService = require('../../services/productsService')
 
-const correctVersion = {
-  data: {
-    products: [
-      {
-        id: 1,
-        slug: 'student_1',
-        name: 'Student Loan',
-        duration: '5 years fixed',
-        icon: 'student',
-        title: '3% yearly interest rate',
-        description: 'Fixed low interests for students only',
-        interest: 0.03
-      },
-      {
-        id: 2,
-        slug: 'student_2',
-        name: 'Student Loan',
-        duration: '5 years fixed',
-        icon: 'student',
-        title: '3% yearly interest rate',
-        description: 'Fixed low interests for students only',
-        interest: 0.03
-      },
-      {
-        id: 3,
-        slug: 'student_3',
-        name: 'Student Loan',
-        duration: '5 years fixed',
-        icon: 'student',
-        title: '3% yearly interest rate',
-        description: 'Fixed low interests for students only',
-        interest: 0.03
-      },
-      {
-        id: 4,
-        slug: 'student_4',
-        name: 'Student Loan',
-        duration: '5 years fixed',
-        icon: 'student',
-        title: '3% yearly interest rate',
-        description: 'Fixed low interests for students only',
-        interest: 0.03
-      }
-    ]
+const productModels = [
+  {
+    id: 1,
+    slug: 'student_1',
+    name: 'Student Loan',
+    duration: '5 years fixed',
+    icon: 'student',
+    title: '3% yearly interest rate',
+    description: 'Fixed low interests for students only',
+    interest: 0.03
   },
-  error: {
-    error: 'Authentication header is missing!'
+  {
+    id: 2,
+    slug: 'student_2',
+    name: 'Student Loan',
+    duration: '5 years fixed',
+    icon: 'student',
+    title: '3% yearly interest rate',
+    description: 'Fixed low interests for students only',
+    interest: 0.03
+  },
+  {
+    id: 3,
+    slug: 'student_3',
+    name: 'Student Loan',
+    duration: '5 years fixed',
+    icon: 'student',
+    title: '3% yearly interest rate',
+    description: 'Fixed low interests for students only',
+    interest: 0.03
+  },
+  {
+    id: 4,
+    slug: 'student_4',
+    name: 'Student Loan',
+    duration: '5 years fixed',
+    icon: 'student',
+    title: '3% yearly interest rate',
+    description: 'Fixed low interests for students only',
+    interest: 0.03
   }
-}
+]
+
+// mocking the service
+jest.mock('../../services/productsService')
+productsService.selectAllProductModels.mockReturnValue({ products: productModels })
 
 describe('GET /products', () => {
-  it('should return products', done => {
-    request(app)
-      .get('/products')
-      .set('Accept', 'application/json')
-      .set('Authentication', 'Bearer token')
-      .expect('Content-Type', /json/)
-      .expect(200, correctVersion.data, done)
+  describe('Vaild request', () => {
+    it('should return all productModels', async () => {
+      const res = await request(app)
+        .get('/products')
+        .set('Authentication', 'Bearer token')
+      expect(res.statusCode).toEqual(200)
+      expect(res.body).toHaveProperty('products')
+    })
   })
-
-  it('should return error', done => {
-    request(app)
-      .get('/products')
-      .expect('Content-Type', /json/)
-      .expect(401, correctVersion.error, done)
+  describe('Missing or incorrect Authentication header', () => {
+    it('should return 401 Unauthorized', async () => {
+      const res = await request(app).get('/products')
+      expect(res.statusCode).toEqual(401)
+      expect(res.body).toHaveProperty('error')
+    })
+  })
+  describe('Incorrect Authentication header', () => {
+    it('should return 403 Unauthorized', async () => {
+      const res = await request(app)
+        .get('/products')
+        .set('Authentication', 'Incorrect Bearer token')
+      expect(res.statusCode).toEqual(403)
+      expect(res.body).toHaveProperty('error')
+    })
   })
 })
