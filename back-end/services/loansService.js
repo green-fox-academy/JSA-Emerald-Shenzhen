@@ -13,7 +13,6 @@ const getLoansWithProductsByUserId = async userId => {
         remaining: loan
       }
     })
-    console.log(result)
 
     return result
   } catch (error) {
