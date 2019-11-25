@@ -15,7 +15,7 @@ const dbService = {
     })
   },
   selectLoansByUserId: id => {
-    const SQL = `SELET * FROM loan${id ? ' WHERE userId=?;' : ';'}`
+    const SQL = `SELECT * FROM loans${id ? ' WHERE userId=?;' : ';'}`
 
     return new Promise((resolve, reject) => {
       if (!this.connection) reject(new Error('connection missing'))
@@ -31,6 +31,7 @@ const dbService = {
 
     return new Promise((resolve, reject) => {
       if (!this.connection) reject(new Error('connection missing'))
+
       this.connection.query(SQL, (error, result) => {
         if (error) reject(error)
         resolve(result)

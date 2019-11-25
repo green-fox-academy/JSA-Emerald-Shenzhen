@@ -4,7 +4,7 @@ const loanService = require('../../services/loansService')
 
 // mocking the servic
 jest.mock('../../services/loansService')
-loanService.getLoansWithUserId.mockReturnValue({ loans: 'you have got a list of loans' })
+loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: 'you have got a list of loans' })
 
 describe('GET /loans', () => {
   describe('Vaild request', () => {
