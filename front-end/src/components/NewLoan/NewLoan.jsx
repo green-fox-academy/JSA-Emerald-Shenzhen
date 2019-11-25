@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { NavigationContext } from 'react-navigation'
 import {
   Container,
   Content,
@@ -20,6 +21,10 @@ import ProductDescription from './ProductDescription'
 
 export default function NewLoan() {
   const [selected, setSelected] = useState()
+  const navigation = useContext(NavigationContext)
+  const handlePress = () => {
+    navigation.navigate('NewLoanDetail')
+  }
 
   return (
     <Container>
@@ -39,7 +44,7 @@ export default function NewLoan() {
               placeholderIconColor="#007aff"
               style={{ marginLeft: 10, marginRight: 10 }}
               selectedValue={selected}
-              onValueChange={e => setSelected(e.target.value)}
+              onValueChange={value => setSelected(value)}
             >
               <Picker.Item label="Wallet" value="key0" />
               <Picker.Item label="ATM Card" value="key1" />
@@ -59,7 +64,7 @@ export default function NewLoan() {
         <ProductDescription />
         <PaymentDetails />
       </Content>
-      <Button rounded style={style.NextButton}>
+      <Button onPress={handlePress} rounded style={style.NextButton}>
         <Icon name="md-arrow-forward" />
         <Text style={style.NextButtonTitle}>NEXT</Text>
       </Button>

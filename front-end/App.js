@@ -10,17 +10,21 @@ import { Provider } from 'react-redux'
 import LoanList from './src/components/LoanList/LoanList'
 import NewLoan from './src/components/NewLoan/NewLoan'
 import MainPage from './src/components/MainPage/MainPage'
+import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
 
 import store from './src/lib/store'
 
+console.log(`need change initialRouteName`)
 const AppStack = createStackNavigator(
   {
     MainPage,
     LoanList,
-    NewLoan
+    NewLoan,
+    NewLoanDetail
   },
   {
-    initialRouteName: 'MainPage',
+    // initialRouteName: 'MainPage',
+    initialRouteName: 'NewLoanDetail',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#2296F3'

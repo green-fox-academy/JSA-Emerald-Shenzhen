@@ -1,5 +1,4 @@
 import React from 'react'
-// import {} from 'react-native'
 import { Body, Text, Card, CardItem } from 'native-base'
 
 export default function PaymentDetails() {
