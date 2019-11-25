@@ -47,7 +47,7 @@ const productModels = [
 
 // mocking the service
 jest.mock('../../services/productsService')
-productsService.selectAllProductModels.mockReturnValue({ products: productModels })
+productsService.getAllProductModels.mockReturnValue({ products: productModels })
 
 describe('GET /products', () => {
   describe('Vaild request', () => {

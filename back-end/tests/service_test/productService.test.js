@@ -47,7 +47,7 @@ const productModels = [
 jest.mock('../../services/dbService')
 db.selectAllProductModels.mockReturnValue(productModels)
 
-test('Testing getLoansWithUserId can be call correctly', () => {
-  expect(getAllProductModels()).toBe(productModels)
+test('Testing getLoansWithUserId can be call correctly', async () => {
+  expect(await getAllProductModels()).toBe(productModels)
   expect(db.selectAllProductModels).toHaveBeenCalled()
 })
