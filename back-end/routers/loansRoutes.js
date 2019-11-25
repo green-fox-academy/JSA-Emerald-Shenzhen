@@ -1,5 +1,5 @@
 const express = require('express')
-const { getLoansWithUserId } = require('../services/loansService')
+const { getLoansWithProductsByUserId } = require('../services/loansService')
 const { authenticate } = require('../services/authService')
 const ERROR = require('../helpers/errors')
 
@@ -13,8 +13,7 @@ router.route('/').get(async (req, res) => {
   if (!authenticate(headers)) {
     return res.status(403).json({ error: ERROR.authFailedError })
   }
-
-  const LoansData = await getLoansWithUserId(req.query.id)
+  const LoansData = await getLoansWithProductsByUserId(req.query.id)
 
   if (LoansData.error) return res.status(400).json({ error: LoansData.error })
   // return the result if everything is good
