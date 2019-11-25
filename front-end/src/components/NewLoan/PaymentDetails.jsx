@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text } from 'react-native'
-import { Body, Card, CardItem } from 'native-base'
+// import {} from 'react-native'
+import { Body, Text, Card, CardItem } from 'native-base'
 
 export default function PaymentDetails() {
   return (
