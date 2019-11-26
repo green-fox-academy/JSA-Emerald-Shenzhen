@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import LoanList from './src/components/LoanList/LoanList'
 import NewLoan from './src/components/NewLoan/NewLoan'
 import MainPage from './src/components/MainPage/MainPage'
+import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
 
 import store from './src/lib/store'
 
@@ -17,7 +18,8 @@ const AppStack = createStackNavigator(
   {
     MainPage,
     LoanList,
-    NewLoan
+    NewLoan,
+    NewLoanDetail
   },
   {
     initialRouteName: 'MainPage',
@@ -27,7 +29,8 @@ const AppStack = createStackNavigator(
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        left: -20
       }
     }
   }

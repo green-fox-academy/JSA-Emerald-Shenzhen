@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test NewLoan View testing NewLoanDetails have 1 children, 2 grant children and match snapshot 1`] = `ShallowWrapper {}`;

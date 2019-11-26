@@ -4,29 +4,85 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
 <View
   style={
     Object {
+      "backgroundColor": "#fff",
       "flex": 1,
-      "height": "100%",
-      "position": "relative",
+      "height": 1334,
     }
   }
 >
   <RCTScrollView
-    style={
+    automaticallyAdjustContentInsets={false}
+    contentContainerStyle={
+      Array [
+        Object {
+          "padding": undefined,
+        },
+        undefined,
+      ]
+    }
+    contentInset={
       Object {
-        "flex": 1,
-        "paddingHorizontal": 10,
+        "bottom": 0,
       }
     }
+    enableAutomaticScroll={true}
+    enableOnAndroid={false}
+    enableResetScrollToCoords={true}
+    extraHeight={75}
+    extraScrollHeight={0}
+    getScrollResponder={[Function]}
+    handleOnScroll={[Function]}
+    keyboardDismissMode="interactive"
+    keyboardOpeningTime={250}
+    keyboardShouldPersistTaps="handled"
+    keyboardSpace={0}
+    onScroll={[Function]}
+    resetKeyboardSpace={[Function]}
+    resetScrollToCoords={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    scrollEventThrottle={1}
+    scrollForExtraHeightOnAndroid={[Function]}
+    scrollIntoView={[Function]}
+    scrollToEnd={[Function]}
+    scrollToFocusedInput={[Function]}
+    scrollToPosition={[Function]}
+    showsVerticalScrollIndicator={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "flex": 1,
+        },
+        Object {
+          "flex": 1,
+          "paddingHorizontal": 10,
+        },
+      ]
+    }
+    update={[Function]}
+    viewIsInsideTabBar={false}
   >
     <View>
       <Text
         style={
-          Object {
-            "color": "#444444",
-            "fontSize": 24,
-            "marginVertical": 15,
-          }
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 16,
+            },
+            Object {
+              "color": "#444444",
+              "fontSize": 24,
+              "marginVertical": 15,
+            },
+          ]
         }
+        uppercase={false}
       >
         Current active contracts
       </Text>
@@ -1125,64 +1181,59 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
     </View>
   </RCTScrollView>
   <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Object {
         "alignItems": "center",
-        "bottom": 20,
-        "flexDirection": "column",
-        "height": 56,
-        "left": undefined,
+        "backgroundColor": "#F66F43",
+        "borderBottomWidth": null,
+        "borderColor": "#007aff",
+        "borderLeftWidth": null,
+        "borderRadius": 35,
+        "borderRightWidth": null,
+        "borderTopWidth": null,
+        "borderWidth": undefined,
+        "bottom": 10,
+        "elevation": 5,
+        "flexDirection": "row",
+        "height": 60,
+        "justifyContent": "space-between",
+        "marginRight": 10,
+        "opacity": 1,
+        "paddingBottom": 6,
+        "paddingTop": 6,
         "position": "absolute",
-        "right": 20,
-        "top": undefined,
-        "width": 56,
+        "right": 5,
+        "shadowColor": "black",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.34,
+        "shadowRadius": 6.27,
+        "width": 160,
       }
     }
   >
-    <View
-      accessible={true}
-      isTVSelectable={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <Text />
+    <Text
       style={
         Object {
-          "alignItems": "center",
-          "backgroundColor": "#FF7042",
-          "borderRadius": 28,
-          "bottom": 0,
-          "elevation": 4,
-          "height": 56,
-          "justifyContent": "center",
-          "opacity": 1,
-          "position": "absolute",
-          "right": 0,
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 2,
-            "width": 0,
-          },
-          "shadowOpacity": 0.4,
-          "shadowRadius": 2,
-          "width": 150,
+          "color": "white",
+          "fontSize": 20,
+          "left": -5,
         }
       }
     >
-      <Text
-        style={
-          Object {
-            "color": "#fff",
-            "fontSize": 20,
-            "lineHeight": 27,
-          }
-        }
-      >
-        + New Loan
-      </Text>
-    </View>
+      New Loan
+    </Text>
   </View>
 </View>
 `;
