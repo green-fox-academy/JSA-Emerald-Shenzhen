@@ -1,26 +1,54 @@
 import { StyleSheet } from 'react-native'
+import { Platform } from '@unimodules/core'
 
 const style = StyleSheet.create({
   content: {
-    padding: 5
+    padding: 10,
+    height: '100%'
   },
   upDetailsView: {
     padding: 10
   },
   picker: {
-    borderBottomColor: '#E3E3E3',
+    borderBottomColor: '#E8EAF6',
     borderBottomWidth: 1
   },
   pickerItem: {
     fontSize: 30
   },
-  downTipView: {},
+  downTipView: {
+    backgroundColor: '#E8EAF6',
+    paddingHorizontal: 35,
+    paddingVertical: Platform.OS === 'android' ? 20 : 30,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   amountFont: {
     fontSize: 48
   },
   selectionTitle: {
-    fontSize: 14
+    fontSize: 14,
+    marginTop: 20
   },
-  transactionFont: { fontSize: 20, marginTop: 25, marginBottom: 18 }
+  exclamationText: { fontWeight: '200', color: '#7C7D83', marginLeft: 20 },
+  transactionFont: { fontSize: 20, marginTop: 25 },
+  finishButton: {
+    position: 'absolute',
+    width: 120,
+    height: 60,
+    right: 20,
+    bottom: 10,
+    backgroundColor: '#72BB53'
+  },
+  finishButtonIcon: {
+    left: 10,
+    fontSize: 25
+  },
+  finishButtonTitle: {
+    left: -20,
+    fontSize: 20
+  }
 })
 export default style

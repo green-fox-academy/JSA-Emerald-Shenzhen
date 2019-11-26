@@ -24,7 +24,7 @@ const AppStack = createStackNavigator(
   },
   {
     // initialRouteName: 'MainPage',
-    initialRouteName: 'NewLoanDetail',
+    initialRouteName: 'LoanList',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#2296F3'

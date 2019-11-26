@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
-import { Text, View, Content, Form, Picker, Icon } from 'native-base'
+import { Text, View, Content, Icon } from 'native-base'
 import style from './NewLoanDetailsStyle'
+import LoanPickers from './loanPickers'
+import data from '../../../helpers/mockData_FE'
+import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function NewLoanDetails() {
-  const [seleted, setSelected] = useState('Main Deposit')
-
+  const [receivingAccount, setreceivingAccount] = useState(data.receivingAccount[0].label)
+  const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0].label)
+  const handlePress = () => {
+    // eslint-disable-next-line no-undef
+    alert('oh!! you had pressed me!!')
+  }
   return (
     <>
       <Content style={style.content}>
@@ -12,25 +19,33 @@ export default function NewLoanDetails() {
           <Text style={style.amountFont}>$ 5000</Text>
           <Text style={style.transactionFont}>will be added to your</Text>
           <Text style={style.selectionTitle}>Receiving amount</Text>
-
-          <Form style={style.picker}>
-            <Picker
-              textStyle={style.pickerItem}
-              itemStyle={style.pickerItem}
-              mode="dropdown"
-              selectedValue={seleted}
-              onValueChange={value => setSelected(value)}
-              iosIcon={<Icon name="arrow-down" />}
-            >
-              <Picker.Item label="Main Deposit" value="Main Deposit" />
-              <Picker.Item label="Main Deposit2" value="Main Deposit2" />
-              <Picker.Item label="Main Deposit3" value="Main Deposit3" />
-              <Picker.Item label="Main Deposit4" value="Main Deposit4" />
-            </Picker>
-          </Form>
+          <LoanPickers
+            selected={receivingAccount}
+            setSelected={setreceivingAccount}
+            itemList={data.receivingAccount}
+          />
           <Text style={style.transactionFont}>and you will pay</Text>
+          <Text style={style.amountFont}>$ 86.84</Text>
+          <Text style={style.selectionTitle}>Default Payment</Text>
+          <LoanPickers
+            selected={defaultPayment}
+            setSelected={setdefaultPayment}
+            itemList={data.defaultPayment}
+          />
+        </View>
+        <View style={style.downTipView}>
+          <Icon name="exclamation-circle" type="FontAwesome" />
+          <Text style={style.exclamationText}>
+            This amount will be automatically removed from your account every month.
+          </Text>
         </View>
       </Content>
+      <FloatingButton
+        buttonStyle={{ width: 130, backgroundColor: '#72bb53' }}
+        icon={{ type: 'MaterialIcons', name: 'done' }}
+        text="Finish"
+        handlePress={handlePress}
+      />
     </>
   )
 }
