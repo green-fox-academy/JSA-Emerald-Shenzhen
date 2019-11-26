@@ -19,6 +19,17 @@
 1. ESLint in root folder, and `npm` is used for that. Therefore, to run `lint` or `lint-fix` should be in the root folder.
 2. BE: use `npm ONLY`.
 3. FE: use `yarn ONLY`.
+4. BE: In db service, we use db **connection pool** instead of a **regular db connetion**, codes as follows in [this file](./back-end/services/dbService.js):
+
+```javascript
+this.pool = mysql.createPool(process.env.MYSQL_URL)
+```
+
+therefore, `MYSQL_URL` is needed in the .env file as follows:
+
+```txt
+MYSQL_URL=mysql://{yourUserName}:{yourPassword}@localhost:{port}/{databaseName}
+```
 
 ---
 
