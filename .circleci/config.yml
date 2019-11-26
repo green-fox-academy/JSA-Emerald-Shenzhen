@@ -8,12 +8,8 @@ jobs:
     steps:
       - checkout
       - run: echo "build"
-      - run: 
-        - name: install node_module packages
-        - command: npm install
-      - run: 
-        - name: run migrations
-        - command: node migration.js up
+      - run: npm install
+      - run: node migration.js up
       # - run: 
       #   - name: start the back-end
       #   - command: npm start
@@ -23,9 +19,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: 
-        - name: run test
-        - command: npm run test 
+      - run: npm run test 
 
 workflows:
   version: 2
