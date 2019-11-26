@@ -2,7 +2,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/back-end
+    working_directory: ../back-end
     docker:
       - image: circleci/node:7.10
     steps:
@@ -17,7 +17,7 @@ jobs:
       #   - name: start the back-end
       #   - command: npm start
   test:
-    working_directory: ~/back-end
+    working_directory: ../back-end
     docker: 
       - image: circleci/node:7.10
     steps:
