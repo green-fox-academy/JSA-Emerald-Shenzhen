@@ -14,9 +14,3 @@ describe('test NewLoan View', () => {
     expect(warpper).toMatchSnapshot()
   })
 })
-
-// describe('test PaymentDetails View', () => {
-//   it('should render PaymentDetails', () => {
-//     const warpper = shallow(<LoanPickers />)
-//   })
-// })

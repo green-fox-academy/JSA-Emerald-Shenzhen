@@ -14,7 +14,6 @@ import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
 
 import store from './src/lib/store'
 
-console.log(`need change initialRouteName`)
 const AppStack = createStackNavigator(
   {
     MainPage,
@@ -23,8 +22,7 @@ const AppStack = createStackNavigator(
     NewLoanDetail
   },
   {
-    // initialRouteName: 'MainPage',
-    initialRouteName: 'LoanList',
+    initialRouteName: 'MainPage',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#2296F3'
