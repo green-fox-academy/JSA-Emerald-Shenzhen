@@ -5,6 +5,7 @@ const getLoansWithProductsByUserId = async userId => {
     const sqlLoans = await selectLoansByUserId(userId)
     const sqlProducts = await selectAllProductModels()
 
+    console.log(sqlProducts)
     const result = sqlLoans.map(loan => {
       return {
         id: loan.id,

@@ -3,13 +3,8 @@ const mysql = require('mysql')
 
 const dbService = {
   init: () => {
-    this.pool = mysql.createPool({
-      host: process.env.HOST,
-      user: process.env.USER,
-      password: process.env.PASSWORD,
-      database: process.env.DATABASE
-    })
-    this.connection.connect(() => {
+    this.connection = mysql.createPool(process.env.MYSQL_URL)
+    this.connection.getConnection(() => {
       // eslint-disable-next-line no-console
       console.log(`database is connected`)
     })
