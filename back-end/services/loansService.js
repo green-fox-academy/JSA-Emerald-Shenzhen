@@ -9,9 +9,7 @@ const getLoansWithProductsByUserId = async userId => {
       return {
         id: loan.id,
         userId: loan.userId,
-        type: sqlProducts.filter(product => {
-          return product.id === loan.productId
-        }),
+        type: sqlProducts.find(product => product.id === loan.productId),
         remaining: loan
       }
     })
