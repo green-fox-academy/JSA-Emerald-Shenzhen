@@ -9,6 +9,9 @@ jobs:
       - checkout
       - run: echo "build"
       - run: npm install
+      - run: pwd
+      - run: ls /home/circleci/emerald/
+      - run: cd ./back-end
       - run: node migration.js up
       # - run: 
       #   - name: start the back-end
