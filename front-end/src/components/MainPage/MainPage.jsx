@@ -17,13 +17,6 @@ const MainPage = ({ navigation }) => {
         >
           <Text>Go to the homepage of Loan Section</Text>
         </Button>
-        <Button
-          onPress={() => {
-            handlePress('ProductSelection')
-          }}
-        >
-          <Text>Go to the homepage of Products Section</Text>
-        </Button>
       </Content>
     </Container>
   )
