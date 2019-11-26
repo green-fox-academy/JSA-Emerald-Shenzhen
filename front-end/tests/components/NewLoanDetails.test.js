@@ -2,7 +2,6 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import Enzyme, { shallow } from 'enzyme'
 import NewLoanDetails from '../../src/components/NewLoanDetails/NewLoanDetails'
-// import LoanPickers from '../../src/components/NewLoanDetails/LoanPickers'
 
 Enzyme.configure({ adapter: new Adapter() })
 
