@@ -17,7 +17,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end && npm run test 
+      - run: cd ./back-end && npm install && npm run test 
 
 workflows:
   version: 2
