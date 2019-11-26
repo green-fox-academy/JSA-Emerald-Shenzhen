@@ -7,10 +7,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: npm install
-      - run: ls /home/circleci/emerald/
-      - run: cd ./back-end && node migration.js up
-      - run: pwd
+      - run: cd ./back-end && npm install && node migration.js up
       # - run: 
       #   - name: start the back-end
       #   - command: npm start
@@ -20,7 +17,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: npm run test 
+      - run: cd ./back-end && npm run test 
 
 workflows:
   version: 2
