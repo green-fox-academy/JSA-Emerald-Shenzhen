@@ -1,6 +1,5 @@
 import React from 'react'
-import { Text } from 'react-native'
-import { Body, Card, CardItem, Icon } from 'native-base'
+import { Body, Text, Card, CardItem, Icon } from 'native-base'
 
 export default function ProductDescription() {
   return (

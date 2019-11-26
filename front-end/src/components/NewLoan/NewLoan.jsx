@@ -1,36 +1,29 @@
-import React, { useState } from 'react'
-import {
-  Container,
-  Content,
-  Button,
-  Icon,
-  Form,
-  Item,
-  Input,
-  Label,
-  Card,
-  Picker,
-  Text
-} from 'native-base'
-
+import React, { useState, useContext } from 'react'
+import { NavigationContext } from 'react-navigation'
+import { Content, Icon, Form, Item, Input, Label, Card, Picker, Container } from 'native-base'
 import style from './NewLoanStyle'
-
 import PaymentDetails from './PaymentDetails'
 import ProductDescription from './ProductDescription'
+import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function NewLoan() {
   const [selected, setSelected] = useState()
+  const navigation = useContext(NavigationContext)
+  const handlePress = () => {
+    navigation.navigate('NewLoanDetail')
+  }
 
   return (
     <Container>
-      <Content style={{ padding: 10 }}>
-        <Form style={{ marginBottom: 10 }}>
+      <Content style={style.newLoanContent}>
+        <Form style={style.newLoanForm}>
           <Item stackedLabel last>
             <Label>How much do you need ?</Label>
             <Input />
           </Item>
-          <Card transparent style={{ borderBottomColor: '#E3E3E3', borderBottomWidth: 1 }}>
-            <Label style={{ fontSize: 15, margin: 10, marginLeft: 15 }}>Selected Product</Label>
+          <Card transparent style={style.newLoanCard}>
+            <Label style={style.cardLabel}>Selected Product</Label>
+            {/* Picker may need to extract */}
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="arrow-down" />}
@@ -39,7 +32,7 @@ export default function NewLoan() {
               placeholderIconColor="#007aff"
               style={{ marginLeft: 10, marginRight: 10 }}
               selectedValue={selected}
-              onValueChange={e => setSelected(e.target.value)}
+              onValueChange={value => setSelected(value)}
             >
               <Picker.Item label="Wallet" value="key0" />
               <Picker.Item label="ATM Card" value="key1" />
@@ -59,10 +52,11 @@ export default function NewLoan() {
         <ProductDescription />
         <PaymentDetails />
       </Content>
-      <Button rounded style={style.NextButton}>
-        <Icon name="md-arrow-forward" />
-        <Text style={style.NextButtonTitle}>NEXT</Text>
-      </Button>
+      <FloatingButton
+        icon={{ type: 'Ionicons', name: 'md-arrow-forward' }}
+        text="Next"
+        handlePress={handlePress}
+      />
     </Container>
   )
 }
