@@ -32,14 +32,14 @@ workflows:
     jobs: 
       - build
         filters:
-            branches:
-              only: amelieykw_backend
+          branches:
+            only: amelieykw_backend
       - test:
         requires:
           - build
         filters:
-            branches:
-              only: amelieykw_backend
+          branches:
+            only: amelieykw_backend
 
 
 
