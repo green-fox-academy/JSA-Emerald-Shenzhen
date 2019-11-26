@@ -3,11 +3,7 @@ const mysql = require('mysql')
 
 const dbService = {
   init: () => {
-    this.connection = mysql.createPool(process.env.MYSQL_URL)
-    this.connection.getConnection(() => {
-      // eslint-disable-next-line no-console
-      console.log(`database is connected`)
-    })
+    this.pool = mysql.createPool(process.env.MYSQL_URL)
   }
 }
 dbService.selectLoansByUserId = id => {
@@ -22,9 +18,9 @@ dbService.selectAllProductModels = () => {
 }
 dbService.getPromise = SQL => {
   return new Promise((resolve, reject) => {
-    if (!this.connection) reject(new Error('connection missing'))
+    if (!this.pool) reject(new Error('connection missing'))
 
-    this.connection.query(SQL, (error, result) => {
+    this.pool.query(SQL, (error, result) => {
       if (error) reject(error)
       resolve(result)
     })
