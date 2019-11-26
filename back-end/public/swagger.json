@@ -1,0 +1,202 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+    "version": "1.0.0",
+    "title": "Swagger JSA-Emerald-Shenzhen",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "tags": [
+    {
+      "name": "products",
+      "description": "",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": ""
+      }
+    },
+    {
+      "name": "loans",
+      "description": "",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": ""
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Get all products",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Products",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication header is missing!"
+          }
+        },
+        "security": [
+          {
+            "authenticate": []
+          }
+        ]
+      }
+    },
+    "/loans": {
+      "get": {
+        "tags": [
+          "loans"
+        ],
+        "summary": "Get all loans",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Loans",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Loan"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication header is missing!"
+          },
+          "403": {
+            "description": "Authentication in header is failed!"
+          }
+        },
+        "security": [
+          {
+            "authenticate": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "authenticate": {
+      "type": "apiKey",
+      "name": "Authentication",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Loan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "type": {
+          "$ref": "#/definitions/LoanType"
+        },
+        "remaining": {
+          "type": "integer",
+          "format": "int64",
+          "example": 3400
+        }
+      }
+    },
+    "LoanType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "slug": {
+          "type": "string",
+          "example": "student"
+        },
+        "name": {
+          "type": "string",
+          "example": "Student Loan"
+        },
+        "duration": {
+          "type": "string",
+          "example": "5 years fixed"
+        },
+        "interest": {
+          "type": "number",
+          "format": "int64",
+          "example": 0.03
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "interest": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
