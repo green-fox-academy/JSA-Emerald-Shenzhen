@@ -1,15 +1,25 @@
-const { selectLoansByUserId } = require('./dbService')
+const { selectLoansByUserId, selectAllProductModels } = require('./dbService')
 
-const getLoansWithUserId = async userId => {
+const getLoansWithProductsByUserId = async userId => {
   try {
     const sqlLoans = await selectLoansByUserId(userId)
-    // waiting for Amélie`s function
-    // const sqlProducts =await selectProductModels()
+    const sqlProducts = await selectAllProductModels()
 
-    return sqlLoans
+    const result = sqlLoans.map(loan => {
+      return {
+        id: loan.id,
+        userId: loan.userId,
+        type: sqlProducts.filter(product => {
+          return product.id === loan.productId
+        }),
+        remaining: loan
+      }
+    })
+
+    return result
   } catch (error) {
-    return { error }
+    return { error: error.toString() }
   }
 }
 
-module.exports = { getLoansWithUserId }
+module.exports = { getLoansWithProductsByUserId }
