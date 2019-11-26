@@ -19,3 +19,9 @@
 1. ESLint in root folder, and `npm` is used for that. Therefore, to run `lint` or `lint-fix` should be in the root folder.
 2. BE: use `npm ONLY`.
 3. FE: use `yarn ONLY`.
+
+---
+
+## Swagger (API specification)
+
+https://green-fox-academy.github.io/JSA-Emerald-Shenzhen/

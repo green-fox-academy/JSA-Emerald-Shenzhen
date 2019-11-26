@@ -1,40 +1,35 @@
 const request = require('supertest')
 const app = require('../../app')
+const productsService = require('../../services/productsService')
+const productModels = require('../MockData/productService_mockData')
 
-const mock = {
-  data: {
-    products: [
-      {
-        id: 1,
-        slug: 'student',
-        name: 'Student Loan',
-        duration: '5 years fixed',
-        icon: 'student',
-        title: '3% yearly interest rate',
-        description: 'Fixed low interests for students only',
-        interest: 0.03
-      }
-    ]
-  },
-  error: {
-    error: 'Authentication header is missing!'
-  }
-}
+jest.mock('../../services/productsService')
+productsService.getAllProductModels.mockReturnValue({ products: productModels })
 
 describe('GET /products', () => {
-  it('should return products', done => {
-    request(app)
-      .get('/products')
-      .set('Accept', 'application/json')
-      .set('Authentication', 'Bearer token')
-      .expect('Content-Type', /json/)
-      .expect(200, mock.data, done)
+  describe('Vaild request', () => {
+    it('should return all productModels', async () => {
+      const res = await request(app)
+        .get('/products')
+        .set('Authentication', 'Bearer token')
+      expect(res.statusCode).toEqual(200)
+      expect(res.body).toHaveProperty('products')
+    })
   })
-
-  it('should return error', done => {
-    request(app)
-      .get('/products')
-      .expect('Content-Type', /json/)
-      .expect(401, mock.error, done)
+  describe('Missing or incorrect Authentication header', () => {
+    it('should return 401 Unauthorized', async () => {
+      const res = await request(app).get('/products')
+      expect(res.statusCode).toEqual(401)
+      expect(res.body).toHaveProperty('error')
+    })
+  })
+  describe('Incorrect Authentication header', () => {
+    it('should return 403 Unauthorized', async () => {
+      const res = await request(app)
+        .get('/products')
+        .set('Authentication', 'Incorrect Bearer token')
+      expect(res.statusCode).toEqual(403)
+      expect(res.body).toHaveProperty('error')
+    })
   })
 })
