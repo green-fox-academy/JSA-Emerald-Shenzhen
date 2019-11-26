@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { NavigationContext } from 'react-navigation'
-import { Content, Icon, Form, Item, Input, Label, Card, Picker } from 'native-base'
+import { Content, Icon, Form, Item, Input, Label, Card, Picker, Container } from 'native-base'
 import style from './NewLoanStyle'
 import PaymentDetails from './PaymentDetails'
 import ProductDescription from './ProductDescription'
@@ -14,7 +14,7 @@ export default function NewLoan() {
   }
 
   return (
-    <>
+    <Container>
       <Content style={style.newLoanContent}>
         <Form style={style.newLoanForm}>
           <Item stackedLabel last>
@@ -57,7 +57,7 @@ export default function NewLoan() {
         text="Next"
         handlePress={handlePress}
       />
-    </>
+    </Container>
   )
 }
 

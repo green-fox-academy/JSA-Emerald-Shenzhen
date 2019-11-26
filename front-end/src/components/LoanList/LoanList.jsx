@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Content, Text } from 'native-base'
+import { Content, Text, Container } from 'native-base'
 import { NavigationContext } from 'react-navigation'
 import style from './LoanListStyle'
 import data from '../../../helpers/mockData_FE'
@@ -12,7 +12,7 @@ function LoanList() {
     navigation.navigate('NewLoan')
   }
   return (
-    <>
+    <Container>
       <Content style={style.loanHomeScroll}>
         <Text style={style.header}>Current active contracts</Text>
         {data.loans.map(loan => {
@@ -25,7 +25,7 @@ function LoanList() {
         handlePress={handlePress}
         buttonStyle={{ width: 160 }}
       />
-    </>
+    </Container>
   )
 }
 

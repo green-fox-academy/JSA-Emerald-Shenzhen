@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import { Text, View, Content, Icon } from 'native-base'
+import { Text, View, Content, Icon, Container } from 'native-base'
 import style from './NewLoanDetailsStyle'
-import LoanPickers from './loanPickers'
+import LoanPickers from './LoanPickers'
 import data from '../../../helpers/mockData_FE'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function NewLoanDetails() {
-  const [receivingAccount, setreceivingAccount] = useState(data.receivingAccount[0].label)
-  const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0].label)
+  const [receivingAccount, setreceivingAccount] = useState(data.receivingAccount[0])
+  const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0])
   const handlePress = () => {
     // eslint-disable-next-line no-undef
-    alert('oh!! you had pressed me!!')
+    alert('oh shit!! you pressed me!!')
   }
   return (
-    <>
+    <Container>
       <Content style={style.content}>
         <View style={style.upDetailsView}>
           <Text style={style.amountFont}>$ 5000</Text>
@@ -36,7 +36,7 @@ export default function NewLoanDetails() {
         <View style={style.downTipView}>
           <Icon name="exclamation-circle" type="FontAwesome" />
           <Text style={style.exclamationText}>
-            This amount will be automatically removed from your account every month.
+            {`This amount will be automatically removed from your account every ${defaultPayment.value}.`}
           </Text>
         </View>
       </Content>
@@ -46,6 +46,9 @@ export default function NewLoanDetails() {
         text="Finish"
         handlePress={handlePress}
       />
-    </>
+    </Container>
   )
+}
+NewLoanDetails.navigationOptions = {
+  title: 'New Loan Details'
 }

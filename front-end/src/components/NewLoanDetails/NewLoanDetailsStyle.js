@@ -33,22 +33,6 @@ const style = StyleSheet.create({
     marginTop: 20
   },
   exclamationText: { fontWeight: '200', color: '#7C7D83', marginLeft: 20 },
-  transactionFont: { fontSize: 20, marginTop: 25 },
-  finishButton: {
-    position: 'absolute',
-    width: 120,
-    height: 60,
-    right: 20,
-    bottom: 10,
-    backgroundColor: '#72BB53'
-  },
-  finishButtonIcon: {
-    left: 10,
-    fontSize: 25
-  },
-  finishButtonTitle: {
-    left: -20,
-    fontSize: 20
-  }
+  transactionFont: { fontSize: 20, marginTop: 25 }
 })
 export default style

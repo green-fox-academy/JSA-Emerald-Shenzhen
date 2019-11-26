@@ -16,7 +16,7 @@ export default function LoanPickers({ selected, setSelected, itemList }) {
           iosIcon={<Icon name="arrow-down" />}
         >
           {itemList.map(item => {
-            return <Picker.Item key={item.id} label={item.label} value={item.value} />
+            return <Picker.Item key={item.id} label={item.label} value={item} />
           })}
         </Picker>
       </Form>
@@ -24,7 +24,7 @@ export default function LoanPickers({ selected, setSelected, itemList }) {
   )
 }
 LoanPickers.propTypes = {
-  selected: PropTypes.string.isRequired,
+  selected: PropTypes.objectOf(PropTypes.any).isRequired,
   setSelected: PropTypes.func.isRequired,
   itemList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
