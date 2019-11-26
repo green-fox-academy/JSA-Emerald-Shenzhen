@@ -1,0 +1,38 @@
+# Javascript Node CircleCI 2.0 configuration file
+version: 2
+jobs:
+  build:
+    working_directory: ~/back-end
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run: 
+        - name: install node_module packages
+        - command: npm install
+      - run: 
+        - name: run migrations
+        - command: node migration.js up
+      # - run: 
+      #   - name: start the back-end
+      #   - command: npm start
+  test:
+    working_directory: ~/back-end
+    docker: 
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run: 
+        - name: run test
+        - command: npm run test 
+workflows:
+  version: 2
+  build_and_test:
+    jobs: 
+      - build
+      - test:
+        requires:
+          - build
+
+
+

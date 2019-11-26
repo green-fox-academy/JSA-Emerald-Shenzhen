@@ -5,7 +5,7 @@ const getAllProductModels = async () => {
     const sqlProductModels = await selectAllProductModels()
     return sqlProductModels
   } catch (error) {
-    return { error }
+    return { error: error.toString() }
   }
 }
 

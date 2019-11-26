@@ -14,7 +14,6 @@ router.route('/').get(async (req, res) => {
     return res.status(403).json({ error: ERROR.authFailedError })
   }
   const productModelsData = await getAllProductModels()
-  console.log(productModelsData.error)
 
   if (productModelsData.error) return res.status(400).json({ error: productModelsData.error })
   // return the result if everything is good
