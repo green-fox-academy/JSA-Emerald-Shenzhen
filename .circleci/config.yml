@@ -26,21 +26,21 @@ jobs:
       - run: 
         - name: run test
         - command: npm run test 
-        
+
 workflows:
   version: 2
   build_and_test:
     jobs: 
       - build:
-        filters:
-          branches:
-            only: amelieykw_backend
+          filters:
+            branches:
+              only: amelieykw_backend
       - test:
-        requires:
-          - build
-        filters:
-          branches:
-            only: amelieykw_backend
+          requires:
+            - build
+          filters:
+            branches:
+              only: amelieykw_backend
 
 
 
