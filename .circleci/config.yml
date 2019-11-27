@@ -16,7 +16,7 @@ jobs:
       - run: ls
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
       - run: sudo npm install -g pm2 
-      - run: cd ./back-end && pwd && ssh -i ec2.pem ubuntu@52.194.188.75 && pm2 deploy ecosystem.config.js production setup
+      - run: cd ./back-end && pwd && git status && pm2 deploy ecosystem.config.js production setup
 
 workflows:
   version: 2
