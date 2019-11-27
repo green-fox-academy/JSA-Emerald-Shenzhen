@@ -1,7 +1,7 @@
 const { authenticate } = require('../services/authService')
 const ERROR = require('../helpers/errors')
 
-const authentication = (req, res, next) => {
+const auth = (req, res, next) => {
   const { headers } = req
   if (!headers.authentication) {
     res.status(401).json({ error: ERROR.authMissingError })
@@ -14,4 +14,4 @@ const authentication = (req, res, next) => {
   next('route')
 }
 
-module.exports = authentication
+module.exports = auth
