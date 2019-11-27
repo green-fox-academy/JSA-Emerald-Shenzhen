@@ -14,6 +14,9 @@ app.use(express.static('public'))
 app.use(PATHS.products, productsRoutes)
 app.use(PATHS.loans, loansRoutes)
 
-app.get('*', (req, res) => res.send('Page Not found 404'))
+// eslint-disable-next-line no-unused-vars
+app.use((req, res, next) => {
+  res.status(404).send('Sorry cant find that!')
+})
 
 module.exports = app
