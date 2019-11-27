@@ -7,7 +7,6 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - run: cd ./back-end && cat package.json
       - run: cd ./back-end && npm install && npm run test
       - add_ssh_keys:
           fingerprints:
@@ -15,7 +14,7 @@ jobs:
       - run: cd ./back-end && cp ~/.ssh/id_rsa_7f7c8b00186cc83f1039344a5ea3cf74 ./ec2.pem && chmod 400 ./ec2.pem 
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
       - run: sudo npm install -g pm2 
-      - run: cd ./back-end && git diff package.json && pm2 deploy ecosystem.config.js production
+      - run: cd ./back-end && pm2 deploy ecosystem.config.js production -f 
 
 workflows:
   version: 2
