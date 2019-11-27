@@ -7,14 +7,29 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end && npm install 
+      - run: cd ./back-end 
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run: npm install 
   test:
     working_directory: ~/emerald
     docker: 
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end && npm install && npm run test 
+      - run: cd ./back-end 
+      - restore_cache:
+          keys: 
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies
+      - run: npm run test 
+  build_add_ssh_key:
+    - add_ssh_keys:
+        fingerprints:
+          - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
+    - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
   deploy:
     working_directory: ~/emerald
     docker: 
@@ -37,9 +52,15 @@ workflows:
           filters:
             branches:
               only: amelieykw_backend
-      - deploy:
+      - build_add_ssh_key:
           requires:
             - test
+          filters:
+            branches:
+              only: amelieykw_backend
+      - deploy:
+          requires:
+            - build_add_ssh_key
           filters:
             branches:
               only: amelieykw_backend
