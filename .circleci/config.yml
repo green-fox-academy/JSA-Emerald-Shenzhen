@@ -7,10 +7,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end && npm install && node migration.js up
-      # - run: 
-      #   - name: start the back-end
-      #   - command: npm start
+      - run: cd ./back-end && npm install 
   test:
     working_directory: ~/emerald
     docker: 
@@ -18,6 +15,13 @@ jobs:
     steps:
       - checkout
       - run: cd ./back-end && npm install && npm run test 
+  deploy:
+    working_directory: ~/emerald
+    docker: 
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run: cd ./back-end && npm install && pm2 deploy ecosystem.config.js production   
 
 workflows:
   version: 2
@@ -30,6 +34,12 @@ workflows:
       - test:
           requires:
             - build
+          filters:
+            branches:
+              only: amelieykw_backend
+      - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: amelieykw_backend
