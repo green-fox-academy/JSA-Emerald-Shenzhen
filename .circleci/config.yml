@@ -9,15 +9,15 @@ jobs:
       - checkout
       - run: cd ./back-end 
       - run: npm install 
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      # - save_cache:
+      #     key: v1-dependencies-{{ checksum "package.json" }}
+      #     paths:
+      #       - node_modules
       - run: npm run test 
-      - restore_cache:
-          keys: 
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies
+      # - restore_cache:
+      #     keys: 
+      #       - v1-dependencies-{{ checksum "package.json" }}
+      #       - v1-dependencies
       - add_ssh_keys:
         fingerprints:
           - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
