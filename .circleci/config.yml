@@ -18,12 +18,11 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end 
       - restore_cache:
           keys: 
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies
-      - run: npm run test
+      - run: cd ./back-end && npm run test
       - add_ssh_keys:
           fingerprints:
             - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
