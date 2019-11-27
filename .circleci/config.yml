@@ -12,32 +12,14 @@ jobs:
           fingerprints:
             - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
-      # - save_cache:
-      #     key: v1-dependencies-{{ checksum "package.json" }}
-      #     paths:
-      #       - node_modules
-  # test:
-  #   working_directory: ~/emerald
-  #   docker:
-  #     - image: circleci/node:7.10
-  #   steps:
-  #     - checkout
-  #     - run: cd ./back-end && npm install && npm run test
-  #     # - restore_cache:
-  #     #     keys: 
-  #     #       - v1-dependencies-{{ checksum "package.json" }}
-  #     #       - v1-dependencies
-  #     - add_ssh_keys:
-  #         fingerprints:
-  #           - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
-  #     - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
   deploy:
     working_directory: ~/emerald
     docker: 
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: sudo npm install -g pm2 && pm2 deploy ecosystem.config.js production
+      - run: sudo npm install -g pm2 
+      - run: cd ./back-end && pm2 deploy ecosystem.config.js production
 
 workflows:
   version: 2
@@ -47,12 +29,6 @@ workflows:
           filters:
             branches:
               only: amelieykw_backend
-      # - test:
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         only: amelieykw_backend
       - deploy:
           requires:
             - build
