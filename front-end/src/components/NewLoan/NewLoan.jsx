@@ -1,18 +1,6 @@
 import React from 'react'
-import {
-  Container,
-  Content,
-  Button,
-  Icon,
-  Form,
-  Item,
-  Input,
-  Label,
-  Card,
-  Picker,
-  Text
-} from 'native-base'
-import { TouchableOpacity, View } from 'react-native'
+import { Container, Content, Icon, Form, Item, Input, Label, Card, Picker } from 'native-base'
+import { TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 
 import style from './NewLoanStyle'
@@ -40,17 +28,17 @@ export default function NewLoan({ navigation }) {
           <Card transparent style={style.newLoanCard}>
             <Label style={style.cardLabel}>Selected Product</Label>
             {/* Picker may need to extract */}
-              <Picker
-                mode="dropdown"
-                iosIcon={<Icon name="arrow-down" />}
-                placeholder="Please choose one product"
-                placeholderStyle={{ color: '#bfc6ea' }}
-                placeholderIconColor="#007aff"
-                style={{ marginLeft: 10, marginRight: 10 }}
-                selectedValue="productName"
-              >
-                {productName && <Picker.Item label={productName} value="productName" />}
-              </Picker>
+            <Picker
+              mode="dropdown"
+              iosIcon={<Icon name="arrow-down" />}
+              placeholder="Please choose one product"
+              placeholderStyle={{ color: '#bfc6ea' }}
+              placeholderIconColor="#007aff"
+              style={{ marginLeft: 10, marginRight: 10 }}
+              selectedValue="productName"
+            >
+              {productName && <Picker.Item label={productName} value="productName" />}
+            </Picker>
             <TouchableOpacity
               style={{
                 width: '100%',
