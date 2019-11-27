@@ -11,6 +11,7 @@ import LoanList from './src/components/LoanList/LoanList'
 import NewLoan from './src/components/NewLoan/NewLoan'
 import MainPage from './src/components/MainPage/MainPage'
 import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
+import ProductSelection from './src/components/ProductSelection/ProductSelection'
 
 import store from './src/lib/store'
 
@@ -19,7 +20,8 @@ const AppStack = createStackNavigator(
     MainPage,
     LoanList,
     NewLoan,
-    NewLoanDetail
+    NewLoanDetail,
+    ProductSelection
   },
   {
     initialRouteName: 'MainPage',

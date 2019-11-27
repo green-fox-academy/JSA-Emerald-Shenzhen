@@ -3,14 +3,18 @@ import PropTypes from 'prop-types'
 import { Container, Content, Button, Text } from 'native-base'
 
 const MainPage = ({ navigation }) => {
-  const handlePress = () => {
-    navigation.navigate('LoanList')
+  const handlePress = name => {
+    navigation.navigate(name)
   }
 
   return (
     <Container>
       <Content>
-        <Button onPress={handlePress}>
+        <Button
+          onPress={() => {
+            handlePress('LoanList')
+          }}
+        >
           <Text>Go to the homepage of Loan Section</Text>
         </Button>
       </Content>
