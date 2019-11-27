@@ -22,4 +22,12 @@ app.use((_, res) => {
   res.status(404).send({ error: 'Sorry cant find that!' })
 })
 
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    next(err)
+    return
+  }
+  res.status(500).send({ error: 'Internal error.' })
+})
+
 module.exports = app
