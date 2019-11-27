@@ -7,7 +7,6 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: sudo npm install -g pm2 
       - run: cd ./back-end && npm install && npm run test
       - add_ssh_keys:
           fingerprints:
@@ -19,8 +18,8 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      # - run: sudo npm install -g pm2 
-      - run: cd ./back-end && pm2 deploy ecosystem.config.js production
+      - run: sudo npm install -g pm2 
+      - run: cd ./back-end && pm2 -v && && pm2 deploy ecosystem.config.js production
 
 workflows:
   version: 2
@@ -36,6 +35,3 @@ workflows:
           filters:
             branches:
               only: amelieykw_backend
-
-
-
