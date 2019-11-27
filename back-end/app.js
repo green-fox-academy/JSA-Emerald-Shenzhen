@@ -18,9 +18,8 @@ app.all('*', auth)
 app.use(PATHS.products, productsRoutes)
 app.use(PATHS.loans, loansRoutes)
 
-// eslint-disable-next-line no-unused-vars
-app.use((req, res, next) => {
-  res.status(404).send('Sorry cant find that!')
+app.use((_, res) => {
+  res.status(404).send({ error: 'Sorry cant find that!' })
 })
 
 module.exports = app
