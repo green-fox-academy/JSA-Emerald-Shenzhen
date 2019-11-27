@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
       - run: sudo npm install -g pm2 
-      - run: cd ./back-end && pm2 -v && pm2 deploy ecosystem.config.js production
+      - run: cd ./back-end && pm2 deploy ecosystem.config.js production setup
 
 workflows:
   version: 2
