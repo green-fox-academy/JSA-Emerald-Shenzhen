@@ -4,10 +4,10 @@ jobs:
   build:
     working_directory: ~/emerald
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node
     steps:
       - checkout
-      - run: cd ./back-end && npm install && npm run test
+      # - run: cd ./back-end && npm install && npm run test
       - add_ssh_keys:
           fingerprints:
             - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
@@ -16,7 +16,7 @@ jobs:
       - run: ls
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
       - run: sudo npm install -g pm2 
-      - run: cd ./back-end && pwd && git status && pm2 deploy ecosystem.config.js production setup
+      - run: cd ./back-end && pwd && pm2 deploy ecosystem.config.js production setup
 
 workflows:
   version: 2
