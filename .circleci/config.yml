@@ -11,6 +11,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
+      - run: ls ~/.ssh
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
   deploy:
     working_directory: ~/emerald
