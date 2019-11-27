@@ -18,7 +18,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end && npm run test
+      - run: cd ./back-end && npm install jest && npm run test
       - restore_cache:
           keys: 
             - v1-dependencies-{{ checksum "package.json" }}
