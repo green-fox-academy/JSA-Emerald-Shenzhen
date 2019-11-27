@@ -21,7 +21,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: cd ./back-end && npm install && sudo npm install -g pm2 && pm2 deploy ecosystem.config.js production   
+      - run: cd ./back-end && npm install && sudo npm install -g pm2 && pm2 deploy ecosystem.config.js production && node migration.js up  
 
 workflows:
   version: 2
