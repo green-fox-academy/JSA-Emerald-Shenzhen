@@ -17,7 +17,7 @@ module.exports = {
       user: 'ubuntu',
       host: '52.194.188.75',
       key: 'ec2.pem',
-      ref: 'origin/master',
+      ref: 'origin/amelieykw_backend',
       repo: 'git@github.com:green-fox-academy/JSA-Emerald-Shenzhen.git',
       path: '/home/ubuntu/emerald/',
       'post-deploy':
