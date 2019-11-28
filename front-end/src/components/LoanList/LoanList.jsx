@@ -8,14 +8,14 @@ import ACTION_TYPE from '../../lib/actionType'
 import LoadCard from '../LoanCard/LoanCard'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
-function LoanList({ loanList, initLoanList }) {
+function LoanList({ loanList, fetchLoanList }) {
   const navigation = useContext(NavigationContext)
   const handlePress = () => {
     navigation.navigate('NewLoan')
   }
 
   useEffect(() => {
-    initLoanList()
+    fetchLoanList()
   }, [loanList])
 
   return (
@@ -41,7 +41,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    initLoanList: () => dispatch({ type: ACTION_TYPE.INIT_LOANLIST })
+    fetchLoanList: () => dispatch({ type: ACTION_TYPE.INIT_LOANLIST })
   }
 }
 
@@ -52,5 +52,5 @@ LoanList.navigationOptions = {
 }
 LoanList.propTypes = {
   loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
-  initLoanList: PropTypes.func.isRequired
+  fetchLoanList: PropTypes.func.isRequired
 }
