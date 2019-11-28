@@ -1,21 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Content, Text, Container } from 'native-base'
 import { NavigationContext } from 'react-navigation'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import style from './LoanListStyle'
-import data from '../../../helpers/mockData_FE'
+import ACTION_TYPE from '../../lib/actionType'
 import LoadCard from '../LoanCard/LoanCard'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
-function LoanList() {
+function LoanList({ loanList, initLoanList }) {
   const navigation = useContext(NavigationContext)
   const handlePress = () => {
     navigation.navigate('NewLoan')
   }
+
+  useEffect(() => {
+    initLoanList()
+  }, [loanList])
+
   return (
     <Container>
       <Content style={style.loanHomeScroll}>
         <Text style={style.header}>Current active contracts</Text>
-        {data.loans.map(loan => {
+        {loanList.map(loan => {
           return <LoadCard key={loan.id} loan={loan} />
         })}
       </Content>
@@ -29,8 +36,21 @@ function LoanList() {
   )
 }
 
+const mapStateToProps = state => {
+  return { ...state }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    initLoanList: () => dispatch({ type: ACTION_TYPE.INIT_LOANLIST })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoanList)
+
 LoanList.navigationOptions = {
   title: 'Loans'
 }
-
-export default LoanList
+LoanList.propTypes = {
+  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
+  initLoanList: PropTypes.func.isRequired
+}
