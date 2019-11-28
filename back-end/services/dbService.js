@@ -1,9 +1,9 @@
-require('dotenv').config()
+require('dotenv').config({ path: '../.env.prod' })
 const mysql = require('mysql')
 
 const dbService = {
   init: () => {
-    this.pool = mysql.createPool(process.env_production.MYSQL_URL)
+    this.pool = mysql.createPool(process.env.MYSQL_URL)
   }
 }
 dbService.selectLoansByUserId = id => {
