@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Text, View, Content, Icon, Container } from 'native-base'
 import style from './NewLoanDetailsStyle'
-import LoanPickers from './loanPickers'
+import LoanPickers from './LoanPickers'
 import data from '../../../helpers/mockData_FE'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
