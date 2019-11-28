@@ -1,14 +1,18 @@
-import React, { useState, useContext } from 'react'
-import { NavigationContext } from 'react-navigation'
-import { Content, Icon, Form, Item, Input, Label, Card, Picker, Container } from 'native-base'
+import React from 'react'
+import { Container, Content, Icon, Form, Item, Input, Label, Card, Picker } from 'native-base'
+import { TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
+
 import style from './NewLoanStyle'
 import PaymentDetails from './PaymentDetails'
 import ProductDescription from './ProductDescription'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
-export default function NewLoan() {
-  const [selected, setSelected] = useState()
-  const navigation = useContext(NavigationContext)
+export default function NewLoan({ navigation }) {
+  let productName
+  if (navigation && navigation.state.params) {
+    productName = navigation.state.params.productName
+  }
   const handlePress = () => {
     navigation.navigate('NewLoanDetail')
   }
@@ -27,19 +31,25 @@ export default function NewLoan() {
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="arrow-down" />}
-              placeholder="Student loan"
+              placeholder="Please choose one product"
               placeholderStyle={{ color: '#bfc6ea' }}
               placeholderIconColor="#007aff"
               style={{ marginLeft: 10, marginRight: 10 }}
-              selectedValue={selected}
-              onValueChange={value => setSelected(value)}
+              selectedValue="productName"
             >
-              <Picker.Item label="Wallet" value="key0" />
-              <Picker.Item label="ATM Card" value="key1" />
-              <Picker.Item label="Debit Card" value="key2" />
-              <Picker.Item label="Credit Card" value="key3" />
-              <Picker.Item label="Net Banking" value="key4" />
+              {productName && <Picker.Item label={productName} value="productName" />}
             </Picker>
+            <TouchableOpacity
+              style={{
+                width: '100%',
+                height: '50%',
+                position: 'absolute',
+                bottom: 0
+              }}
+              onPress={() => {
+                navigation.navigate('ProductSelection')
+              }}
+            />
           </Card>
           <Item stackedLabel last>
             <Label>Duration</Label>
@@ -59,6 +69,14 @@ export default function NewLoan() {
       />
     </Container>
   )
+}
+
+NewLoan.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any)
+}
+
+NewLoan.defaultProps = {
+  navigation: undefined
 }
 
 NewLoan.navigationOptions = {
