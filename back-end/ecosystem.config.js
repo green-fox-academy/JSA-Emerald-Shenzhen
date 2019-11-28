@@ -21,7 +21,7 @@ module.exports = {
       repo: 'git@github.com:green-fox-academy/JSA-Emerald-Shenzhen.git',
       path: '/home/ubuntu/emerald/',
       'post-deploy':
-        'cd back-end && npm install && pm2 startOrRestart ecosystem.config.js --env production'
+        'cd back-end && npm install && node migration.js up && pm2 startOrRestart ecosystem.config.js --env production'
     }
   }
 }
