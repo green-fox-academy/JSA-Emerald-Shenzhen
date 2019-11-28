@@ -31,12 +31,10 @@ describe('<LoanList />', () => {
   })
 
   it('<LoanList /> has 2 child', () => {
-    // const tree = renderer.create(<LoanList />).toJSON()
     expect(component.toJSON().children.length).toBe(2)
   })
 
   it('<LoanList /> should dispatch an action on button click', () => {
-    // renderer.update(component)
     renderer.act(() => {
       component = renderer.create(
         <Provider store={store}>
