@@ -16,7 +16,7 @@ function LoanList({ loanList, fetchLoanList }) {
 
   useEffect(() => {
     fetchLoanList()
-  }, [loanList])
+  }, [])
 
   return (
     <Container>

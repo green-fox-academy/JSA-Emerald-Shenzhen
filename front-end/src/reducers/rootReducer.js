@@ -8,9 +8,6 @@ const rootReducer = (state = initState, action) => {
   if (action.type === ACTION_TYPE.INIT_LOANLIST) {
     return { ...state, loanList: data.loans }
   }
-  if (action.type === ACTION_TYPE.INIT_LOANLIST_SUCCESS) {
-    return 2
-  }
 
   return state
 }
