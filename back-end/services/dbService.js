@@ -1,4 +1,5 @@
-require('dotenv').config({ path: '../.env.prod' })
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env.prod') })
 const mysql = require('mysql')
 
 const dbService = {
