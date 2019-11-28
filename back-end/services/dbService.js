@@ -3,9 +3,7 @@ const mysql = require('mysql')
 
 const dbService = {
   init: () => {
-    this.pool = mysql.createPool(
-      'mysql://emerald_admin:password@jsa-emerald-db-instance.cczaaflvgs1d.ap-northeast-1.rds.amazonaws.com:3306/jsa_emerald_db'
-    )
+    this.pool = mysql.createPool(process.env_production.MYSQL_URL)
   }
 }
 dbService.selectLoansByUserId = id => {
