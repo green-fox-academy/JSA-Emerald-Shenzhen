@@ -7,10 +7,8 @@ import data from '../../helpers/mockData_FE'
 import ACTION_TYPE from '../../src/lib/actionType'
 
 const mockStore = configureStore([])
-// Enzyme.configure({ adapter: new Adapter() })
 
 describe('<LoanList />', () => {
-  // const fetchLoanList =  // () => ({ type: ACTION_TYPE.INIT_LOANLIST })
   let store
   let component
   let expectedPayload
@@ -32,10 +30,10 @@ describe('<LoanList />', () => {
     expect(component.toJSON()).toMatchSnapshot()
   })
 
-  // it('<LoanList /> has 2 child', () => {
-  //   // const tree = renderer.create(<LoanList />).toJSON()
-  //   expect(component.toJSON().children.length).toBe(2)
-  // })
+  it('<LoanList /> has 2 child', () => {
+    // const tree = renderer.create(<LoanList />).toJSON()
+    expect(component.toJSON().children.length).toBe(2)
+  })
 
   it('<LoanList /> should dispatch an action on button click', () => {
     // renderer.update(component)
