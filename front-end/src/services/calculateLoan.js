@@ -1,5 +1,5 @@
 /**
- * getPaid
+ * calculateLoan
  *
  * @param {number} amount
  * The amount number of money for the loan, for example, 1000
@@ -11,9 +11,9 @@
  * monthly: The monthly paid number of the loan
  * interest: The total interest should paid during the loan
  */
-export default function getPaid(amount, durationMonth, yearlyRate) {
+export default function calculateLoan(amount, durationMonth, yearlyRate) {
   if (Number.isNaN(amount - durationMonth - yearlyRate))
-    throw new Error('getPaid(): params are not number')
+    throw new Error('calculateLoan(): params are not number')
 
   const monthlyRate = yearlyRate / 12
   const r1n = (1 + monthlyRate) ** durationMonth
