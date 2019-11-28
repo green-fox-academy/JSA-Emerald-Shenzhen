@@ -1,5 +1,4 @@
-const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, '/.env.prod') })
+require('dotenv').config({ path: `${__dirname}/.env.prod` })
 const mysql = require('mysql')
 const migration = require('mysql-migrations')
 const assert = require('assert')
