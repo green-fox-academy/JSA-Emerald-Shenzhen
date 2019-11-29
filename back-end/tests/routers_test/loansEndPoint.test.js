@@ -1,11 +1,19 @@
 const request = require('supertest')
 const app = require('../../app')
 const loanService = require('../../services/loansService')
+const commonAuthTest = require('./commonAuthTest')
+const {
+  noContentTypeError,
+  createLoanSuccess,
+  createLoanFail
+} = require('../MockData/loan_mockData')
 
 jest.mock('../../services/loansService')
 loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: 'you have got a list of loans' })
 
 describe('GET /loans', () => {
+  commonAuthTest(request(app).get, '/loans')
+
   describe('Vaild request', () => {
     it('should return all loans', async () => {
       const res = await request(app)
@@ -15,20 +23,44 @@ describe('GET /loans', () => {
       expect(res.body).toHaveProperty('loans')
     })
   })
-  describe('Missing or incorrect Authentication header', () => {
-    it('should return 401 Unauthorized', async () => {
-      const res = await request(app).get('/loans')
-      expect(res.statusCode).toEqual(401)
-      expect(res.body).toHaveProperty('error')
+})
+
+describe('POST /loans', () => {
+  commonAuthTest(request(app).post, '/loans')
+
+  describe('No content-type in request header', () => {
+    it('should return 400 with an error to remind content-type', done => {
+      request(app)
+        .post('/loans')
+        .set('Authentication', 'Bearer token')
+        .expect(400, noContentTypeError)
+        .end(done)
     })
   })
-  describe('Incorrect Authentication header', () => {
-    it('should return 403 Unauthorized', async () => {
-      const res = await request(app)
-        .get('/loans')
-        .set('Authentication', 'Incorrect Bearer token')
-      expect(res.statusCode).toEqual(403)
-      expect(res.body).toHaveProperty('error')
+
+  describe('Lack of fields in request body', () => {
+    it('should return 400 with a sepecific error', done => {
+      loanService.checkMissingField.mockReturnValue({
+        error: 'Amount is missing!'
+      })
+      request(app)
+        .post('/loans')
+        .set('Authentication', 'Bearer token')
+        .set('Content-type', 'application/json')
+        .expect(400, createLoanFail)
+        .end(done)
+    })
+  })
+
+  describe('Good request', () => {
+    it('should respond granted', done => {
+      loanService.checkMissingField.mockReturnValue({ error: '' })
+      request(app)
+        .post('/loans')
+        .set('Authentication', 'Bearer token')
+        .set('Content-type', 'application/json')
+        .expect(200, createLoanSuccess)
+        .end(done)
     })
   })
 })
