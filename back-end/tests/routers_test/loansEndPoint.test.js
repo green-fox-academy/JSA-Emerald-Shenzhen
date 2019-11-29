@@ -12,7 +12,7 @@ jest.mock('../../services/loansService')
 loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: 'you have got a list of loans' })
 
 describe('GET /loans', () => {
-  commonAuthTest('get', '/loans')
+  commonAuthTest(request(app).get, '/loans')
 
   describe('Vaild request', () => {
     it('should return all loans', async () => {
@@ -26,7 +26,7 @@ describe('GET /loans', () => {
 })
 
 describe('POST /loans', () => {
-  commonAuthTest('post', '/loans')
+  commonAuthTest(request(app).post, '/loans')
 
   describe('No content-type in request header', () => {
     it('should return 400 with an error to remind content-type', done => {
