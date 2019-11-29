@@ -13,7 +13,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "52.194.188.75:3000",
+  "host": "jsae-backend-api.herokuapp.com/",
   "tags": [
     {
       "name": "products",
