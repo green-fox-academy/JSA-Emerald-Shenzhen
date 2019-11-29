@@ -10,7 +10,7 @@ export default function NewLoanDetails() {
   const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0])
   const handlePress = () => {
     // eslint-disable-next-line no-undef
-    alert('oh shit!! you pressed me!!')
+    alert(`${receivingAccount.label}\n${defaultPayment.label}`)
   }
   return (
     <Container>

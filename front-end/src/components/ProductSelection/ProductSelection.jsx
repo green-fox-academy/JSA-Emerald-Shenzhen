@@ -16,12 +16,12 @@ export default function ProductSelection(props) {
     <Container>
       <Content>
         <ScrollView>
-          {products.map(({ id, name, description }, sid) => {
+          {products.map(({ id, name, description }, sId) => {
             return (
               <TouchableWithoutFeedback
                 key={id}
                 onPress={() => {
-                  setSelectId(sid)
+                  setSelectId(sId)
                 }}
               >
                 <View>
@@ -29,7 +29,7 @@ export default function ProductSelection(props) {
                     id={id}
                     name={name}
                     description={description}
-                    isExtend={sid === selectId}
+                    isExtend={sId === selectId}
                   />
                 </View>
               </TouchableWithoutFeedback>
