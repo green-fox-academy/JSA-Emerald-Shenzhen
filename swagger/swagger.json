@@ -173,6 +173,58 @@
           }
         ]
       }
+    },
+    "/loans/{id}": {
+      "get": {
+        "tags": [
+          "loans"
+        ],
+        "summary": "Get a loan by id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of loan to return",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detailed loan",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/DetailedLoan"
+            }
+          },
+          "400": {
+            "description": "Loan id should be an integer"
+          },
+          "401": {
+            "description": "Authentication header is missing!"
+          },
+          "403": {
+            "description": "Authentication in header is failed!"
+          },
+          "500": {
+            "description": "Internal error!"
+          }
+        },
+        "security": [
+          {
+            "authenticate": []
+          }
+        ]
+      }
     }
   },
   "securityDefinitions": {
@@ -285,6 +337,58 @@
         "payment": {
           "type": "string",
           "example": "manually"
+        }
+      }
+    },
+    "DetailedLoan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "type": {
+          "$ref": "#/definitions/LoanType"
+        },
+        "remaining": {
+          "type": "integer",
+          "format": "int64",
+          "example": 3400
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoanHistory"
+          }
+        }
+      }
+    },
+    "LoanHistory": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "example": "2019-11-22"
+        },
+        "text": {
+          "type": "string",
+          "example": "$900 payment received"
+        },
+        "type": {
+          "type": "string",
+          "example": "payment"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "example": -900
+        },
+        "remaining": {
+          "type": "integer",
+          "format": "int32",
+          "exmaple": 3400
         }
       }
     }

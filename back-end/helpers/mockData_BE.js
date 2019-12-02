@@ -46,6 +46,33 @@ const data = {
       },
       userId: 1
     }
-  ]
+  ],
+  loansDetails: {
+    id: 1,
+    type: {
+      id: 1,
+      slug: 'student',
+      name: 'Student Loan',
+      duration: '5 years fixed',
+      interest: 0.03
+    },
+    remaining: 3400,
+    history: [
+      {
+        date: '2019-11-22',
+        text: '$900 payment received',
+        type: 'payment',
+        amount: -900,
+        remaining: 3400
+      },
+      {
+        date: '2019-01-03',
+        text: '2018 yearly interest $125',
+        type: 'interest',
+        amount: 125,
+        remaining: 4300
+      }
+    ]
+  }
 }
 module.exports = data
