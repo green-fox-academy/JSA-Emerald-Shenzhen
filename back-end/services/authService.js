@@ -8,7 +8,12 @@ const authenticate = headers => {
   return authentication === 'Bearer token'
 }
 
+const checkContentType = headers => {
+  const contentType = headers['content-type']
+  return contentType === 'application/json'
+}
 module.exports = {
   checkAccept,
-  authenticate
+  authenticate,
+  checkContentType
 }
