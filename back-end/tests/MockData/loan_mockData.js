@@ -25,10 +25,15 @@ const createLoanFail = {
   error: 'Amount is missing!'
 }
 
+const getLoanbyIdFail = {
+  error: 'Loan id should be an integer'
+}
+
 module.exports = {
   goodReqBody,
   badReqBodyLackInfo,
   noContentTypeError,
   createLoanSuccess,
-  createLoanFail
+  createLoanFail,
+  getLoanbyIdFail
 }
