@@ -33,7 +33,8 @@
     }
   ],
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/products": {
@@ -62,6 +63,9 @@
           },
           "401": {
             "description": "Authentication header is missing!"
+          },
+          "500": {
+            "description": "Internal error!"
           }
         },
         "security": [
@@ -100,6 +104,67 @@
           },
           "403": {
             "description": "Authentication in header is failed!"
+          },
+          "500": {
+            "description": "Internal error!"
+          }
+        },
+        "security": [
+          {
+            "authenticate": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "loans"
+        ],
+        "summary": "Create a new loan",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Post a loan",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PostLoan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respond granted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "loanId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 1
+                },
+                "status": {
+                  "type": "string",
+                  "example": "granted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Content type or some parts of request body are missing!"
+          },
+          "401": {
+            "description": "Authentication header is missing!"
+          },
+          "500": {
+            "description": "Internal error!"
           }
         },
         "security": [
@@ -191,6 +256,35 @@
         "interest": {
           "type": "number",
           "format": "float"
+        }
+      }
+    },
+    "PostLoan": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "example": 5000
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int32",
+          "example": 60
+        },
+        "receivingAccount": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3000
+        },
+        "payment": {
+          "type": "string",
+          "example": "manually"
         }
       }
     }
