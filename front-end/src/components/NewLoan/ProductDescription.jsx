@@ -7,11 +7,16 @@ export default function ProductDescription({ rate }) {
       <CardItem style={{ backgroundColor: '#E8EAF6' }}>
         <Icon name="md-calendar" />
         <Body>
-          <Text>{rate * 100}% yearly interest rate</Text>
+          <Text>{rate * 100}</Text>
+          <Text>% yearly interest rate</Text>
           <Text>Fixed low interest rate for students only</Text>
         </Body>
         <Icon name="md-information-circle" />
       </CardItem>
     </Card>
   )
+}
+
+ProductDescription.propTypes = {
+  rate: ProductDescription.number.isRequired
 }

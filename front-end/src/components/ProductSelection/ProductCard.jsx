@@ -47,7 +47,7 @@ export default function ProductCard(props) {
 }
 
 ProductCard.propTypes = {
-  // name: PropTypes.string.isRequired,
-  // description: PropTypes.string.isRequired,
+  product: PropTypes.objectOf(PropTypes.any).isRequired,
+  name: PropTypes.string.isRequired,
   isExtend: PropTypes.bool.isRequired
 }
