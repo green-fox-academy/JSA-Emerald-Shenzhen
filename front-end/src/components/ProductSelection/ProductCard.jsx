@@ -5,23 +5,15 @@ import PropTypes from 'prop-types'
 import { NavigationContext } from 'react-navigation'
 import { tinyStyle, extendStyle } from './ProductSelectionStyle'
 
-export default function ProductCard(props) {
+export default function ProductCard({ product, isExtend }) {
   const navigation = useContext(NavigationContext)
 
-  function handleSelectClick(product) {
+  function handleSelectClick() {
     navigation.navigate('NewLoan', { product })
   }
 
-  const { product } = props
-  const { name } = product
-
-  const { isExtend } = props
+  const { name, description } = product
   const style = isExtend ? extendStyle : tinyStyle
-
-  let { description } = product
-  if (!isExtend && description.length > 23) {
-    description = `${description.substring(0, 32)}...`
-  }
 
   return (
     <View style={style.card} opacity={isExtend ? 1 : 0.7}>
@@ -29,14 +21,18 @@ export default function ProductCard(props) {
         <Icon style={style.icon} name="person" />
         <View>
           <Text style={style.title}>{name}</Text>
-          <Text>{description}</Text>
+          <Text>
+            {!isExtend && description.length > 23
+              ? `${description.substring(0, 32)}...`
+              : description}
+          </Text>
         </View>
       </View>
       <View style={{ ...style.show, ...style.buttonView }}>
         <Button
           style={style.button}
           onPress={() => {
-            handleSelectClick(product)
+            handleSelectClick()
           }}
         >
           <Text>SELECT</Text>
@@ -48,6 +44,5 @@ export default function ProductCard(props) {
 
 ProductCard.propTypes = {
   product: PropTypes.objectOf(PropTypes.any).isRequired,
-  name: PropTypes.string.isRequired,
   isExtend: PropTypes.bool.isRequired
 }

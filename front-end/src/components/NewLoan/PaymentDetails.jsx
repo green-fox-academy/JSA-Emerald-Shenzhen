@@ -1,5 +1,5 @@
-/* eslint-disable react/jsx-indent */
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Body, Text, Card, CardItem } from 'native-base'
 
 export default function PaymentDetails({ monthly, total }) {
@@ -22,6 +22,6 @@ export default function PaymentDetails({ monthly, total }) {
 }
 
 PaymentDetails.propTypes = {
-  monthly: PaymentDetails.number.isRequired,
-  total: PaymentDetails.number.isRequired
+  monthly: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired
 }

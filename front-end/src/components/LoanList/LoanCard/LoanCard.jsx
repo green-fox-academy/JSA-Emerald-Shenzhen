@@ -4,7 +4,7 @@ import { Image } from 'react-native'
 import { Card, CardItem, Text, Button, Left, Body, Right } from 'native-base'
 import style from './LoanCardStyle'
 
-const source = require('../../../assets/doller.png')
+const source = require('../../../../assets/doller.png')
 
 function LoadCard({ loan }) {
   return (

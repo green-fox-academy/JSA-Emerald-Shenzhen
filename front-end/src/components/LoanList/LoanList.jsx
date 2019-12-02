@@ -3,7 +3,7 @@ import { Content, Text, Container } from 'native-base'
 import { NavigationContext } from 'react-navigation'
 import style from './LoanListStyle'
 import data from '../../../helpers/mockData_FE'
-import LoadCard from '../LoanCard/LoanCard'
+import LoadCard from './LoanCard/LoanCard'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
 function LoanList() {

@@ -69,17 +69,17 @@ export default function NewLoan({ navigation }) {
               }}
             />
           </Card>
-          <View style={product ? { display: 'flux' } : { display: 'none' }}>
+          <View style={{ display: product ? 'flex' : 'none' }}>
             <Item stackedLabel last>
               <Label>Duration</Label>
               <Item disabled>
                 <Input disabled placeholder={product && product.duration} />
-                <Icon name="information-circle" style={{ marginRight: 25 }} />
+                <Icon name="md-information-circle-outline" style={{ marginRight: 20 }} />
               </Item>
             </Item>
           </View>
         </Form>
-        <View style={product ? { display: 'flux' } : { display: 'none' }}>
+        <View style={{ display: product ? 'flex' : 'none' }}>
           <ProductDescription rate={product ? product.interest : 0} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>
