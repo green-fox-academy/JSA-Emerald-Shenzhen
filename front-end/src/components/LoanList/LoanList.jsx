@@ -58,5 +58,4 @@ LoanList.propTypes = {
   fetchData: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(LoanList)
