@@ -4,20 +4,17 @@ jobs:
   build:
     working_directory: ~/emerald
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node
     steps:
       - checkout
-      - run: cd ./back-end && npm install && node migration.js up
-      # - run: 
-      #   - name: start the back-end
-      #   - command: npm start
-  test:
-    working_directory: ~/emerald
-    docker: 
-      - image: circleci/node:7.10
-    steps:
-      - checkout
-      - run: cd ./back-end && npm install && npm run test 
+      - run: cd ./back-end && npm install && npm run test
+      - add_ssh_keys:
+          fingerprints:
+            - "7f:7c:8b:00:18:6c:c8:3f:10:39:34:4a:5e:a3:cf:74"
+      - run: cd ./back-end && cp ~/.ssh/id_rsa_7f7c8b00186cc83f1039344a5ea3cf74 ./ec2.pem && chmod 400 ./ec2.pem 
+      - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
+      - run: sudo npm install -g pm2 
+      - run: cd ./back-end && pm2 deploy ecosystem.config.js production --force
 
 workflows:
   version: 2
@@ -26,13 +23,7 @@ workflows:
       - build:
           filters:
             branches:
-              only: amelieykw_backend
-      - test:
-          requires:
-            - build
-          filters:
-            branches:
-              only: amelieykw_backend
+              only: master
 
 
 
