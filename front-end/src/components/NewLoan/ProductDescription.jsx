@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Body, Text, Card, CardItem, Icon } from 'native-base'
 
 export default function ProductDescription({ rate }) {
@@ -18,5 +19,5 @@ export default function ProductDescription({ rate }) {
 }
 
 ProductDescription.propTypes = {
-  rate: ProductDescription.number.isRequired
+  rate: PropTypes.number.isRequired
 }

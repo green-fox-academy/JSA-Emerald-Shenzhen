@@ -69,7 +69,7 @@ export default function NewLoan({ navigation }) {
               }}
             />
           </Card>
-          <View style={product ? { display: 'flux' } : { display: 'none' }}>
+          <View style={product ? { display: 'flex' } : { display: 'none' }}>
             <Item stackedLabel last>
               <Label>Duration</Label>
               <Item disabled>
@@ -79,7 +79,7 @@ export default function NewLoan({ navigation }) {
             </Item>
           </View>
         </Form>
-        <View style={product ? { display: 'flux' } : { display: 'none' }}>
+        <View style={product ? { display: 'flex' } : { display: 'none' }}>
           <ProductDescription rate={product ? product.interest : 0} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>
