@@ -1,5 +1,7 @@
 const { selectLoansByUserId, selectAllProductModels } = require('./dbService')
 
+const postLoanBodyFields = ['productId', 'amount', 'duration', 'receivingAccount', 'payment']
+
 const getLoansWithProductsByUserId = async userId => {
   try {
     const sqlLoans = await selectLoansByUserId(userId)
@@ -20,4 +22,17 @@ const getLoansWithProductsByUserId = async userId => {
   }
 }
 
-module.exports = { getLoansWithProductsByUserId }
+const checkMissingField = body => {
+  return postLoanBodyFields.reduce(
+    (accu, field) => {
+      const upperField = field.charAt(0).toUpperCase() + field.slice(1)
+      if (body[field] === undefined) {
+        return accu.error ? accu : { error: `${upperField} is missing!` }
+      }
+      return accu.error ? accu : { error: '' }
+    },
+    { error: '' }
+  )
+}
+
+module.exports = { getLoansWithProductsByUserId, checkMissingField }

@@ -7,10 +7,8 @@ import data from '../../../helpers/fakeProductsData'
 
 import ProductCard from './ProductCard'
 
-export default function ProductSelection(props) {
+export default function ProductSelection({ products }) {
   const [selectId, setSelectId] = useState(-1)
-
-  const { products } = props
 
   return (
     <Container>

@@ -11,28 +11,26 @@ import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function NewLoan({ navigation }) {
   const [amount, setAmount] = useState()
+  const amountNum = !Number.isNaN(Number(amount)) ? Number(amount) : 0
 
-  let product
-  if (navigation && navigation.state.params) {
-    product = navigation.state.params.product
-  }
   const handlePress = () => {
     navigation.navigate('NewLoanDetail')
   }
 
-  let amountNum = 0
-  if (!Number.isNaN(Number(amount))) {
-    amountNum = Number(amount)
-  }
+  const product =
+    navigation && navigation.state.params ? navigation.state.params.product : undefined
 
-  let loan
+  const loan =
+    product !== undefined
+      ? calculateLoan(amountNum, 6, product.interest)
+      : {
+        monthly: 0,
+        interest: 0
+      }
+
+  let pickerItem
   if (product) {
-    loan = calculateLoan(amountNum, 6, product.interest) // todo change to real month number
-  } else {
-    loan = {
-      monthly: 0,
-      interest: 0
-    }
+    pickerItem = <Picker.Item label={product.name} value="productName" />
   }
 
   return (
@@ -45,7 +43,6 @@ export default function NewLoan({ navigation }) {
           </Item>
           <Card transparent style={style.newLoanCard}>
             <Label style={style.cardLabel}>Selected Product</Label>
-            {/* Picker may need to extract */}
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="arrow-down" />}
@@ -55,7 +52,7 @@ export default function NewLoan({ navigation }) {
               style={{ marginLeft: 10, marginRight: 10 }}
               selectedValue="productName"
             >
-              {product && <Picker.Item label={product.name} value="productName" />}
+              {pickerItem}
             </Picker>
             <TouchableOpacity
               style={{
@@ -69,17 +66,17 @@ export default function NewLoan({ navigation }) {
               }}
             />
           </Card>
-          <View style={product ? { display: 'flex' } : { display: 'none' }}>
+          <View style={{ display: product ? 'flex' : 'none' }}>
             <Item stackedLabel last>
               <Label>Duration</Label>
               <Item disabled>
                 <Input disabled placeholder={product && product.duration} />
-                <Icon name="information-circle" style={{ marginRight: 25 }} />
+                <Icon name="md-information-circle-outline" style={{ marginRight: 20 }} />
               </Item>
             </Item>
           </View>
         </Form>
-        <View style={product ? { display: 'flex' } : { display: 'none' }}>
+        <View style={{ display: product ? 'flex' : 'none' }}>
           <ProductDescription rate={product ? product.interest : 0} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>
