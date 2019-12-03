@@ -25,14 +25,12 @@ export default function NewLoan({ navigation }) {
     amountNum = Number(amount)
   }
 
-  let loan
+  let loan = {
+    monthly: 0,
+    interest: 0
+  }
   if (product) {
     loan = calculateLoan(amountNum, 6, product.interest) // todo change to real month number
-  } else {
-    loan = {
-      monthly: 0,
-      interest: 0
-    }
   }
 
   return (

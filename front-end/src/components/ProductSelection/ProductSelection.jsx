@@ -45,7 +45,7 @@ ProductSelection.navigationOptions = {
 }
 
 const mapStateToProps = state => {
-  return { ...state }
+  return { productList: state.productList }
 }
 const mapDispatchToProps = dispatch => {
   return {
