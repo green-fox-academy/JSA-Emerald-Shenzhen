@@ -16,6 +16,7 @@
     "@unimodules/core": "^4.0.0",
     "expo": "^35.0.0",
     "expo-font": "~7.0.0",
+    "fetch-mock": "^8.0.0",
     "native-base": "^2.13.8",
     "prop-types": "^15.7.2",
     "react": "16.8.6",

@@ -1,24 +1,31 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import LoanList from '../../src/components/LoanList/LoanList'
 import data from '../../helpers/mockData_FE'
 import ACTION_TYPE from '../../src/lib/actionType'
+import { fetchLoanList } from '../../src/reducers/loanReducer'
 
-const mockStore = configureStore([])
+const mockStore = configureStore([thunk])
 
 describe('<LoanList />', () => {
   let store
   let component
-  let expectedPayload
+  let payloads
   beforeEach(() => {
-    store = mockStore({ loanList: data.loans, loanListLoading: false })
-    expectedPayload = {
-      type: ACTION_TYPE.INIT_LOANLIST
-    }
+    store = mockStore({ loanList: data.loans, loading: false })
 
-    store.dispatch = jest.fn()
+    payloads = [
+      {
+        type: ACTION_TYPE.INIT_LOANLIST
+      },
+      {
+        type: ACTION_TYPE.INIT_LOANLIST_SUCCESS,
+        loanList: undefined
+      }
+    ]
   })
 
   it('<LoanList /> renders correctly', () => {
@@ -34,7 +41,7 @@ describe('<LoanList />', () => {
     expect(component.toJSON().children.length).toBe(2)
   })
 
-  it('<LoanList /> should dispatch an action when mounted', () => {
+  it('<LoanList /> should dispatch an action when mounted', async () => {
     renderer.act(() => {
       component = renderer.create(
         <Provider store={store}>
@@ -42,6 +49,18 @@ describe('<LoanList />', () => {
         </Provider>
       )
     })
-    expect(store.dispatch).toBeCalledWith(expectedPayload)
+
+    // eslint-disable-next-line no-undef
+    window.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        json: () => Promise.resolve({})
+      })
+    )
+
+    await store.dispatch(fetchLoanList())
+    const actions = store.getActions()
+
+    expect(actions[1]).toEqual(payloads[0])
+    expect(actions[2]).toEqual(payloads[1])
   })
 })

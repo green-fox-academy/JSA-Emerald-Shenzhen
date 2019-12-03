@@ -17,7 +17,7 @@ function LoadCard({ loan }) {
           </Text>
           <Text style={style.loanType}>{loan.type.name}</Text>
           <Text style={style.interest}>{`Current Interest rate: ${loan.type.interest}%`}</Text>
-          <Text style={style.loanPrice}>{`$ ${loan.remaining}`}</Text>
+          <Text style={style.loanPrice}>{`$ ${loan.remaining.remaining}`}</Text>
           <Text style={style.loanRemaining}>remaining</Text>
         </Body>
       </CardItem>
