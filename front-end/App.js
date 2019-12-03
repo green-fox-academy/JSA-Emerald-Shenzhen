@@ -13,6 +13,7 @@ import PayNow from './src/components/PayNow/PayNow'
 import NewLoan from './src/components/NewLoan/NewLoan'
 import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
 import ProductSelection from './src/components/ProductSelection/ProductSelection'
+import AccountSelection from './src/components/PayNow/AccountSelection'
 
 import store from './src/lib/store'
 
@@ -23,7 +24,8 @@ const AppStack = createStackNavigator(
     PayNow,
     NewLoan,
     NewLoanDetail,
-    ProductSelection
+    ProductSelection,
+    AccountSelection
   },
   {
     initialRouteName: 'MainPage',
@@ -60,8 +62,8 @@ export default function App() {
       <AppContainer />
     </Provider>
   ) : (
-    <Provider store={store}>
-      <AppLoading />
-    </Provider>
-  )
+      <Provider store={store}>
+        <AppLoading />
+      </Provider>
+    )
 }

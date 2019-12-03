@@ -9,9 +9,6 @@ const source = require('../../../../assets/doller.png')
 
 function LoadCard({ loan }) {
   const navigation = useContext(NavigationContext)
-  const handlePress = () => {
-    navigation.navigate('PayNow')
-  }
 
   return (
     <Card style={{ flex: 0 }}>
@@ -32,7 +29,12 @@ function LoadCard({ loan }) {
           <Text>DETAILS</Text>
         </Left>
         <Right>
-          <Button transparent handlePress={handlePress}>
+          <Button
+            transparent
+            onPress={() => {
+              navigation.navigate('PayNow')
+            }}
+          >
             <Image style={style.payNowButtonImg} source={source} />
             <Text style={style.payNowButtonText}>PAY NOW</Text>
           </Button>

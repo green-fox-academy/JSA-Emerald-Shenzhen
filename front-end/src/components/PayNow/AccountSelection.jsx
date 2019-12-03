@@ -4,9 +4,9 @@ import { TouchableWithoutFeedback, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ACTION_TYPE from '../../lib/actionType'
-import ProductCard from './ProductCard'
+import AccountCard from './AccountCard'
 
-function ProductSelection({ productList, fetchProductList }) {
+function AccountSelection({ productList, fetchProductList }) {
   const [selectId, setSelectId] = useState(-1)
   useEffect(() => {
     fetchProductList()
@@ -15,16 +15,16 @@ function ProductSelection({ productList, fetchProductList }) {
     <Container>
       <Content>
         <ScrollView>
-          {productList.map((product, sid) => {
+          {productList.map((account, sid) => {
             return (
               <TouchableWithoutFeedback
-                key={product.id}
+                key={account.id}
                 onPress={() => {
                   setSelectId(sid)
                 }}
               >
                 <View>
-                  <ProductCard isExtend={sid === selectId} product={product} />
+                  <AccountCard isExtend={sid === selectId} account={account} />
                 </View>
               </TouchableWithoutFeedback>
             )
@@ -35,13 +35,13 @@ function ProductSelection({ productList, fetchProductList }) {
   )
 }
 
-ProductSelection.propTypes = {
+AccountSelection.propTypes = {
   fetchProductList: PropTypes.func.isRequired,
   productList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
-ProductSelection.navigationOptions = {
-  title: 'products'
+AccountSelection.navigationOptions = {
+  title: 'accounts'
 }
 
 const mapStateToProps = state => {
@@ -53,4 +53,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductSelection)
+export default connect(mapStateToProps, mapDispatchToProps)(AccountSelection)

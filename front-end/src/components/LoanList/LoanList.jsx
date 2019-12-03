@@ -37,7 +37,7 @@ function LoanList({ loanList, fetchLoanList }) {
 }
 
 const mapStateToProps = state => {
-  return { ...state }
+  return { loanList: state.loanList }
 }
 const mapDispatchToProps = dispatch => {
   return {

@@ -50,7 +50,6 @@ export default function NewLoan({ navigation }) {
               placeholderStyle={{ color: '#bfc6ea' }}
               placeholderIconColor="#007aff"
               style={{ marginLeft: 10, marginRight: 10 }}
-              selectedValue="productName"
             >
               {pickerItem}
             </Picker>
