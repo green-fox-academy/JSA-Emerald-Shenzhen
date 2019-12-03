@@ -45,6 +45,52 @@ const data = {
       remaining: 3400
     }
   ],
+  products: [
+    {
+      id: 1,
+      slug: 'student',
+      name: 'Student Loan',
+      duration: '5 years fixed',
+      icon: 'student',
+      title: '3% yearly interest rate',
+      description:
+        'Fixed low interests for students only Fixed low interests for students only Fixed low interests for students only',
+      interest: 0.03
+    },
+    {
+      id: 2,
+      slug: 'unsecured',
+      name: 'Unsecured',
+      duration: '5 years fixed',
+      icon: 'student',
+      title: '3% yearly interest rate',
+      description:
+        'Fixed low interests for students only Fixed low interests for Unsecured only Fixed low interests for students only',
+      interest: 0.03
+    },
+    {
+      id: 3,
+      slug: 'pay day',
+      name: 'Pay day',
+      duration: '5 years fixed',
+      icon: 'student',
+      title: '3% yearly interest rate',
+      description:
+        'Fixed low interests for students only Fixed low interests for Pay day only Fixed low interests for students only',
+      interest: 0.03
+    },
+    {
+      id: 4,
+      slug: 'secured',
+      name: 'Secured',
+      duration: '5 years fixed',
+      icon: 'student',
+      title: '3% yearly interest rate',
+      description:
+        'Fixed low interests for students only Fixed low interests for Secured only Fixed low interests for students only',
+      interest: 0.03
+    }
+  ],
   receivingAccount: [
     {
       id: 1,

@@ -15,12 +15,12 @@ describe('test NewLoan View', () => {
 
 describe('test PaymentDetails View', () => {
   it('should render PaymentDetails', () => {
-    shallow(<PaymentDetails />)
+    shallow(<PaymentDetails monthly={0} total={0} />)
   })
 })
 
 describe('test ProductDescription View', () => {
   it('should render ProductDescription', () => {
-    shallow(<ProductDescription />)
+    shallow(<ProductDescription rate={0} />)
   })
 })

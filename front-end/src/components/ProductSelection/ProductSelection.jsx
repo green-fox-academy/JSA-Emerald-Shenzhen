@@ -1,36 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Content, View } from 'native-base'
 import { TouchableWithoutFeedback, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
-
-import data from '../../../helpers/fakeProductsData'
-
+import { connect } from 'react-redux'
+import ACTION_TYPE from '../../lib/actionType'
 import ProductCard from './ProductCard'
 
-export default function ProductSelection(props) {
+function ProductSelection({ productList, fetchProductList }) {
   const [selectId, setSelectId] = useState(-1)
-
-  const { products } = props
-
+  useEffect(() => {
+    fetchProductList()
+  }, [])
   return (
     <Container>
       <Content>
         <ScrollView>
-          {products.map(({ id, name, description }, sid) => {
+          {productList.map((product, sid) => {
             return (
               <TouchableWithoutFeedback
-                key={id}
+                key={product.id}
                 onPress={() => {
                   setSelectId(sid)
                 }}
               >
                 <View>
-                  <ProductCard
-                    id={id}
-                    name={name}
-                    description={description}
-                    isExtend={sid === selectId}
-                  />
+                  <ProductCard isExtend={sid === selectId} product={product} />
                 </View>
               </TouchableWithoutFeedback>
             )
@@ -42,13 +36,21 @@ export default function ProductSelection(props) {
 }
 
 ProductSelection.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.any)
-}
-
-ProductSelection.defaultProps = {
-  products: data.products
+  fetchProductList: PropTypes.func.isRequired,
+  productList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
 ProductSelection.navigationOptions = {
   title: 'products'
 }
+
+const mapStateToProps = state => {
+  return { productList: state.productList }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchProductList: () => dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductSelection)
