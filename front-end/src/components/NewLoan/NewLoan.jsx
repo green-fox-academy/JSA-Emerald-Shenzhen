@@ -24,9 +24,9 @@ export default function NewLoan({ navigation }) {
     product !== undefined
       ? calculateLoan(amountNum, 6, product.interest)
       : {
-        monthly: 0,
-        interest: 0
-      }
+          monthly: 0,
+          interest: 0
+        }
 
   let pickerItem
   if (product) {

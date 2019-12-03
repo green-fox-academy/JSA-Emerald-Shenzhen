@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { Image } from 'react-native'
 import { Card, CardItem, Text, Button, Left, Body, Right } from 'native-base'
@@ -7,6 +8,11 @@ import style from './LoanCardStyle'
 const source = require('../../../../assets/doller.png')
 
 function LoadCard({ loan }) {
+  const navigation = useContext(NavigationContext)
+  const handlePress = () => {
+    navigation.navigate('PayNow')
+  }
+
   return (
     <Card style={{ flex: 0 }}>
       <CardItem style={style.loanCardUpPart}>
@@ -26,7 +32,7 @@ function LoadCard({ loan }) {
           <Text>DETAILS</Text>
         </Left>
         <Right>
-          <Button transparent>
+          <Button transparent handlePress={handlePress}>
             <Image style={style.payNowButtonImg} source={source} />
             <Text style={style.payNowButtonText}>PAY NOW</Text>
           </Button>
