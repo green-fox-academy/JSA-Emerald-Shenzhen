@@ -5,8 +5,10 @@ const commonAuthTest = require('./commonAuthTest')
 const {
   noContentTypeError,
   createLoanSuccess,
-  createLoanFail
+  createLoanFail,
+  getLoanbyIdFail
 } = require('../MockData/loan_mockData')
+const data = require('../../helpers/mockData_BE')
 
 jest.mock('../../services/loansService')
 loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: 'you have got a list of loans' })
@@ -60,6 +62,30 @@ describe('POST /loans', () => {
         .set('Authentication', 'Bearer token')
         .set('Content-type', 'application/json')
         .expect(200, createLoanSuccess)
+        .end(done)
+    })
+  })
+})
+
+describe('GET /loans/:id', () => {
+  commonAuthTest(request(app).get, '/loans/1')
+
+  describe('Invaild id', () => {
+    it('should return an object with an error field', done => {
+      request(app)
+        .get('/loans/string')
+        .set('Authentication', 'Bearer token')
+        .expect(400, getLoanbyIdFail)
+        .end(done)
+    })
+  })
+
+  describe('Vaild id', () => {
+    it('should return all the details of that loan', done => {
+      request(app)
+        .get('/loans/1')
+        .set('Authentication', 'Bearer token')
+        .expect(200, data.loansDetails)
         .end(done)
     })
   })
