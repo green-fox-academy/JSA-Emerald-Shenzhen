@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
-import { Text, Icon, Button, View } from 'native-base'
 import PropTypes from 'prop-types'
-
+import { Text, Icon, Button, View } from 'native-base'
 import { NavigationContext } from 'react-navigation'
 import { tinyStyle, extendStyle } from './ProductSelectionStyle'
 

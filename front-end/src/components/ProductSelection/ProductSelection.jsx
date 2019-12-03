@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Content, View } from 'native-base'
 import { TouchableWithoutFeedback, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
-
-import data from '../../../helpers/fakeProductsData'
-
+import { connect } from 'react-redux'
+import ACTION_TYPE from '../../lib/actionType'
 import ProductCard from './ProductCard'
 
-export default function ProductSelection({ products }) {
+function ProductSelection({ productList, fetchProductList }) {
   const [selectId, setSelectId] = useState(-1)
-
+  useEffect(() => {
+    fetchProductList()
+  }, [])
   return (
     <Container>
       <Content>
         <ScrollView>
-          {products.map((product, sid) => {
+          {productList.map((product, sid) => {
             return (
               <TouchableWithoutFeedback
                 key={product.id}
@@ -35,13 +36,21 @@ export default function ProductSelection({ products }) {
 }
 
 ProductSelection.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.any)
-}
-
-ProductSelection.defaultProps = {
-  products: data.products
+  fetchProductList: PropTypes.func.isRequired,
+  productList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
 ProductSelection.navigationOptions = {
   title: 'products'
 }
+
+const mapStateToProps = state => {
+  return { ...state }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchProductList: () => dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductSelection)

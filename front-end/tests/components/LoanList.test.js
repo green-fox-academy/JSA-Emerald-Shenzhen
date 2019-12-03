@@ -34,7 +34,7 @@ describe('<LoanList />', () => {
     expect(component.toJSON().children.length).toBe(2)
   })
 
-  it('<LoanList /> should dispatch an action on button click', () => {
+  it('<LoanList /> should dispatch an action when mounted', () => {
     renderer.act(() => {
       component = renderer.create(
         <Provider store={store}>

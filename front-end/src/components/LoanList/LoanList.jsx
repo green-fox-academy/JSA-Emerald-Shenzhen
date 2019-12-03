@@ -45,8 +45,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoanList)
-
 LoanList.navigationOptions = {
   title: 'Loans'
 }
@@ -54,3 +52,5 @@ LoanList.propTypes = {
   loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
   fetchLoanList: PropTypes.func.isRequired
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoanList)
