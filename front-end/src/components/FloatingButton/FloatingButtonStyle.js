@@ -17,10 +17,11 @@ const style = StyleSheet.create({
     marginRight: 10,
     position: 'absolute',
     bottom: 10,
-    right: 5
+    right: 5,
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   },
   buttonTitle: {
-    left: -5,
     fontSize: 20,
     color: 'white'
   },
