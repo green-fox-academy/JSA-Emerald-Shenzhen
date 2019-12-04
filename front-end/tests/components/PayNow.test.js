@@ -10,4 +10,3 @@ describe('test PayNow View', () => {
     shallow(<PayNow />)
   })
 })
-
