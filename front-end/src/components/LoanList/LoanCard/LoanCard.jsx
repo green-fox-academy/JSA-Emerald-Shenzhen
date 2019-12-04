@@ -10,10 +10,16 @@ function LoadCard({ loan }) {
   const { id, type, remaining } = loan
   const navigation = useContext(NavigationContext)
 
-  const handlePress = () => {
+  const goLoanDetails = () => {
     navigation.navigate('LoanDetails', {
       transition: 'collapseExpand',
       shortLoanData: { id, type, remaining }
+    })
+  }
+
+  const goPayNow = () => {
+    navigation.navigate('PayNow', {
+      transition: 'collapseExpand'
     })
   }
 
@@ -30,12 +36,12 @@ function LoadCard({ loan }) {
       </CardItem>
       <CardItem>
         <Left>
-          <TouchableOpacity onPress={handlePress}>
+          <TouchableOpacity onPress={goLoanDetails}>
             <Text>DETAILS</Text>
           </TouchableOpacity>
         </Left>
         <Right>
-          <TouchableOpacity style={style.button}>
+          <TouchableOpacity style={style.button} onPress={goPayNow}>
             <View style={style.circle}>
               <Icon type="FontAwesome" name="dollar" style={style.dollar} />
             </View>

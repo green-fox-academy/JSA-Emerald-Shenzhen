@@ -8,6 +8,11 @@ import style from './DetailStyle'
 const Detail = () => {
   const navigation = useContext(NavigationContext)
   const { id, type, remaining } = navigation.getParam('shortLoanData')
+
+  const handlePress = () => {
+    navigation.navigate('PayNow')
+  }
+
   return (
     <Grid style={style.body}>
       <Col style={style.col}>
@@ -20,7 +25,7 @@ const Detail = () => {
           <Text style={style.remaining}>{`$ ${remaining}`}</Text>
           <Text style={style.remainingText}>remaining</Text>
         </View>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handlePress}>
           <View style={style.circle}>
             <Icon type="FontAwesome" name="dollar" style={style.dollar} />
           </View>
