@@ -1,17 +1,15 @@
 import React from 'react'
-import { Content, Container, Row, Grid } from 'native-base'
+import { Content, Container } from 'native-base'
 
-import style from './LoanDetailsStyle'
 import Detail from './Detail'
+import Chart from './Chart'
 
 function LoanDetails() {
   return (
     <Container>
       <Content>
-        <Grid>
-          <Detail />
-          <Row style={style.chart} />
-        </Grid>
+        <Detail />
+        <Chart />
       </Content>
     </Container>
   )
