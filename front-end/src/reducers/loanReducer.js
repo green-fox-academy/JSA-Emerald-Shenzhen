@@ -2,7 +2,7 @@ import { ACTION_TYPE } from '../lib/actions'
 
 const initState = []
 
-const loanReducer = (state = initState, action) => {
+function loanReducer(state = initState, action) {
   switch (action.type) {
     case ACTION_TYPE.INIT_LOANLIST_SUCCESS:
       return action.loanList

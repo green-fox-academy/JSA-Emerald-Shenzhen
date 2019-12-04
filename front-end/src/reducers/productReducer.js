@@ -1,12 +1,14 @@
-import data from '../../helpers/mockData_FE'
 import { ACTION_TYPE } from '../lib/actions'
 
-const initState = { productList: [] }
-function productReducer(state = initState, action) {
-  if (action.type === ACTION_TYPE.INIT_PRODUCTLIST) {
-    return data.products
-  }
-  return state
-}
+const initState = []
 
+function productReducer(state = initState, action) {
+  switch (action.type) {
+    case ACTION_TYPE.INIT_PRODUCTLIST_SUCCESS:
+      return action.productList
+    case ACTION_TYPE.INIT_PRODUCTLIST:
+    default:
+      return state
+  }
+}
 export default productReducer

@@ -7,6 +7,7 @@ function loadingReducer(state = initState, action) {
     case ACTION_TYPE.LOADDONE:
       return false
     case ACTION_TYPE.LOADING:
+      return true
     default:
       return state
   }
