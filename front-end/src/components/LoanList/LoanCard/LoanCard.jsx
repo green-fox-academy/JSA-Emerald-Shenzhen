@@ -7,24 +7,22 @@ import { Card, CardItem, Text, Left, Body, Right, Icon } from 'native-base'
 import style from './LoanCardStyle'
 
 function LoadCard({ loan }) {
+  const { id, type, remaining } = loan
   const navigation = useContext(NavigationContext)
 
   const handlePress = () => {
-    navigation.navigate('LoanDetails', { transition: 'collapseExpand' })
+    navigation.navigate('LoanDetails', { transition: 'collapseExpand', data: 99 })
   }
 
   return (
     <Card>
-      <CardItem style={style.loanCardUpPart}>
+      <CardItem style={style.up}>
         <Body>
-          <Text style={style.loanId}>
-            ID
-            {loan.type.id}
-          </Text>
-          <Text style={style.loanType}>{loan.type.name}</Text>
-          <Text style={style.interest}>{`Current Interest rate: ${loan.type.interest}%`}</Text>
-          <Text style={style.loanPrice}>{`$ ${loan.remaining}`}</Text>
-          <Text style={style.loanRemaining}>remaining</Text>
+          <Text style={style.id}>{`ID - ${id}`}</Text>
+          <Text style={style.type}>{type.name}</Text>
+          <Text style={style.interest}>{`Current Interest rate: ${type.interest}%`}</Text>
+          <Text style={style.price}>{`$ ${remaining}`}</Text>
+          <Text style={style.remaining}>remaining</Text>
         </Body>
       </CardItem>
       <CardItem>

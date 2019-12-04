@@ -1,29 +1,25 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-  loanCardUpPart: {
+  up: {
     backgroundColor: '#E3F2FD'
   },
-  loanId: {
+  id: {
     fontSize: 18,
     marginTop: 10,
     color: '#7A7A7A'
   },
-  loanType: {
+  type: {
     marginTop: 10,
     fontSize: 32,
     color: '#5A5C60'
   },
-  loanCurrentRate: {
-    fontSize: 15,
-    color: '#000'
-  },
-  loanPrice: {
+  price: {
     fontSize: 36,
     color: '#FC815E',
     alignSelf: 'flex-end'
   },
-  loanRemaining: {
+  remaining: {
     paddingRight: 5,
     fontSize: 12,
     alignSelf: 'flex-end',

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react'
-import { Content, Text, Container, Spinner } from 'native-base'
+import { Content, Text, Container, Spinner, FlatList } from 'native-base'
 import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
 import style from './LoanListStyle'
 import LoadCard from './LoanCard/LoanCard'
 import { fetchLoanList } from '../../lib/actions'
@@ -25,9 +26,11 @@ function LoanList({ loanList, loading, fetchData }) {
         <>
           <Content style={style.loanHomeScroll}>
             <Text style={style.header}>Current active contracts</Text>
-            {loanList.map(loan => {
-              return <LoadCard key={loan.id} loan={loan} />
-            })}
+            <FlatList
+              data={loanList}
+              renderItem={({ item }) => <LoadCard loan={item} />}
+              keyExtractor={item => item.id.toString()}
+            />
           </Content>
           <FloatingButton
             icon={{ type: 'Entypo', name: 'plus' }}

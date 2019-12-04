@@ -10,7 +10,7 @@ const History = () => {
     <View style={style.body}>
       <Text style={style.title}>History</Text>
       <FlatList
-        data={[{ key: 'up' }, { key: 'down' }, { key: 'up' }, { key: 'down' }]}
+        data={[{ key: 'up' }, { key: 'down' }]}
         renderItem={({ item }) => <HistoryItem trend={item.key} />}
       />
     </View>
