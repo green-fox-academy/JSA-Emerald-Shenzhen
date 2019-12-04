@@ -1,5 +1,3 @@
-/* global fetch */
-
 import URL from './URL'
 
 const ACTION_TYPE = {

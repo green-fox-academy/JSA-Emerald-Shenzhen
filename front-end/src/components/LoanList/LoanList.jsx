@@ -42,7 +42,7 @@ function LoanList({ loanList, loading, fetchData }) {
 }
 
 const mapStateToProps = state => {
-  return { loanList: state.loans.loanList, loading: state.loading }
+  return { loanList: state.loanList, loading: state.loading }
 }
 const mapDispatchToProps = dispatch => {
   return {

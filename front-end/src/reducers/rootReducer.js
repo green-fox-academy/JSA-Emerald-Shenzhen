@@ -3,6 +3,6 @@ import loanReducer from './loanReducer'
 import loadingReducer from './loadingReducer'
 // import productReducer from './productReducer' for next task
 
-const rootReducer = combineReducers({ loans: loanReducer, loading: loadingReducer })
+const rootReducer = combineReducers({ loanList: loanReducer, loading: loadingReducer })
 
 export default rootReducer
