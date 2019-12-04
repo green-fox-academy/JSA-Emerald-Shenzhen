@@ -28,12 +28,7 @@ const data = {
   loanServiceTestExpectResult: [
     {
       id: 1,
-      remaining: {
-        id: 1,
-        productId: 1,
-        remaining: 3500,
-        userId: 1
-      },
+      remaining: 3500,
       type: {
         id: 1,
         slug: 'student',
