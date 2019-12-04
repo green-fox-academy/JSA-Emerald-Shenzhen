@@ -29,14 +29,22 @@ const style = StyleSheet.create({
     alignSelf: 'flex-end',
     color: '#7A7A7A'
   },
-  payNowButtonText: {
-    color: '#000',
-    margin: 0,
-    paddingLeft: 20
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
-  payNowButtonImg: {
-    position: 'absolute',
-    left: -10
+  circle: {
+    backgroundColor: 'black',
+    height: 21,
+    width: 21,
+    borderRadius: 20,
+    alignItems: 'center',
+    marginRight: 8
+  },
+  dollar: {
+    color: 'white',
+    fontSize: 20
   }
 })
 

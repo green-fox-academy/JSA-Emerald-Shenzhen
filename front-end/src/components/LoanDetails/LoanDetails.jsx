@@ -1,8 +1,20 @@
 import React from 'react'
-import { Text } from 'native-base'
+import { Content, Container, Row, Grid } from 'native-base'
+
+import style from './LoanDetailsStyle'
+import Detail from './Detail'
 
 function LoanDetails() {
-  return <Text>LoanDetails</Text>
+  return (
+    <Container>
+      <Content>
+        <Grid>
+          <Detail />
+          <Row style={style.chart} />
+        </Grid>
+      </Content>
+    </Container>
+  )
 }
 
 LoanDetails.navigationOptions = {

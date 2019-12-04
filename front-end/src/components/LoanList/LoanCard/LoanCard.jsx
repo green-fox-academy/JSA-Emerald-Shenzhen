@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
-import { Image } from 'react-native'
-import { Card, CardItem, Text, Button, Left, Body, Right } from 'native-base'
-import style from './LoanCardStyle'
+import { View, TouchableOpacity } from 'react-native'
+import { Card, CardItem, Text, Button, Left, Body, Right, Icon } from 'native-base'
 
-const source = require('../../../../assets/doller.png')
+import style from './LoanCardStyle'
 
 function LoadCard({ loan }) {
   const navigation = useContext(NavigationContext)
@@ -15,7 +14,7 @@ function LoadCard({ loan }) {
   }
 
   return (
-    <Card style={{ flex: 0 }}>
+    <Card>
       <CardItem style={style.loanCardUpPart}>
         <Body>
           <Text style={style.loanId}>
@@ -35,15 +34,12 @@ function LoadCard({ loan }) {
           </Button>
         </Left>
         <Right>
-          <Button
-            transparent
-            onPress={() => {
-              navigation.navigate('PayNow')
-            }}
-          >
-            <Image style={style.payNowButtonImg} source={source} />
-            <Text style={style.payNowButtonText}>PAY NOW</Text>
-          </Button>
+          <TouchableOpacity style={style.button}>
+            <View style={style.circle}>
+              <Icon type="FontAwesome" name="dollar" style={style.dollar} />
+            </View>
+            <Text>PAY NOW</Text>
+          </TouchableOpacity>
         </Right>
       </CardItem>
     </Card>
