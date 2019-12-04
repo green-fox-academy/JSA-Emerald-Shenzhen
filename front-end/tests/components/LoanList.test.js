@@ -14,7 +14,7 @@ describe('<LoanList />', () => {
   let component
   let payloads
   beforeEach(() => {
-    store = mockStore({ loans: { loanList: data.loans }, loading: true })
+    store = mockStore({ loanList: data.loans, loading: true })
 
     payloads = [
       {

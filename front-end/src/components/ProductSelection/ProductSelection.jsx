@@ -1,42 +1,49 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Content, View } from 'native-base'
+import { Container, Content, View, Spinner } from 'native-base'
 import { TouchableWithoutFeedback, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ACTION_TYPE } from '../../lib/actions'
+import { fetchProductList } from '../../lib/actions'
 import ProductCard from './ProductCard'
 
-function ProductSelection({ productList, fetchProductList }) {
+function ProductSelection({ productList, loading, fetchData }) {
   const [selectId, setSelectId] = useState(-1)
+
   useEffect(() => {
-    fetchProductList()
+    fetchData()
   }, [])
+
   return (
     <Container>
-      <Content>
-        <ScrollView>
-          {productList.map((product, sid) => {
-            return (
-              <TouchableWithoutFeedback
-                key={product.id}
-                onPress={() => {
-                  setSelectId(sid)
-                }}
-              >
-                <View>
-                  <ProductCard isExtend={sid === selectId} product={product} />
-                </View>
-              </TouchableWithoutFeedback>
-            )
-          })}
-        </ScrollView>
-      </Content>
+      {loading ? (
+        <Spinner color="blue" />
+      ) : (
+        <Content>
+          <ScrollView>
+            {productList.map((product, sid) => {
+              return (
+                <TouchableWithoutFeedback
+                  key={product.id}
+                  onPress={() => {
+                    setSelectId(sid)
+                  }}
+                >
+                  <View>
+                    <ProductCard isExtend={sid === selectId} product={product} />
+                  </View>
+                </TouchableWithoutFeedback>
+              )
+            })}
+          </ScrollView>
+        </Content>
+      )}
     </Container>
   )
 }
 
 ProductSelection.propTypes = {
-  fetchProductList: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   productList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
@@ -45,11 +52,11 @@ ProductSelection.navigationOptions = {
 }
 
 const mapStateToProps = state => {
-  return { productList: state.productList }
+  return { productList: state.productList, loading: state.loading }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchProductList: () => dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST })
+    fetchData: () => dispatch(fetchProductList())
   }
 }
 
