@@ -20,27 +20,27 @@ const data = {
         duration: '5 years fixed',
         interest: 0.03
       },
-      remaining: 3400
+      remaining: 1000
     },
     {
       id: 3,
       type: {
-        id: 132465,
+        id: 333,
         slug: 'student',
         name: 'Student Loan',
         duration: '5 years fixed',
-        interest: 0.03
+        interest: 0.05
       },
-      remaining: 3400
+      remaining: 2000
     },
     {
       id: 4,
       type: {
-        id: 132465,
+        id: 555,
         slug: 'student',
         name: 'Student Loan',
         duration: '5 years fixed',
-        interest: 0.03
+        interest: 0.04
       },
       remaining: 3400
     }

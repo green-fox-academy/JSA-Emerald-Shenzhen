@@ -11,7 +11,10 @@ function LoadCard({ loan }) {
   const navigation = useContext(NavigationContext)
 
   const handlePress = () => {
-    navigation.navigate('LoanDetails', { transition: 'collapseExpand', data: 99 })
+    navigation.navigate('LoanDetails', {
+      transition: 'collapseExpand',
+      shortLoanData: { id, type, remaining }
+    })
   }
 
   return (
