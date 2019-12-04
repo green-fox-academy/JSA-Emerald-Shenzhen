@@ -16,8 +16,8 @@ const style = StyleSheet.create({
     elevation: 5,
     marginRight: 10,
     position: 'absolute',
-    bottom: 10,
-    right: 5,
+    bottom: 40,
+    right: 10,
     flexDirection: 'row',
     justifyContent: 'flex-start'
   },

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import { Content, Text, Container, Spinner, FlatList } from 'native-base'
+import { Content, Text, Container, Spinner } from 'native-base'
+import { FlatList, View } from 'react-native'
 import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -31,6 +32,7 @@ function LoanList({ loanList, loading, fetchData }) {
               renderItem={({ item }) => <LoadCard loan={item} />}
               keyExtractor={item => item.id.toString()}
             />
+            <View style={style.holder} />
           </Content>
           <FloatingButton
             icon={{ type: 'Entypo', name: 'plus' }}
