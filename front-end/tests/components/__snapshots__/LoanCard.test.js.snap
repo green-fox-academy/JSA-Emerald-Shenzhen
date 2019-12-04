@@ -128,7 +128,7 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         }
         uppercase={false}
       >
-        $ undefined
+        $ 3400
       </Text>
       <Text
         style={

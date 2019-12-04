@@ -5,8 +5,7 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import LoanList from '../../src/components/LoanList/LoanList'
 import data from '../../helpers/mockData_FE'
-import ACTION_TYPE from '../../src/lib/actionType'
-import { fetchLoanList } from '../../src/reducers/loanReducer'
+import { fetchLoanList, ACTION_TYPE } from '../../src/lib/actions'
 
 const mockStore = configureStore([thunk])
 
@@ -23,7 +22,7 @@ describe('<LoanList />', () => {
       },
       {
         type: ACTION_TYPE.INIT_LOANLIST_SUCCESS,
-        loanList: undefined
+        loanList: {}
       }
     ]
   })

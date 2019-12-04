@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react'
-import { Content, Text, Container } from 'native-base'
+import { Content, Text, Container, Spinner } from 'native-base'
 import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import style from './LoanListStyle'
 import LoadCard from './LoanCard/LoanCard'
-import { fetchLoanList } from '../../reducers/loanReducer'
+import { fetchLoanList } from '../../lib/actions'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
 function LoanList({ loanList, loading, fetchData }) {
@@ -17,11 +17,10 @@ function LoanList({ loanList, loading, fetchData }) {
   useEffect(() => {
     fetchData()
   }, [])
-
   return (
     <Container>
       {loading ? (
-        <></>
+        <Spinner color="blue" />
       ) : (
         <>
           <Content style={style.loanHomeScroll}>
@@ -43,7 +42,7 @@ function LoanList({ loanList, loading, fetchData }) {
 }
 
 const mapStateToProps = state => {
-  return { loanList: state.loanList, loading: state.loading }
+  return { loanList: state.loans.loanList, loading: state.loading }
 }
 const mapDispatchToProps = dispatch => {
   return {

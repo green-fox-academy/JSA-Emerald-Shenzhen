@@ -12,7 +12,7 @@ const getLoansWithProductsByUserId = async userId => {
         id: loan.id,
         userId: loan.userId,
         type: sqlProducts.find(product => product.id === loan.productId),
-        remaining: loan
+        remaining: loan.remaining
       }
     })
 

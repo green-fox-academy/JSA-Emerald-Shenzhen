@@ -1,30 +1,14 @@
-// import data from '../../helpers/mockData_FE'
-import ACTION_TYPE from '../lib/actionType'
-import URL from '../lib/URL'
+import { ACTION_TYPE } from '../lib/actions'
 
-function loanReducer(action) {
-  if (action.type === ACTION_TYPE.INIT_LOANLIST) {
-    return { loading: true }
-  }
-  if (action.type === ACTION_TYPE.INIT_LOANLIST_SUCCESS) {
-    return { loanList: action.loanList, loading: false }
-  }
-  return {}
-}
+const initState = { loanList: [] }
 
-function fetchLoanList() {
-  return async dispatch => {
-    dispatch({ type: ACTION_TYPE.INIT_LOANLIST })
-    // eslint-disable-next-line no-undef
-    const data = await fetch(URL.getLoans, {
-      headers: { Authentication: 'Bearer token', Accept: 'application/json' }
-    }).then(res => res.json())
-    dispatch({ type: ACTION_TYPE.INIT_LOANLIST_SUCCESS, loanList: data.loanList })
-    // setTimeout(() => {
-    //   dispatch({ type: ACTION_TYPE.INIT_LOANLIST_SUCCESS })
-    // }, 1000)
+const loanReducer = (state = initState, action) => {
+  switch (action.type) {
+    case ACTION_TYPE.INIT_LOANLIST_SUCCESS:
+      return { loanList: action.loanList }
+    case ACTION_TYPE.INIT_LOANLIST:
+    default:
+      return state
   }
 }
-
 export default loanReducer
-export { fetchLoanList }

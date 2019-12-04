@@ -3,7 +3,7 @@ import { Container, Content, View } from 'native-base'
 import { TouchableWithoutFeedback, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ACTION_TYPE from '../../lib/actionType'
+import { ACTION_TYPE } from '../../lib/actions'
 import ProductCard from './ProductCard'
 
 function ProductSelection({ productList, fetchProductList }) {

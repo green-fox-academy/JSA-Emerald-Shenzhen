@@ -39,6 +39,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "metro-react-native-babel-preset": "^0.57.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "babel-jest": "^24.9.0",

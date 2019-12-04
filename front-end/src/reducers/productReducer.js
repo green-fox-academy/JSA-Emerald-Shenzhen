@@ -1,11 +1,12 @@
 import data from '../../helpers/mockData_FE'
-import ACTION_TYPE from '../lib/actionType'
+import { ACTION_TYPE } from '../lib/actions'
 
-function productReducer(action) {
+const initState = { productList: [] }
+function productReducer(state = initState, action) {
   if (action.type === ACTION_TYPE.INIT_PRODUCTLIST) {
     return data.products
   }
-  return []
+  return state
 }
 
 export default productReducer
