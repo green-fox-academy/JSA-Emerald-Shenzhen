@@ -3,6 +3,7 @@ import { Content, Container } from 'native-base'
 
 import Detail from './Detail'
 import Chart from './Chart'
+import History from './History'
 
 function LoanDetails() {
   return (
@@ -10,6 +11,7 @@ function LoanDetails() {
       <Content>
         <Detail />
         <Chart />
+        <History />
       </Content>
     </Container>
   )
