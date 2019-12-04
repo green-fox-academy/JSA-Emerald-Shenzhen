@@ -7,14 +7,16 @@ import style from './DetailStyle'
 const Detail = () => {
   return (
     <Grid style={style.body}>
-      <Col>
+      <Col style={style.col}>
         <Text style={style.id}>ID 123456</Text>
         <Text style={style.name}>Student Loan</Text>
         <Text>Current Interest rate: 3%</Text>
       </Col>
-      <Col>
-        <Text style={style.remaining}>$ 3400</Text>
-        <Text style={style.remainingText}>remaining</Text>
+      <Col style={style.col}>
+        <View>
+          <Text style={style.remaining}>$ 3400</Text>
+          <Text style={style.remainingText}>remaining</Text>
+        </View>
         <TouchableOpacity style={style.button}>
           <View style={style.circle}>
             <Icon type="FontAwesome" name="dollar" style={style.dollar} />

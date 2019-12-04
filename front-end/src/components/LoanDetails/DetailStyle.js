@@ -3,15 +3,17 @@ import { StyleSheet } from 'react-native'
 const style = StyleSheet.create({
   body: {
     backgroundColor: '#E3F2FD',
-    height: 120
+    height: 120,
+    padding: 15
+  },
+  col: {
+    justifyContent: 'space-between'
   },
   id: {
     fontSize: 18,
-    marginTop: 10,
     color: '#7A7A7A'
   },
   name: {
-    marginTop: 10,
     fontSize: 32,
     color: '#5A5C60'
   },
