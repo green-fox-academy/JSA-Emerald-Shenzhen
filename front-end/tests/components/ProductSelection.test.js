@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 import ProductSelection from '../../src/components/ProductSelection/ProductSelection'
 import data from '../../helpers/mockData_FE'
-import ACTION_TYPE from '../../src/lib/actionType'
+import { ACTION_TYPE } from '../../src/lib/actions'
 
 const mockStore = configureStore([])
 
