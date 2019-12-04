@@ -14,15 +14,21 @@ describe('<LoanList />', () => {
   let component
   let payloads
   beforeEach(() => {
-    store = mockStore({ loanList: data.loans, loading: false })
+    store = mockStore({ loans: { loanList: data.loans }, loading: true })
 
     payloads = [
+      {
+        type: ACTION_TYPE.LOADING
+      },
       {
         type: ACTION_TYPE.INIT_LOANLIST
       },
       {
         type: ACTION_TYPE.INIT_LOANLIST_SUCCESS,
         loanList: {}
+      },
+      {
+        type: ACTION_TYPE.LOADDONE
       }
     ]
   })
@@ -37,7 +43,7 @@ describe('<LoanList />', () => {
   })
 
   it('<LoanList /> has 2 child', () => {
-    expect(component.toJSON().children.length).toBe(2)
+    expect(component.toJSON().children.length).toBe(1)
   })
 
   it('<LoanList /> should dispatch an action when mounted', async () => {
@@ -59,7 +65,9 @@ describe('<LoanList />', () => {
     await store.dispatch(fetchLoanList())
     const actions = store.getActions()
 
-    expect(actions[1]).toEqual(payloads[0])
-    expect(actions[2]).toEqual(payloads[1])
+    expect(actions.pop()).toEqual(payloads.pop())
+    expect(actions.pop()).toEqual(payloads.pop())
+    expect(actions.pop()).toEqual(payloads.pop())
+    expect(actions.pop()).toEqual(payloads.pop())
   })
 })
