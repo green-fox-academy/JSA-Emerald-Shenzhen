@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { View, TouchableOpacity } from 'react-native'
-import { Card, CardItem, Text, Button, Left, Body, Right, Icon } from 'native-base'
+import { Card, CardItem, Text, Left, Body, Right, Icon } from 'native-base'
 
 import style from './LoanCardStyle'
 
@@ -29,9 +29,9 @@ function LoadCard({ loan }) {
       </CardItem>
       <CardItem>
         <Left>
-          <Button transparent onPress={handlePress}>
+          <TouchableOpacity onPress={handlePress}>
             <Text>DETAILS</Text>
-          </Button>
+          </TouchableOpacity>
         </Left>
         <Right>
           <TouchableOpacity style={style.button}>
