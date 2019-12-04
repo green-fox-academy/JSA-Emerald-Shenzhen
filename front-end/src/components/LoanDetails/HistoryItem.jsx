@@ -13,7 +13,10 @@ const HistoryItem = ({ trend }) => {
       <View style={[style.circle, up ? style.up : style.down]}>
         <Icon type="Feather" name={`trending-${up ? 'up' : 'down'}`} style={style.icon} />
       </View>
-      <Text>item</Text>
+      <View>
+        <Text>$ 900 payment received</Text>
+        <Text style={style.date}>2 days ago</Text>
+      </View>
     </View>
   )
 }

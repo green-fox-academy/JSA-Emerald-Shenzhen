@@ -1,8 +1,13 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
+  body: {
+    paddingHorizontal: 30,
+    paddingVertical: 10
+  },
   title: {
-    fontSize: 25
+    fontSize: 20,
+    marginBottom: 20
   }
 })
 

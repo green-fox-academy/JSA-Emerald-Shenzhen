@@ -3,15 +3,16 @@ import { StyleSheet } from 'react-native'
 const style = StyleSheet.create({
   body: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'flex-start',
+    marginVertical: 5
   },
   circle: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
+    height: 45,
+    width: 45,
+    borderRadius: 23,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 8
+    marginRight: 20
   },
   up: {
     backgroundColor: '#FC7043'
@@ -23,6 +24,10 @@ const style = StyleSheet.create({
     color: 'white',
     fontSize: 30,
     fontWeight: 'bold'
+  },
+  date: {
+    fontSize: 15,
+    color: 'grey'
   }
 })
 
