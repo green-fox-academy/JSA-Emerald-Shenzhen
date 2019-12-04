@@ -1,15 +1,12 @@
+import { combineReducers } from 'redux'
 import loanReducer from './loanReducer'
+import loadingReducer from './loadingReducer'
 import productReducer from './productReducer'
 
-const initState = { loanList: [], productList: [], loanListLoading: false }
-
-// eslint-disable-next-line no-unused-vars
-const rootReducer = (state = initState, action) => {
-  return {
-    ...state,
-    loanList: loanReducer(action),
-    productList: productReducer(action)
-  }
-}
+const rootReducer = combineReducers({
+  loanList: loanReducer,
+  loading: loadingReducer,
+  productList: productReducer
+})
 
 export default rootReducer

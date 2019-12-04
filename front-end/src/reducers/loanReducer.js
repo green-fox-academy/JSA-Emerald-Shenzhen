@@ -1,11 +1,14 @@
-import data from '../../helpers/mockData_FE'
-import ACTION_TYPE from '../lib/actionType'
+import { ACTION_TYPE } from '../lib/actions'
 
-function loanReducer(action) {
-  if (action.type === ACTION_TYPE.INIT_LOANLIST) {
-    return data.loans
+const initState = []
+
+function loanReducer(state = initState, action) {
+  switch (action.type) {
+    case ACTION_TYPE.INIT_LOANLIST_SUCCESS:
+      return action.loanList
+    case ACTION_TYPE.INIT_LOANLIST:
+    default:
+      return state
   }
-  return []
 }
-
 export default loanReducer

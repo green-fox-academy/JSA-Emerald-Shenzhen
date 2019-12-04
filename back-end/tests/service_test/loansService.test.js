@@ -10,9 +10,8 @@ db.selectAllProductModels.mockReturnValue(mockData.products)
 describe('Loan services', () => {
   describe('getLoansWithProductsByUserId', () => {
     it('should be called correctly', async () => {
-      expect(await getLoansWithProductsByUserId()).toStrictEqual(
-        mockData.loanServiceTestExpectResult
-      )
+      const expected = await getLoansWithProductsByUserId()
+      expect(expected).toStrictEqual(mockData.loanServiceTestExpectResult)
       expect(db.selectLoansByUserId).toHaveBeenCalled()
     })
   })

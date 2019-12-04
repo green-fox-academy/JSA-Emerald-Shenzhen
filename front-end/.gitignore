@@ -1,3 +1,4 @@
+  
 node_modules/
 .expo/*
 npm-debug.*
@@ -12,6 +13,7 @@ web-report/
 .prettierrc
 yarn-error.log
 .idea
+.env
 
 # macOS
 .DS_Store
