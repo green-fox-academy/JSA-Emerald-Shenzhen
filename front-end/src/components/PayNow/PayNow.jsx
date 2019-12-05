@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { NavigationContext } from 'react-navigation'
 import { View, Text } from 'react-native'
-import { Container, Content, Form, Input, Item, Label, Icon, Button } from 'native-base'
+import { Container, Content, Form, Input, Item, Label, Icon, Picker } from 'native-base'
 
 import FloatingButton from '../FloatingButton/FloatingButton'
 
@@ -16,19 +16,18 @@ export default function PayNow() {
 
   const handleChangeText = text => {
     setAmount(text)
-    if (text.length >= 1) {
-      if (!Number.isNaN(Number(text))) {
-        setToShowPopUpSection(true)
-      } else {
-        setToShowPopUpSection(false)
-      }
+    if (text.length >= 1 && !Number.isNaN(Number(text))) {
+      setToShowPopUpSection(true)
     } else {
       setToShowPopUpSection(false)
     }
   }
 
-  const account =
-    navigation && navigation.state.params ? navigation.state.params.account : undefined
+  const [selectedAccount, setSelectedAccount] = useState()
+
+  const selectAnAccount = value => {
+    setSelectedAccount(value)
+  }
 
   return (
     <Container>
@@ -43,7 +42,8 @@ export default function PayNow() {
                 style={{
                   fontSize: 20,
                   marginRight: 5,
-                  textAlignVertical: 'center'
+                  textAlignVertical: 'center',
+                  textAlign: 'center'
                 }}
               >
                 $
@@ -63,15 +63,18 @@ export default function PayNow() {
               <Label style={{ fontSize: 20, marginBottom: 20, marginTop: 10 }}>
                 Account to pay from
               </Label>
-              <Button
-                transparent
-                onPress={() => {
-                  navigation.navigate('AccountSelection')
-                }}
+              <Picker
+                mode="dropdown"
+                iosHeader="Select your SIM"
+                iosIcon={<Icon name="arrow-down" />}
+                style={{ width: '100%' }}
+                selectedValue={selectedAccount}
+                onValueChange={itemValue => selectAnAccount(itemValue)}
               >
-                <Input disabled placeholder={account ? account.name : ''} />
-                <Icon active name="caretdown" type="AntDesign" style={{ padding: 0 }} />
-              </Button>
+                <Picker.Item label="Main account" value="Main account" />
+                <Picker.Item label="Savings account" value="Savings account" />
+                <Picker.Item label="Investment account" value="Investment account" />
+              </Picker>
             </Item>
             <Item stackedLabel>
               <Label style={{ fontSize: 20, marginBottom: 20, marginTop: 10 }}>When</Label>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Container, Content, Icon, Form, Item, Input, Label, Card, Picker, View } from 'native-base'
-import { TouchableOpacity } from 'react-native'
+import { Container, Content, Icon, Form, Item, Input, Label, Card, Button, View } from 'native-base'
+// import { TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import calculateLoan from '../../services/calculateLoan'
 
@@ -24,14 +24,14 @@ export default function NewLoan({ navigation }) {
     product !== undefined
       ? calculateLoan(amountNum, 6, product.interest)
       : {
-          monthly: 0,
-          interest: 0
-        }
+        monthly: 0,
+        interest: 0
+      }
 
-  let pickerItem
-  if (product) {
-    pickerItem = <Picker.Item label={product.name} value="productName" />
-  }
+  // let pickerItem
+  // if (product) {
+  //   pickerItem = <Picker.Item label={product.name} value="productName" />
+  // }
 
   return (
     <Container>
@@ -43,7 +43,16 @@ export default function NewLoan({ navigation }) {
           </Item>
           <Card transparent style={style.newLoanCard}>
             <Label style={style.cardLabel}>Selected Product</Label>
-            <Picker
+            <Button
+              transparent
+              onPress={() => {
+                navigation.navigate('ProductSelection')
+              }}
+            >
+              <Input disabled placeholder={product ? product.name : ''} />
+              <Icon active name="caretdown" type="AntDesign" style={{ padding: 0 }} />
+            </Button>
+            {/* <Picker
               mode="dropdown"
               iosIcon={<Icon name="arrow-down" />}
               placeholder="Please choose one product"
@@ -63,7 +72,7 @@ export default function NewLoan({ navigation }) {
               onPress={() => {
                 navigation.navigate('ProductSelection')
               }}
-            />
+            /> */}
           </Card>
           <View style={{ display: product ? 'flex' : 'none' }}>
             <Item stackedLabel last>

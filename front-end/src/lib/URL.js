@@ -1,10 +1,10 @@
-import { BASE_URL as BASE } from 'react-native-dotenv'
+import { BASE_URL } from 'react-native-dotenv'
 
-const BASE_URL = BASE || 'http://10.22.18.66:3000'
+const BASE = BASE_URL || 'http://10.22.18.66:3000'
 
 const URL = {
-  getLoans: `${BASE_URL}/loans`,
-  getProducts: `${BASE_URL}/products`
+  getLoans: `${BASE}/loans`,
+  getProducts: `${BASE}/products`
 }
 
 export default URL
