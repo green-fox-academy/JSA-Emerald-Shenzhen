@@ -9,7 +9,11 @@ const History = ({ loan }) => {
   return loan.history ? (
     <View style={style.body}>
       <Text style={style.title}>History</Text>
-      <FlatList data={loan.history} renderItem={({ item }) => <HistoryItem historyItem={item} />} />
+      <FlatList
+        data={loan.history}
+        renderItem={({ item }) => <HistoryItem historyItem={item} />}
+        keyExtractor={(_, index) => index.toString()}
+      />
     </View>
   ) : (
     <Text>No records about this loan</Text>
