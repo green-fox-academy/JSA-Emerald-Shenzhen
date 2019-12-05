@@ -5,24 +5,30 @@ import PropTypes from 'prop-types'
 
 import style from './HistoryItemStyle'
 
-const HistoryItem = ({ trend }) => {
-  const up = trend === 'up'
-
+const HistoryItem = ({ historyItem }) => {
   return (
     <View style={style.body}>
-      <View style={[style.circle, up ? style.up : style.down]}>
-        <Icon type="Feather" name={`trending-${up ? 'up' : 'down'}`} style={style.icon} />
+      <View style={[style.circle, historyItem.amount > 0 ? style.up : style.down]}>
+        <Icon
+          type="Feather"
+          name={`trending-${historyItem.amount > 0 ? 'up' : 'down'}`}
+          style={style.icon}
+        />
       </View>
       <View>
-        <Text>$ 900 payment received</Text>
-        <Text style={style.date}>2 days ago</Text>
+        <Text>{historyItem.text}</Text>
+        <Text style={style.date}>{historyItem.date}</Text>
       </View>
     </View>
   )
 }
 
 HistoryItem.propTypes = {
-  trend: PropTypes.string.isRequired
+  historyItem: PropTypes.shape({
+    amount: PropTypes.number,
+    text: PropTypes.string,
+    date: PropTypes.string
+  }).isRequired
 }
 
 export default HistoryItem
