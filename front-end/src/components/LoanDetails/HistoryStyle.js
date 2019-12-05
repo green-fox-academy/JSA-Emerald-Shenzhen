@@ -8,6 +8,15 @@ const style = StyleSheet.create({
   title: {
     fontSize: 20,
     marginBottom: 20
+  },
+  warning: {
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  warningText: {
+    fontSize: 20,
+    color: 'green'
   }
 })
 
