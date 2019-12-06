@@ -40,10 +40,10 @@ export default function NewLoan({ navigation }) {
               autoFocus
               style={{ fontSize: 38 }}
               value={amount}
-              onChangeText={setAmount}
-              onEndEditing={() => {
-                const isValue = !Number.isNaN(Number(amount))
-                setAmountNum(isValue ? Number(amount) : 0)
+              onChangeText={value => {
+                setAmount(value)
+                const isValue = !Number.isNaN(Number(value))
+                setAmountNum(isValue ? Number(value) : 0)
                 setError(!isValue)
               }}
             />
@@ -67,7 +67,7 @@ export default function NewLoan({ navigation }) {
                   active
                   name="caretdown"
                   type="AntDesign"
-                  style={{ padding: 0, color: '#000' }}
+                  style={{ fontSize: 12, padding: 0, color: '#000' }}
                 />
               </Button>
             </Card>

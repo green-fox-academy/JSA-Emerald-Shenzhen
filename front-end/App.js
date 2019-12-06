@@ -26,7 +26,7 @@ const AppStack = createStackNavigator(
     ProductSelection
   },
   {
-    initialRouteName: 'PayNow',
+    initialRouteName: 'MainPage',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#2296F3'

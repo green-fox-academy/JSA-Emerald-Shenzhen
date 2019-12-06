@@ -11,21 +11,15 @@ export default function PayNow() {
   }
 
   const [error, setError] = useState(false)
-  const [amount, setAmount] = useState()
+  const [amount, setAmount] = useState('')
   const [date, setDate] = useState()
-  const [toShowPopUpSection, setToShowPopUpSection] = useState(false)
-
-  const handleChangeText = () => {
-    if (amount && !Number.isNaN(Number(amount))) {
-      setToShowPopUpSection(true)
-      setError(false)
-    } else {
-      setToShowPopUpSection(false)
-      setError(true)
-    }
-  }
-
   const [selectedAccount, setSelectedAccount] = useState()
+  // const [toShowPopUpSection, setToShowPopUpSection] = useState(false)
+
+  const handleChangeText = value => {
+    setAmount(value)
+    setError(!value || Number.isNaN(Number(value)))
+  }
 
   const selectAnAccount = value => {
     setSelectedAccount(value)
@@ -43,8 +37,7 @@ export default function PayNow() {
               placeholderTextColor="#ABABAB"
               keyboardType="numeric"
               value={amount}
-              onChangeText={setAmount}
-              onEndEditing={handleChangeText}
+              onChangeText={handleChangeText}
               autoFocus
             />
             <Icon style={{ display: error ? 'flex' : 'none' }} name="close-circle" />
@@ -55,7 +48,7 @@ export default function PayNow() {
           <View
             style={{
               width: '100%',
-              display: toShowPopUpSection ? 'flex' : 'none'
+              display: !error && amount ? 'flex' : 'none'
             }}
           >
             <Label style={{ fontSize: 20, marginTop: 10 }}>Account to pay from</Label>
@@ -68,7 +61,7 @@ export default function PayNow() {
                 placeholder="Select your Account"
                 placeholderStyle={{ fontSize: 18, color: '#777777' }}
                 selectedValue={selectedAccount}
-                onValueChange={itemValue => selectAnAccount(itemValue)}
+                onValueChange={selectAnAccount}
               >
                 <Picker.Item label="Main account" value="Main account" />
                 <Picker.Item label="Savings account" value="Savings account" />
