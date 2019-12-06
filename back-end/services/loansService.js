@@ -1,4 +1,6 @@
 const { selectLoansByUserId, selectAllProductModels } = require('./dbService')
+const dbService = require('./dbService')
+
 
 const postLoanBodyFields = ['productId', 'amount', 'duration', 'receivingAccount', 'payment']
 
@@ -22,6 +24,14 @@ const getLoansWithProductsByUserId = async userId => {
   }
 }
 
+const addLoan = async (userId, productId, remaining) => {
+  const result = await dbService.addLoan(userId, productId, remaining)
+  return {
+    loanId: result.insertId,
+    status: 'granted'
+  }
+}
+
 const checkMissingField = body => {
   return postLoanBodyFields.reduce(
     (accu, field) => {
@@ -35,4 +45,4 @@ const checkMissingField = body => {
   )
 }
 
-module.exports = { getLoansWithProductsByUserId, checkMissingField }
+module.exports = { getLoansWithProductsByUserId, checkMissingField, addLoan }

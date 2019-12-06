@@ -1,5 +1,5 @@
 const express = require('express')
-const { getLoansWithProductsByUserId, checkMissingField } = require('../services/loansService')
+const { getLoansWithProductsByUserId, checkMissingField, addLoan } = require('../services/loansService')
 const { checkContentType } = require('../services/authService')
 const data = require('../helpers/mockData_BE')
 
@@ -11,18 +11,16 @@ router
     const loansData = await getLoansWithProductsByUserId(req.query.id)
     return loansData.error ? next(loansData.error) : res.status(200).json(loansData)
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     const isContentType = checkContentType(req.headers)
     if (!isContentType) {
       return res.status(400).send({ error: 'Please specify content-type in request header' })
     }
     const check = checkMissingField(req.body)
+      const { productId, amount } = req.body
     return check.error
       ? res.status(400).send(check)
-      : res.status(200).send({
-          loanId: 1,
-          status: 'granted'
-        })
+      : res.json( await addLoan(1, productId, amount))
   })
 
 router.param('id', (req, res, next, name) => {

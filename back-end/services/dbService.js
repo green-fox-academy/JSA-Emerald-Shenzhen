@@ -8,7 +8,7 @@ const dbService = {
 }
 dbService.selectLoansByUserId = id => {
   const SQL = `SELECT * FROM loans${id ? ' WHERE userId=?;' : ';'}`
-  const sqlPromise = dbService.getPromise(SQL)
+  const sqlPromise = dbService.getPromise(SQL, [id])
   return sqlPromise
 }
 dbService.selectAllProductModels = () => {
@@ -16,11 +16,17 @@ dbService.selectAllProductModels = () => {
   const sqlPromise = dbService.getPromise(SQL)
   return sqlPromise
 }
-dbService.getPromise = SQL => {
+dbService.addLoan = (userId, productId, remaining) => {
+  return dbService.getPromise(
+      'INSERT INTO loans (userId, productId, remaining) values (?, ?, ?)',
+      [userId, productId, remaining]
+  )
+}
+dbService.getPromise = (SQL, params=[]) => {
   return new Promise((resolve, reject) => {
     if (!this.pool) reject(new Error('connection missing'))
 
-    this.pool.query(SQL, (error, result) => {
+    this.pool.query(SQL, params, (error, result) => {
       if (error) reject(error)
       resolve(result)
     })
