@@ -10,7 +10,8 @@ import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function NewLoan({ navigation }) {
   const [amount, setAmount] = useState('')
-  const amountNum = !Number.isNaN(Number(amount)) ? Number(amount) : 0
+  const [error, setError] = useState(false)
+  const [amountNum, setAmountNum] = useState(0)
 
   const handlePress = () => {
     navigation.navigate('NewLoanDetail')
@@ -32,35 +33,47 @@ export default function NewLoan({ navigation }) {
       <Content style={style.newLoanContent}>
         <Form style={style.newLoanForm}>
           <Label style={style.fontLarger}>How much do you need ?</Label>
-          <Item error={!amount ? false : !amountNum} style={{ marginRight: 20 }}>
-            <Icon name="dollar" type="FontAwesome" />
+          <Item error={error} style={{ marginRight: 20 }}>
+            <Icon style={{ fontSize: 30 }} name="dollar" type="FontAwesome" />
             <Input
               keyboardType="numeric"
               autoFocus
-              style={style.fontLarger}
+              style={{ fontSize: 38 }}
               value={amount}
-              onBlur={target => {
-                console.log(target)
-
-                setAmount(target.nativeEvent.text)
+              onChangeText={setAmount}
+              onEndEditing={() => {
+                const isValue = !Number.isNaN(Number(amount))
+                setAmountNum(isValue ? Number(amount) : 0)
+                setError(!isValue)
               }}
             />
+            <Icon style={{ display: error ? 'flex' : 'none' }} name="close-circle" />
           </Item>
+          <Label style={{ display: error ? 'flex' : 'none', color: 'red' }}>
+            * please enter correct number!
+          </Label>
 
-          <Card transparent style={{ ...style.newLoanCard, display: amountNum ? 'flex' : 'none' }}>
+          <View style={{ display: !error && amountNum ? 'flex' : 'none' }}>
             <Label style={style.cardLabel}>Selected Product</Label>
-            <Button
-              transparent
-              onPress={() => {
-                navigation.navigate('ProductSelection')
-              }}
-            >
-              <Input disabled placeholder={product ? product.name : ''} />
-              <Icon active name="caretdown" type="AntDesign" style={{ padding: 0 }} />
-            </Button>
-          </Card>
+            <Card transparent style={style.newLoanCard}>
+              <Button
+                transparent
+                onPress={() => {
+                  navigation.navigate('ProductSelection')
+                }}
+              >
+                <Input disabled placeholder={product ? product.name : ''} />
+                <Icon
+                  active
+                  name="caretdown"
+                  type="AntDesign"
+                  style={{ padding: 0, color: '#000' }}
+                />
+              </Button>
+            </Card>
+          </View>
 
-          <View style={{ display: product ? 'flex' : 'none' }}>
+          <View style={{ display: !error && product ? 'flex' : 'none' }}>
             <Item stackedLabel last>
               <Label>Duration</Label>
               <Item disabled>
@@ -70,7 +83,7 @@ export default function NewLoan({ navigation }) {
             </Item>
           </View>
         </Form>
-        <View style={{ display: product ? 'flex' : 'none' }}>
+        <View style={{ display: !error && product ? 'flex' : 'none' }}>
           <ProductDescription rate={product ? product.interest : 0} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>

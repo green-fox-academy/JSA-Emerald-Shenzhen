@@ -26,7 +26,7 @@ const AppStack = createStackNavigator(
     ProductSelection
   },
   {
-    initialRouteName: 'NewLoan',
+    initialRouteName: 'PayNow',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#2296F3'
