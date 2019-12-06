@@ -3,17 +3,19 @@ import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
 import { View, TouchableOpacity } from 'react-native'
 import { Card, CardItem, Text, Left, Body, Right, Icon } from 'native-base'
+import { connect } from 'react-redux'
 
 import style from './LoanCardStyle'
+import { setDetailId } from '../../../lib/actions'
 
-function LoadCard({ loan }) {
+function LoadCard({ loan, setId }) {
   const { id, type, remaining } = loan
   const navigation = useContext(NavigationContext)
 
   const goLoanDetails = () => {
+    setId(id)
     navigation.navigate('LoanDetails', {
-      transition: 'collapseExpand',
-      shortLoanData: { id, type, remaining }
+      transition: 'collapseExpand'
     })
   }
 
@@ -53,7 +55,14 @@ function LoadCard({ loan }) {
   )
 }
 
-LoadCard.propTypes = {
-  loan: PropTypes.objectOf(PropTypes.any).isRequired
+const mapDispatchToProps = dispatch => {
+  return {
+    setId: id => dispatch(setDetailId(id))
+  }
 }
-export default LoadCard
+
+LoadCard.propTypes = {
+  loan: PropTypes.objectOf(PropTypes.any).isRequired,
+  setId: PropTypes.func.isRequired
+}
+export default connect(null, mapDispatchToProps)(LoadCard)

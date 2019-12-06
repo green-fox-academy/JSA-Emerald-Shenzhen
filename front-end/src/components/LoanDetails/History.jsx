@@ -1,11 +1,14 @@
 import React from 'react'
 import { View, FlatList, Text } from 'react-native'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import HistoryItem from './HistoryItem'
 import style from './HistoryStyle'
 
-const History = ({ loan }) => {
+const History = ({ loanList, id }) => {
+  const loan = loanList.find(loanItem => loanItem.id === id)
+
   return (
     <View style={style.body}>
       {loan.history ? (
@@ -27,9 +30,12 @@ const History = ({ loan }) => {
 }
 
 History.propTypes = {
-  loan: PropTypes.shape({
-    history: PropTypes.array
-  }).isRequired
+  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
+  id: PropTypes.number.isRequired
 }
 
-export default History
+const mapStateToProps = state => {
+  return { loanList: state.loanList, id: state.detailLoanId }
+}
+
+export default connect(mapStateToProps, null)(History)

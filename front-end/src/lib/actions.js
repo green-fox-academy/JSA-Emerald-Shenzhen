@@ -8,7 +8,8 @@ const ACTION_TYPE = {
   INIT_PRODUCTLIST: 'INIT_PRODUCTLIST',
   INIT_PRODUCTLIST_SUCCESS: 'INIT_PRODUCTLIST_SUCCESS',
   INIT_DETAIL: 'INIT_DETAIL',
-  INIT_DETAIL_SUCCESS: 'INIT_DETAIL_SUCCESS'
+  INIT_DETAIL_SUCCESS: 'INIT_DETAIL_SUCCESS',
+  SET_DETAIL_ID: 'SET_DETAIL_ID'
 }
 
 async function fetchData(url) {
@@ -52,10 +53,12 @@ const fetchDetail = id => {
     dispatch({ type: ACTION_TYPE.LOADING })
     dispatch({ type: ACTION_TYPE.INIT_DETAIL })
     return fetchData(URL.getDetail(id))
-      .then(data => dispatch({ type: ACTION_TYPE.INIT_DETAIL_SUCCESS, payload: data }))
+      .then(data => dispatch({ type: ACTION_TYPE.INIT_DETAIL_SUCCESS, payload: data, id }))
       .then(() => dispatch({ type: ACTION_TYPE.LOADDONE }))
       .catch(error => dispatch({ type: ACTION_TYPE.ERROR, error }))
   }
 }
 
-export { fetchLoanList, fetchProductList, ACTION_TYPE, fetchDetail }
+const setDetailId = id => dispatch => dispatch({ type: ACTION_TYPE.SET_DETAIL_ID, id })
+
+export { fetchLoanList, fetchProductList, ACTION_TYPE, fetchDetail, setDetailId }

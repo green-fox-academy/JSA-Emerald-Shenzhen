@@ -2,12 +2,14 @@ import React, { useContext } from 'react'
 import { Text, Grid, Col, Icon } from 'native-base'
 import { TouchableOpacity, View } from 'react-native'
 import { NavigationContext } from 'react-navigation'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import style from './DetailStyle'
 
-const Detail = () => {
+const Detail = ({ loanList, id }) => {
   const navigation = useContext(NavigationContext)
-  const { id, type, remaining } = navigation.getParam('shortLoanData')
+  const { type, remaining } = loanList.find(loan => loan.id === id)
 
   const handlePress = () => {
     navigation.navigate('PayNow')
@@ -36,4 +38,13 @@ const Detail = () => {
   )
 }
 
-export default Detail
+const mapStateToProps = state => {
+  return { loanList: state.loanList, id: state.detailLoanId }
+}
+
+Detail.propTypes = {
+  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
+  id: PropTypes.number.isRequired
+}
+
+export default connect(mapStateToProps, null)(Detail)

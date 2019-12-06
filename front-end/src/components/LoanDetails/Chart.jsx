@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { VictoryChart, VictoryLine, VictoryScatter } from 'victory-native'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-const Chart = ({ loan }) => {
+const Chart = ({ loanList, id }) => {
   const [dataPair, setDataPair] = useState([])
+  const loan = loanList.find(loanItem => loanItem.id === id)
 
   useEffect(() => {
     if (loan.history) {
@@ -29,7 +31,7 @@ const Chart = ({ loan }) => {
         setDataPair(yearDataPair)
       }
     }
-  }, [loan])
+  })
 
   return loan.history ? (
     <View>
@@ -45,9 +47,12 @@ const Chart = ({ loan }) => {
 }
 
 Chart.propTypes = {
-  loan: PropTypes.shape({
-    history: PropTypes.array
-  }).isRequired
+  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
+  id: PropTypes.number.isRequired
 }
 
-export default Chart
+const mapStateToProps = state => {
+  return { loanList: state.loanList, id: state.detailLoanId }
+}
+
+export default connect(mapStateToProps, null)(Chart)
