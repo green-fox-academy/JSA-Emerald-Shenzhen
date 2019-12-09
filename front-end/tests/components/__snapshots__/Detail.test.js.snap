@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Detail /> <Detail > renders correctly 1`] = `
+exports[`<Detail /> <LoanDetails /> should render correctly 1`] = `
 <View
   style={
     Object {
@@ -54,7 +54,9 @@ exports[`<Detail /> <Detail > renders correctly 1`] = `
         ]
       }
       uppercase={false}
-    />
+    >
+      Student Loan
+    </Text>
     <Text
       style={
         Object {
@@ -65,7 +67,7 @@ exports[`<Detail /> <Detail > renders correctly 1`] = `
       }
       uppercase={false}
     >
-      Current Interest rate: undefined%
+      Current Interest rate: 0.03%
     </Text>
   </View>
   <View
@@ -95,7 +97,7 @@ exports[`<Detail /> <Detail > renders correctly 1`] = `
         }
         uppercase={false}
       >
-        $ 200
+        $ 3400
       </Text>
       <Text
         style={

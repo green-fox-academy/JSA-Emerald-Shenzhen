@@ -1,20 +1,27 @@
 import React from 'react'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
 import renderer from 'react-test-renderer'
-import { NavigationContext } from 'react-navigation'
+import configureStore from 'redux-mock-store'
+
+import data from '../../helpers/mockData_FE'
 import Detail from '../../src/components/LoanDetails/Detail'
 
-describe('<Detail />', () => {
-  it('<Detail > renders correctly', () => {
-    const mockGetParam = jest.fn()
-    mockGetParam.mockReturnValue({ id: 1, type: 'mockType', remaining: 200 })
+const mockStore = configureStore([thunk])
 
-    const tree = renderer
-      .create(
-        <NavigationContext.Provider value={{ getParam: mockGetParam }}>
-          <Detail />
-        </NavigationContext.Provider>
-      )
-      .toJSON()
-    expect(tree).toMatchSnapshot()
+describe('<Detail />', () => {
+  let store
+  let component
+  beforeEach(() => {
+    store = mockStore({ loanList: data.detailedLoans, detailLoanId: 1, loading: true })
+  })
+
+  it('<LoanDetails /> should render correctly', () => {
+    component = renderer.create(
+      <Provider store={store}>
+        <Detail />
+      </Provider>
+    )
+    expect(component.toJSON()).toMatchSnapshot()
   })
 })
