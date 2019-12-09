@@ -6,16 +6,14 @@ import { connect } from 'react-redux'
 import HistoryItem from './HistoryItem'
 import style from './HistoryStyle'
 
-const History = ({ loanList, id }) => {
-  const loan = loanList.find(loanItem => loanItem.id === id)
-
+const History = ({ loanHistory }) => {
   return (
     <View style={style.body}>
-      {loan.history ? (
+      {loanHistory ? (
         <>
           <Text style={style.title}>History</Text>
           <FlatList
-            data={loan.history}
+            data={loanHistory}
             renderItem={({ item }) => <HistoryItem historyItem={item} />}
             keyExtractor={(_, index) => index.toString()}
           />
@@ -30,12 +28,17 @@ const History = ({ loanList, id }) => {
 }
 
 History.propTypes = {
-  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
-  id: PropTypes.number.isRequired
+  loanHistory: PropTypes.arrayOf(PropTypes.any)
+}
+
+History.defaultProps = {
+  loanHistory: undefined
 }
 
 const mapStateToProps = state => {
-  return { loanList: state.loanList, id: state.detailLoanId }
+  return {
+    loanHistory: state.loanList.find(loanItem => loanItem.id === state.detailLoanId).history
+  }
 }
 
 export default connect(mapStateToProps, null)(History)

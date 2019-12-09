@@ -55,8 +55,7 @@ Chart.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    loanHistory: state.loanList.find(loanItem => loanItem.id === state.detailLoanId).history,
-    id: state.detailLoanId
+    loanHistory: state.loanList.find(loanItem => loanItem.id === state.detailLoanId).history
   }
 }
 
