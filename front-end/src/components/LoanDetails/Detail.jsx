@@ -20,7 +20,7 @@ const Detail = ({ loanList, id }) => {
       <Col style={style.col}>
         <Text style={style.id}>{`ID - ${id}`}</Text>
         <Text style={style.name}>{type.name}</Text>
-        <Text>{`Current Interest rate: ${type.interest}%`}</Text>
+        <Text>{`Current Interest rate: ${type.interest * 100}%`}</Text>
       </Col>
       <Col style={style.col}>
         <View>

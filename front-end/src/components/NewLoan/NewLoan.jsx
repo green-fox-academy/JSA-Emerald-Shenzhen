@@ -63,7 +63,7 @@ export default function NewLoan({ navigation }) {
                   navigation.navigate('ProductSelection')
                 }}
               >
-                <Input disabled placeholder={product ? product.name : ''} />
+                <Input disabled placeholder={product ? product.name : 'Please select a product'} />
                 <Icon
                   active
                   name={Platform.OS === 'ios' ? 'down' : 'caretdown'}

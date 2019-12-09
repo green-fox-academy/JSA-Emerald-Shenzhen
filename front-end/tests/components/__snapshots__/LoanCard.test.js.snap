@@ -103,7 +103,7 @@ exports[`<LoanCard /> <LoanCard /> should render correctly 1`] = `
         }
         uppercase={false}
       >
-        Current Interest rate: undefined%
+        Current Interest rate: NaN%
       </Text>
       <Text
         style={
