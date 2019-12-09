@@ -1,7 +1,6 @@
 const { selectLoansByUserId, selectAllProductModels } = require('./dbService')
 const dbService = require('./dbService')
 
-
 const postLoanBodyFields = ['productId', 'amount', 'duration', 'receivingAccount', 'payment']
 
 const getLoansWithProductsByUserId = async userId => {

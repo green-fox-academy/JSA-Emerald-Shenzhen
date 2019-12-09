@@ -12,6 +12,7 @@ const data = require('../../helpers/mockData_BE')
 
 jest.mock('../../services/loansService')
 loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: 'you have got a list of loans' })
+loanService.addLoan.mockReturnValue({ loanId: 1, status: 'granted' })
 
 describe('GET /loans', () => {
   commonAuthTest(request(app).get, '/loans')

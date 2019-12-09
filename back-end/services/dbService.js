@@ -17,12 +17,13 @@ dbService.selectAllProductModels = () => {
   return sqlPromise
 }
 dbService.addLoan = (userId, productId, remaining) => {
-  return dbService.getPromise(
-      'INSERT INTO loans (userId, productId, remaining) values (?, ?, ?)',
-      [userId, productId, remaining]
-  )
+  return dbService.getPromise('INSERT INTO loans (userId, productId, remaining) values (?, ?, ?)', [
+    userId,
+    productId,
+    remaining
+  ])
 }
-dbService.getPromise = (SQL, params=[]) => {
+dbService.getPromise = (SQL, params = []) => {
   return new Promise((resolve, reject) => {
     if (!this.pool) reject(new Error('connection missing'))
 
