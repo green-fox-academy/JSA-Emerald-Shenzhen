@@ -115,7 +115,7 @@ exports[`<LoanDetails /> <LoanDetails /> should render correctly 1`] = `
             }
             uppercase={false}
           >
-            mockType
+            Student Loan
           </Text>
           <Text
             style={
@@ -127,7 +127,7 @@ exports[`<LoanDetails /> <LoanDetails /> should render correctly 1`] = `
             }
             uppercase={false}
           >
-            Current Interest rate: undefined%
+            Current Interest rate: 0.03%
           </Text>
         </View>
         <View
@@ -157,7 +157,7 @@ exports[`<LoanDetails /> <LoanDetails /> should render correctly 1`] = `
               }
               uppercase={false}
             >
-              $ 200
+              $ 3400
             </Text>
             <Text
               style={
