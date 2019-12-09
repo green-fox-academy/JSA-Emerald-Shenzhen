@@ -14,7 +14,10 @@ export default function PayNow() {
   const [amount, setAmount] = useState('')
   const [date, setDate] = useState()
   const [selectedAccount, setSelectedAccount] = useState()
-  // const [toShowPopUpSection, setToShowPopUpSection] = useState(false)
+
+  const icon = (
+    <Icon active name="down" type="AntDesign" style={{ fontSize: 18, padding: 0, color: '#000' }} />
+  )
 
   const handleChangeText = value => {
     setAmount(value)
@@ -57,7 +60,7 @@ export default function PayNow() {
                 style={{ flex: 1, margin: 0 }}
                 mode="dropdown"
                 iosHeader="Select your Account"
-                iosIcon={<Icon name="arrow-dropdown-circle" />}
+                iosIcon={icon}
                 placeholder="Select your Account"
                 placeholderStyle={{ fontSize: 18, color: '#777777' }}
                 selectedValue={selectedAccount}

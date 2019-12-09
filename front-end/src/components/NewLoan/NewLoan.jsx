@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Container, Content, Icon, Form, Item, Input, Label, Card, Button, View } from 'native-base'
 import PropTypes from 'prop-types'
+import { Platform } from 'react-native'
 import calculateLoan from '../../services/calculateLoan'
 
 import style from './NewLoanStyle'
@@ -65,9 +66,9 @@ export default function NewLoan({ navigation }) {
                 <Input disabled placeholder={product ? product.name : ''} />
                 <Icon
                   active
-                  name="caretdown"
+                  name={Platform.OS === 'ios' ? 'down' : 'caretdown'}
                   type="AntDesign"
-                  style={{ fontSize: 12, padding: 0, color: '#000' }}
+                  style={{ fontSize: Platform.OS === 'ios' ? 18 : 8, padding: 0, color: '#000' }}
                 />
               </Button>
             </Card>
