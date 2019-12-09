@@ -5,10 +5,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 const Chart = ({ loanHistory }) => {
+  let mounted = true
   const [dataPair, setDataPair] = useState([])
 
   useEffect(() => {
-    if (loanHistory) {
+    if (mounted && loanHistory) {
       let isOneYear = true
       const year = parseInt(loanHistory[0].date, 10)
       loanHistory.forEach(histItem => {
@@ -30,9 +31,12 @@ const Chart = ({ loanHistory }) => {
         setDataPair(yearDataPair)
       }
     }
-  })
+    return () => {
+      mounted = false
+    }
+  }, [loanHistory])
 
-  return loanHistory ? (
+  return dataPair.length > 0 ? (
     <View>
       <VictoryChart height={250}>
         <VictoryLine
