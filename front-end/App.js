@@ -7,9 +7,10 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { Provider } from 'react-redux'
 
-import LoanList from './src/components/LoanList/LoanList'
-import NewLoan from './src/components/NewLoan/NewLoan'
 import MainPage from './src/components/MainPage/MainPage'
+import LoanList from './src/components/LoanList/LoanList'
+import PayNow from './src/components/PayNow/PayNow'
+import NewLoan from './src/components/NewLoan/NewLoan'
 import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
 import ProductSelection from './src/components/ProductSelection/ProductSelection'
 
@@ -19,6 +20,7 @@ const AppStack = createStackNavigator(
   {
     MainPage,
     LoanList,
+    PayNow,
     NewLoan,
     NewLoanDetail,
     ProductSelection

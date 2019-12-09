@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Content, Icon, Form, Item, Input, Label, Card, Picker, View } from 'native-base'
-import { TouchableOpacity } from 'react-native'
+import { Container, Content, Icon, Form, Item, Input, Label, Card, Button, View } from 'native-base'
 import PropTypes from 'prop-types'
 import calculateLoan from '../../services/calculateLoan'
 
@@ -10,64 +9,71 @@ import ProductDescription from './ProductDescription'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function NewLoan({ navigation }) {
-  const [amount, setAmount] = useState()
+  const [amount, setAmount] = useState('')
+  const [error, setError] = useState(false)
+  const [amountNum, setAmountNum] = useState(0)
 
-  let product
-  if (navigation && navigation.state.params) {
-    product = navigation.state.params.product
-  }
   const handlePress = () => {
     navigation.navigate('NewLoanDetail')
   }
 
-  let amountNum = 0
-  if (!Number.isNaN(Number(amount))) {
-    amountNum = Number(amount)
-  }
+  const product =
+    navigation && navigation.state.params ? navigation.state.params.product : undefined
 
-  let loan = {
-    monthly: 0,
-    interest: 0
-  }
-  if (product) {
-    loan = calculateLoan(amountNum, 6, product.interest) // todo change to real month number
-  }
+  const loan =
+    product !== undefined
+      ? calculateLoan(amountNum, 6, product.interest)
+      : {
+          monthly: 0,
+          interest: 0
+        }
 
   return (
     <Container>
       <Content style={style.newLoanContent}>
         <Form style={style.newLoanForm}>
-          <Item stackedLabel last>
-            <Label>How much do you need ?</Label>
-            <Input value={amount} onChangeText={setAmount} />
-          </Item>
-          <Card transparent style={style.newLoanCard}>
-            <Label style={style.cardLabel}>Selected Product</Label>
-            {/* Picker may need to extract */}
-            <Picker
-              mode="dropdown"
-              iosIcon={<Icon name="arrow-down" />}
-              placeholder="Please choose one product"
-              placeholderStyle={{ color: '#bfc6ea' }}
-              placeholderIconColor="#007aff"
-              style={{ marginLeft: 10, marginRight: 10 }}
-              selectedValue="productName"
-            >
-              {product && <Picker.Item label={product.name} value="productName" />}
-            </Picker>
-            <TouchableOpacity
-              style={{
-                width: '100%',
-                height: '50%',
-                position: 'absolute',
-                bottom: 0
-              }}
-              onPress={() => {
-                navigation.navigate('ProductSelection')
+          <Label style={style.fontLarger}>How much do you need ?</Label>
+          <Item error={error} style={{ marginRight: 20 }}>
+            <Icon style={{ fontSize: 30 }} name="dollar" type="FontAwesome" />
+            <Input
+              keyboardType="numeric"
+              autoFocus
+              style={{ fontSize: 38 }}
+              value={amount}
+              onChangeText={value => {
+                setAmount(value)
+                const isValue = !Number.isNaN(Number(value))
+                setAmountNum(isValue ? Number(value) : 0)
+                setError(!isValue)
               }}
             />
-          </Card>
-          <View style={{ display: product ? 'flex' : 'none' }}>
+            <Icon style={{ display: error ? 'flex' : 'none' }} name="close-circle" />
+          </Item>
+          <Label style={{ display: error ? 'flex' : 'none', color: 'red' }}>
+            * please enter correct number!
+          </Label>
+
+          <View style={{ display: !error && amountNum ? 'flex' : 'none' }}>
+            <Label style={style.cardLabel}>Selected Product</Label>
+            <Card transparent style={style.newLoanCard}>
+              <Button
+                transparent
+                onPress={() => {
+                  navigation.navigate('ProductSelection')
+                }}
+              >
+                <Input disabled placeholder={product ? product.name : ''} />
+                <Icon
+                  active
+                  name="caretdown"
+                  type="AntDesign"
+                  style={{ fontSize: 12, padding: 0, color: '#000' }}
+                />
+              </Button>
+            </Card>
+          </View>
+
+          <View style={{ display: !error && product ? 'flex' : 'none' }}>
             <Item stackedLabel last>
               <Label>Duration</Label>
               <Item disabled>
@@ -77,7 +83,7 @@ export default function NewLoan({ navigation }) {
             </Item>
           </View>
         </Form>
-        <View style={{ display: product ? 'flex' : 'none' }}>
+        <View style={{ display: !error && product ? 'flex' : 'none' }}>
           <ProductDescription rate={product ? product.interest : 0} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>

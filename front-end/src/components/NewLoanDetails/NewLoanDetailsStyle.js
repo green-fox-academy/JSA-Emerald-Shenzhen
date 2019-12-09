@@ -14,7 +14,7 @@ const style = StyleSheet.create({
     borderBottomWidth: 1
   },
   pickerItem: {
-    fontSize: 30
+    fontSize: 20
   },
   downTipView: {
     backgroundColor: '#E8EAF6',
