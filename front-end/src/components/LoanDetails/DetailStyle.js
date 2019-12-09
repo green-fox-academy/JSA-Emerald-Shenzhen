@@ -1,25 +1,28 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-  up: {
-    backgroundColor: '#E3F2FD'
+  body: {
+    backgroundColor: '#E3F2FD',
+    height: 120,
+    padding: 15
+  },
+  col: {
+    justifyContent: 'space-between'
   },
   id: {
     fontSize: 18,
-    marginTop: 10,
     color: '#7A7A7A'
   },
-  type: {
-    marginTop: 10,
+  name: {
     fontSize: 32,
     color: '#5A5C60'
   },
-  price: {
+  remaining: {
     fontSize: 36,
     color: '#FC815E',
     alignSelf: 'flex-end'
   },
-  remaining: {
+  remainingText: {
     paddingRight: 5,
     fontSize: 12,
     alignSelf: 'flex-end',

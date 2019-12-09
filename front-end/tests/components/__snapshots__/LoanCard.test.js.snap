@@ -1,35 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
+exports[`<LoanCard /> <LoanCard /> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "backgroundColor": "#fff",
-        "borderBottomWidth": 0.5,
-        "borderColor": "#ccc",
-        "borderLeftWidth": 0.5,
-        "borderRadius": 2,
-        "borderRightWidth": 0.5,
-        "borderTopWidth": 0.5,
-        "elevation": 3,
-        "flexWrap": "nowrap",
-        "marginBottom": 5,
-        "marginLeft": 2,
-        "marginRight": 2,
-        "marginTop": 5,
-        "shadowColor": "#000",
-        "shadowOffset": Object {
-          "height": 2,
-          "width": 0,
-        },
-        "shadowOpacity": 0.1,
-        "shadowRadius": 1.5,
+    Object {
+      "backgroundColor": "#fff",
+      "borderBottomWidth": 0.5,
+      "borderColor": "#ccc",
+      "borderLeftWidth": 0.5,
+      "borderRadius": 2,
+      "borderRightWidth": 0.5,
+      "borderTopWidth": 0.5,
+      "elevation": 3,
+      "flexWrap": "nowrap",
+      "marginBottom": 5,
+      "marginLeft": 2,
+      "marginRight": 2,
+      "marginTop": 5,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
       },
-      Object {
-        "flex": 0,
-      },
-    ]
+      "shadowOpacity": 0.1,
+      "shadowRadius": 1.5,
+    }
   }
 >
   <View
@@ -77,8 +72,7 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         }
         uppercase={false}
       >
-        ID
-        132465
+        ID - 1
       </Text>
       <Text
         style={
@@ -97,7 +91,7 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         }
         uppercase={false}
       >
-        Student Loan
+        mockType
       </Text>
       <Text
         style={
@@ -109,7 +103,7 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         }
         uppercase={false}
       >
-        Current Interest rate: 0.03%
+        Current Interest rate: undefined%
       </Text>
       <Text
         style={
@@ -128,7 +122,7 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         }
         uppercase={false}
       >
-        $ 3400
+        $ 200
       </Text>
       <Text
         style={
@@ -176,20 +170,36 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         }
       }
     >
-      <Text
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignSelf": "center",
-            "color": "#000",
-            "fontFamily": "System",
-            "fontSize": 16,
-            "marginLeft": 10,
+            "opacity": 1,
           }
         }
-        uppercase={false}
       >
-        DETAILS
-      </Text>
+        <Text
+          style={
+            Object {
+              "alignSelf": "center",
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 16,
+              "marginLeft": 10,
+            }
+          }
+          uppercase={false}
+        >
+          DETAILS
+        </Text>
+      </View>
     </View>
     <View
       style={
@@ -212,59 +222,34 @@ exports[`<LoanHome /> <LoanList > renders correctly 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "alignSelf": null,
-            "backgroundColor": "transparent",
-            "borderBottomWidth": null,
-            "borderColor": "#007aff",
-            "borderLeftWidth": null,
-            "borderRadius": 5,
-            "borderRightWidth": null,
-            "borderTopWidth": null,
-            "borderWidth": undefined,
-            "elevation": 0,
             "flexDirection": "row",
-            "height": 45,
-            "justifyContent": "space-between",
+            "justifyContent": "flex-end",
             "opacity": 1,
-            "paddingBottom": null,
-            "paddingLeft": null,
-            "paddingRight": null,
-            "paddingTop": null,
-            "shadowColor": null,
-            "shadowOffset": null,
-            "shadowOpacity": null,
-            "shadowRadius": null,
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "left": -10,
-              "position": "absolute",
+              "alignItems": "center",
+              "backgroundColor": "black",
+              "borderRadius": 20,
+              "height": 21,
+              "marginRight": 8,
+              "width": 21,
             }
           }
-        />
+        >
+          <Text />
+        </View>
         <Text
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "color": "#007aff",
-                "fontFamily": "System",
-                "fontSize": 13,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-              },
-              Object {
-                "color": "#000",
-                "margin": 0,
-                "paddingLeft": 20,
-              },
-            ]
+            Object {
+              "alignSelf": null,
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 15,
+            }
           }
           uppercase={false}
         >

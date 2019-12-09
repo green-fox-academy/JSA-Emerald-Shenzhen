@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoanDetails /> <LoanDetails /> should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+>
+  <RCTScrollView
+    automaticallyAdjustContentInsets={false}
+    contentContainerStyle={
+      Array [
+        Object {
+          "padding": undefined,
+        },
+        undefined,
+      ]
+    }
+    contentInset={
+      Object {
+        "bottom": 0,
+      }
+    }
+    enableAutomaticScroll={true}
+    enableOnAndroid={false}
+    enableResetScrollToCoords={true}
+    extraHeight={75}
+    extraScrollHeight={0}
+    getScrollResponder={[Function]}
+    handleOnScroll={[Function]}
+    keyboardDismissMode="interactive"
+    keyboardOpeningTime={250}
+    keyboardShouldPersistTaps="handled"
+    keyboardSpace={0}
+    onScroll={[Function]}
+    resetKeyboardSpace={[Function]}
+    resetScrollToCoords={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    scrollEventThrottle={1}
+    scrollForExtraHeightOnAndroid={[Function]}
+    scrollIntoView={[Function]}
+    scrollToEnd={[Function]}
+    scrollToFocusedInput={[Function]}
+    scrollToPosition={[Function]}
+    showsVerticalScrollIndicator={true}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "flex": 1,
+      }
+    }
+    update={[Function]}
+    viewIsInsideTabBar={false}
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#E3F2FD",
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 120,
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#000",
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                },
+                Object {
+                  "color": "#7A7A7A",
+                  "fontSize": 18,
+                },
+              ]
+            }
+            uppercase={false}
+          >
+            ID - 1
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#000",
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                },
+                Object {
+                  "color": "#5A5C60",
+                  "fontSize": 32,
+                },
+              ]
+            }
+            uppercase={false}
+          >
+            Student Loan
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#000",
+                "fontFamily": "System",
+                "fontSize": 16,
+              }
+            }
+            uppercase={false}
+          >
+            Current Interest rate: 0.03%
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                  },
+                  Object {
+                    "alignSelf": "flex-end",
+                    "color": "#FC815E",
+                    "fontSize": 36,
+                  },
+                ]
+              }
+              uppercase={false}
+            >
+              $ 3400
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                  },
+                  Object {
+                    "alignSelf": "flex-end",
+                    "color": "#7A7A7A",
+                    "fontSize": 12,
+                    "paddingRight": 5,
+                  },
+                ]
+              }
+              uppercase={false}
+            >
+              remaining
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "flex-end",
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "black",
+                  "borderRadius": 20,
+                  "height": 21,
+                  "marginRight": 8,
+                  "width": 21,
+                }
+              }
+            >
+              <Text />
+            </View>
+            <Text
+              style={
+                Object {
+                  "color": "#000",
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                }
+              }
+              uppercase={false}
+            >
+              PAY NOW
+            </Text>
+          </View>
+        </View>
+      </View>
+      <ActivityIndicator
+        animating={true}
+        color="blue"
+        hidesWhenStopped={true}
+        size="large"
+        style={
+          Object {
+            "height": 80,
+          }
+        }
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;
