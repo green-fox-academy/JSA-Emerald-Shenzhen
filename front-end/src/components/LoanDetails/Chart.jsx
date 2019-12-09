@@ -36,7 +36,7 @@ const Chart = ({ loanHistory }) => {
     }
   }, [loanHistory])
 
-  return loanHistory ? (
+  return dataPair.length > 0 ? (
     <View>
       <VictoryChart height={250}>
         <VictoryLine
