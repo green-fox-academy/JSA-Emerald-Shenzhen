@@ -31,7 +31,7 @@ function LoadCard({ loan, setId }) {
         <Body>
           <Text style={style.id}>{`ID - ${id}`}</Text>
           <Text style={style.type}>{type.name}</Text>
-          <Text style={style.interest}>{`Current Interest rate: ${type.interest * 100}%`}</Text>
+          <Text style={style.interest}>{`Current Interest rate: ${type.interest}%`}</Text>
           <Text style={style.price}>{`$ ${remaining}`}</Text>
           <Text style={style.remaining}>remaining</Text>
         </Body>
