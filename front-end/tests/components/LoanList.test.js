@@ -14,7 +14,7 @@ describe('<LoanList />', () => {
   let component
   let payloads
   beforeEach(() => {
-    store = mockStore({ loanList: data.loans, loading: 'LOANS' })
+    store = mockStore({ loanList: data.loans, loading: 'DONE' })
 
     payloads = [
       {
@@ -43,7 +43,7 @@ describe('<LoanList />', () => {
   })
 
   it('<LoanList /> has 2 child', () => {
-    expect(component.toJSON().children.length).toBe(1)
+    expect(component.toJSON().children.length).toBe(2)
   })
 
   it('<LoanList /> should dispatch an action when mounted', async () => {

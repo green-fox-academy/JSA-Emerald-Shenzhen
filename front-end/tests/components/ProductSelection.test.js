@@ -15,7 +15,7 @@ describe('<ProductSelection />', () => {
   let payloads
 
   beforeEach(() => {
-    store = mockStore({ productList: data.products, loading: 'PRODUCTS' })
+    store = mockStore({ productList: data.products, loading: 'DONE' })
     payloads = [
       {
         type: ACTION_TYPE.LOADING
