@@ -21,7 +21,7 @@ function LoanList({ loanList, loading, fetchData }) {
   }, [])
   return (
     <Container>
-      {loading ? (
+      {loading === 'LOANS' ? (
         <Spinner color="blue" />
       ) : (
         <>
@@ -61,6 +61,6 @@ LoanList.navigationOptions = {
 LoanList.propTypes = {
   loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
   fetchData: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.string.isRequired
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoanList)

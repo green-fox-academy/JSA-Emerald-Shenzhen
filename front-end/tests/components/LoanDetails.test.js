@@ -13,7 +13,7 @@ const mockStore = configureStore([thunk])
 describe('<LoanDetails />', () => {
   let component
   let payloads
-  const store = mockStore({ detailLoanId: 1, loanList: data.detailedLoans, loading: true })
+  const store = mockStore({ detailLoanId: 1, loanList: data.detailedLoans, loading: 'DONE' })
   beforeEach(() => {
     payloads = [
       {
@@ -54,7 +54,7 @@ describe('<LoanDetails />', () => {
     })
 
     // eslint-disable-next-line no-undef
-    globalThis.fetch = jest.fn().mockImplementation(() =>
+    window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({})
       })

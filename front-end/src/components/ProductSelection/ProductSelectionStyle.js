@@ -4,7 +4,7 @@ const common = {
   context: {
     display: 'flex',
     flexDirection: 'row',
-    width: '70%'
+    width: '75%'
   },
   title: {
     fontWeight: 'bold'
