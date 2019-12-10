@@ -16,22 +16,23 @@ export default function NewLoan({ navigation }) {
 
   const product = navigation.getParam('selectedProduct')
 
-  const handlePress = () => {
-    console.log({ productId: product.id, amount, duration: product.duration })
-    navigation.navigate('NewLoanDetail', {
-      productId: product.id,
-      amount,
-      duration: product.duration
-    })
-  }
 
   const loan =
     product !== undefined
       ? calculateLoan(amountNum, 60, product.interest / 100)
       : {
-          monthly: 0,
-          interest: 0
-        }
+        monthly: 0,
+        interest: 0
+      }
+
+  const handlePress = () => {
+    navigation.navigate('NewLoanDetail', {
+      productId: product.id,
+      amount,
+      duration: product.duration,
+      monthlyPay: loan.monthly
+    })
+  }
 
   return (
     <Container>

@@ -11,10 +11,17 @@ export default function NewLoanDetails({ navigation }) {
   const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0])
 
   const amount = navigation.getParam('amount')
+  const monthlyPay = navigation.getParam('monthlyPay')
 
   const handlePress = () => {
-    // eslint-disable-next-line no-undef
-    alert('oh shit!! you pressed me!!')
+    navigation.navigate('LoanList', {
+      productId: navigation.getParam('productId'),
+      amount: navigation.getParam('amount'),
+      duration: navigation.getParam('duration'),
+      monthlyPay: navigation.getParam('monthlyPay'),
+      receivingAccount: navigation.getParam('receivingAccount'),
+      defaultPayment: navigation.getParam('defaultPayment')
+    })
   }
   return (
     <Container>
@@ -22,14 +29,14 @@ export default function NewLoanDetails({ navigation }) {
         <View style={style.upDetailsView}>
           <Text style={style.amountFont}>{`$ ${amount}`}</Text>
           <Text style={style.transactionFont}>will be added to your</Text>
-          <Text style={style.selectionTitle}>Receiving amount</Text>
+          <Text style={style.selectionTitle}>Receiving account</Text>
           <LoanPickers
             selected={receivingAccount}
             setSelected={setreceivingAccount}
             itemList={data.receivingAccount}
           />
           <Text style={style.transactionFont}>and you will pay</Text>
-          <Text style={style.amountFont}>$ 86.84</Text>
+          <Text style={style.amountFont}>{`$ ${monthlyPay.toFixed(2)}`}</Text>
           <Text style={style.selectionTitle}>Default Payment</Text>
           <LoanPickers
             selected={defaultPayment}
