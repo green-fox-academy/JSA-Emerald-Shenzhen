@@ -23,7 +23,7 @@ export default function NewLoan({ navigation }) {
 
   const loan =
     product !== undefined
-      ? calculateLoan(amountNum, 6, product.interest / 100)
+      ? calculateLoan(amountNum, 60, product.interest / 100)
       : {
           monthly: 0,
           interest: 0
