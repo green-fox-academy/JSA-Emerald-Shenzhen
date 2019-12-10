@@ -54,7 +54,7 @@ describe('<LoanDetails />', () => {
     })
 
     // eslint-disable-next-line no-undef
-    globalThis.fetch = jest.fn().mockImplementation(() =>
+    window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({})
       })

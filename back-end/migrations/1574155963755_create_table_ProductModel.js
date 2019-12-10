@@ -1,4 +1,4 @@
-const createTableSql = `CREATE TABLE products (
+const createTableSql = `CREATE TABLE IF NOT EXISTS products (
   id INT NOT NULL AUTO_INCREMENT,
   slug VARCHAR(50) NOT NULL, 
   name VARCHAR(50) NOT NULL,
