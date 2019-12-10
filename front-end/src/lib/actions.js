@@ -13,9 +13,6 @@ const ACTION_TYPE = {
 }
 
 async function fetchData(url) {
-  console.log(URL)
-  console.log(`Outside fetchData return : ${Object.entries(URL)}`)
-  console.log(`Outside fetchData return : ${URL.getProducts}`)
   return fetch(url, {
     headers: { Authentication: 'Bearer token', Accept: 'application/json' }
   }).then(res => res.json())
@@ -38,15 +35,11 @@ function fetchLoanList() {
 }
 
 function fetchProductList() {
-  console.log(`Outside fetchProductList try : ${Object.entries(URL)}`)
-  console.log(`Outside fetchProductList try : ${URL.getProducts}`)
   return async dispatch => {
     dispatch({ type: ACTION_TYPE.LOADING })
     dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST })
 
     try {
-      console.log(`Inside fetchProductList try : ${Object.entries(URL)}`)
-      console.log(`Inside fetchProductList try : ${URL.getProducts}`)
       const data = await fetchData(URL.getProducts)
       dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST_SUCCESS, productList: data })
       dispatch({ type: ACTION_TYPE.LOADDONE })

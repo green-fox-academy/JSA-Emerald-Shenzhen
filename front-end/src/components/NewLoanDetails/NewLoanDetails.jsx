@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Text, View, Content, Icon, Container } from 'native-base'
 import style from './NewLoanDetailsStyle'
 import LoanPickers from './LoanPickers'
 import data from '../../../helpers/mockData_FE'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
-export default function NewLoanDetails() {
+export default function NewLoanDetails({ navigation }) {
   const [receivingAccount, setreceivingAccount] = useState(data.receivingAccount[0])
   const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0])
+
+  const amount = navigation.getParam('amount')
+
   const handlePress = () => {
     // eslint-disable-next-line no-undef
     alert('oh shit!! you pressed me!!')
@@ -16,7 +20,7 @@ export default function NewLoanDetails() {
     <Container>
       <Content style={style.content}>
         <View style={style.upDetailsView}>
-          <Text style={style.amountFont}>$ 5000</Text>
+          <Text style={style.amountFont}>{`$ ${amount}`}</Text>
           <Text style={style.transactionFont}>will be added to your</Text>
           <Text style={style.selectionTitle}>Receiving amount</Text>
           <LoanPickers
@@ -51,4 +55,12 @@ export default function NewLoanDetails() {
 }
 NewLoanDetails.navigationOptions = {
   title: 'New Loan Details'
+}
+
+NewLoanDetails.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any)
+}
+
+NewLoanDetails.defaultProps = {
+  navigation: undefined
 }

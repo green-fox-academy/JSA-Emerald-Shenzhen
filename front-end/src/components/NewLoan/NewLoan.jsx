@@ -14,20 +14,24 @@ export default function NewLoan({ navigation }) {
   const [error, setError] = useState(false)
   const [amountNum, setAmountNum] = useState(0)
 
-  const handlePress = () => {
-    navigation.navigate('NewLoanDetail')
-  }
+  const product = navigation.getParam('selectedProduct')
 
-  const product =
-    navigation && navigation.state.params ? navigation.state.params.product : undefined
+  const handlePress = () => {
+    console.log({ productId: product.id, amount, duration: product.duration })
+    navigation.navigate('NewLoanDetail', {
+      productId: product.id,
+      amount,
+      duration: product.duration
+    })
+  }
 
   const loan =
     product !== undefined
       ? calculateLoan(amountNum, 6, product.interest / 100)
       : {
-          monthly: 0,
-          interest: 0
-        }
+        monthly: 0,
+        interest: 0
+      }
 
   return (
     <Container>
@@ -89,11 +93,13 @@ export default function NewLoan({ navigation }) {
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>
       </Content>
-      <FloatingButton
-        icon={{ type: 'Ionicons', name: 'md-arrow-forward' }}
-        text="Next"
-        handlePress={handlePress}
-      />
+      <View style={{ display: !error && product ? 'flex' : 'none' }}>
+        <FloatingButton
+          icon={{ type: 'Ionicons', name: 'md-arrow-forward' }}
+          text="Next"
+          handlePress={handlePress}
+        />
+      </View>
     </Container>
   )
 }

@@ -8,7 +8,7 @@ export default function ProductCard({ product, isExtend }) {
   const navigation = useContext(NavigationContext)
 
   function handleSelectClick() {
-    navigation.navigate('NewLoan', { product })
+    navigation.navigate('NewLoan', { selectedProduct: product })
   }
 
   const { name, description } = product
