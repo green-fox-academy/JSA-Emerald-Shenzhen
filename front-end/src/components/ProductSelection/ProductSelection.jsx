@@ -18,25 +18,25 @@ function ProductSelection({ productList, loading, fetchData }) {
       {loading ? (
         <Spinner color="blue" />
       ) : (
-          <Content>
-            <ScrollView>
-              {productList.map((product, sid) => {
-                return (
-                  <TouchableWithoutFeedback
-                    key={product.id}
-                    onPress={() => {
-                      setSelectId(sid)
-                    }}
-                  >
-                    <View>
-                      <ProductCard isExtend={sid === selectId} product={product} />
-                    </View>
-                  </TouchableWithoutFeedback>
-                )
-              })}
-            </ScrollView>
-          </Content>
-        )}
+        <Content>
+          <ScrollView>
+            {productList.map((product, sid) => {
+              return (
+                <TouchableWithoutFeedback
+                  key={product.id}
+                  onPress={() => {
+                    setSelectId(sid)
+                  }}
+                >
+                  <View>
+                    <ProductCard isExtend={sid === selectId} product={product} />
+                  </View>
+                </TouchableWithoutFeedback>
+              )
+            })}
+          </ScrollView>
+        </Content>
+      )}
     </Container>
   )
 }
