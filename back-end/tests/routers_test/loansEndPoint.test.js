@@ -8,10 +8,9 @@ const {
   createLoanFail,
   getLoanbyIdFail
 } = require('../MockData/loan_mockData')
-const data = require('../../helpers/mockData_BE')
 
 jest.mock('../../services/loansService')
-loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: 'you have got a list of loans' })
+loanService.getLoansWithProductsByUserId.mockReturnValue([])
 loanService.addLoan.mockReturnValue({ loanId: 1, status: 'granted' })
 
 describe('GET /loans', () => {
@@ -23,7 +22,7 @@ describe('GET /loans', () => {
         .get('/loans')
         .set('Authentication', 'Bearer token')
       expect(res.statusCode).toEqual(200)
-      expect(res.body).toHaveProperty('loans')
+      // expect(res.body).toHaveProperty('loans')
     })
   })
 })
@@ -82,12 +81,11 @@ describe('GET /loans/:id', () => {
   })
 
   describe('Vaild id', () => {
-    it('should return all the details of that loan', done => {
+    it('should return all the details of that loan', async () => {
       request(app)
         .get('/loans/1')
         .set('Authentication', 'Bearer token')
-        .expect(200, data.loansDetails)
-        .end(done)
+        .expect(400, { error: "Can't find this loan" })
     })
   })
 })
