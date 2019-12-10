@@ -34,10 +34,10 @@ module.exports = {
   WHEN 4 THEN 10
   END,
   title = CASE id
-  WHEN 1 THEN '3% yearly interest rate'
-  WHEN 2 THEN '20% monthly interest rate'
-  WHEN 3 THEN '15% daily interest rate'
-  WHEN 4 THEN '10% yearly interest rate'
+  WHEN 1 THEN '3% interest, applied yearly'
+  WHEN 2 THEN '20% interest, applied monthly'
+  WHEN 3 THEN '15% interest, applied daily'
+  WHEN 4 THEN '10% interest, applied yearly'
   END
   WHERE id IN (1,2,3,4);`,
   down: 'SELECT * FROM products;'

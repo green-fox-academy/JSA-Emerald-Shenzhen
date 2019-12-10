@@ -85,7 +85,7 @@ export default function NewLoan({ navigation }) {
           </View>
         </Form>
         <View style={{ display: !error && product ? 'flex' : 'none' }}>
-          <ProductDescription rate={product ? product.interest : 0} />
+          <ProductDescription title={product ? product.title : ''} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>
       </Content>

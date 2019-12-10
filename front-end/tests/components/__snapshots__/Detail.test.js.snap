@@ -67,7 +67,7 @@ exports[`<Detail /> <LoanDetails /> should render correctly 1`] = `
       }
       uppercase={false}
     >
-      Current Interest rate: 3%
+      Current Interest rate: 0.03%
     </Text>
   </View>
   <View
