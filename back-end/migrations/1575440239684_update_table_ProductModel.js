@@ -18,5 +18,5 @@ module.exports = {
   WHEN 4 THEN 'Secured'
   END
   WHERE id IN (1,2,3,4);`,
-  down: ''
+  down: ';'
 }

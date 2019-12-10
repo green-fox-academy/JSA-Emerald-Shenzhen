@@ -4,19 +4,17 @@ import { Provider } from 'react-redux'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
 
-import LoanCard from '../../src/components/LoanList/LoanCard/LoanCard'
+import data from '../../helpers/mockData_FE'
+import History from '../../src/components/LoanDetails/History'
 
 const mockStore = configureStore([thunk])
 
-describe('<LoanCard />', () => {
-  it('<LoanCard /> should render correctly', () => {
-    const setId = jest.fn()
-    const store = mockStore({ setId })
-    const loan = { id: 1, type: { name: 'mockType' }, remaining: 200 }
-
+describe('<History />', () => {
+  it('<History /> should render correctly', () => {
+    const store = mockStore({ loanList: data.detailedLoans, detailLoanId: 1 })
     const component = renderer.create(
       <Provider store={store}>
-        <LoanCard loan={loan} />
+        <History />
       </Provider>
     )
     expect(component.toJSON()).toMatchSnapshot()

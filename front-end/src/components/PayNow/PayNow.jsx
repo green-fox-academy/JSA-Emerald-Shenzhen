@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { NavigationContext } from 'react-navigation'
-import { View, Text } from 'react-native'
-import { Container, Content, Form, Input, Item, Label, Icon, Picker } from 'native-base'
-
+import { View } from 'react-native'
+import { Container, DatePicker, Content, Form, Input, Item, Label, Icon, Picker } from 'native-base'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function PayNow() {
@@ -11,19 +10,19 @@ export default function PayNow() {
     navigation.navigate('')
   }
 
-  const [amount, setAmount] = useState()
-  const [toShowPopUpSection, setToShowPopUpSection] = useState(false)
-
-  const handleChangeText = text => {
-    setAmount(text)
-    if (text.length >= 1 && !Number.isNaN(Number(text))) {
-      setToShowPopUpSection(true)
-    } else {
-      setToShowPopUpSection(false)
-    }
-  }
-
+  const [error, setError] = useState(false)
+  const [amount, setAmount] = useState('')
+  const [date, setDate] = useState()
   const [selectedAccount, setSelectedAccount] = useState()
+
+  const icon = (
+    <Icon active name="down" type="AntDesign" style={{ fontSize: 18, padding: 0, color: '#000' }} />
+  )
+
+  const handleChangeText = value => {
+    setAmount(value)
+    setError(!value || Number.isNaN(Number(value)))
+  }
 
   const selectAnAccount = value => {
     setSelectedAccount(value)
@@ -31,54 +30,63 @@ export default function PayNow() {
 
   return (
     <Container>
-      <Content>
+      <Content style={{ padding: 15 }}>
         <Form style={{ marginRight: 20 }}>
-          <Item stackedLabel>
-            <Label style={{ fontSize: 35 }}>How much to pay ?</Label>
-            <View
-              style={{ display: 'flex', flexDirection: 'row', marginLeft: 10, marginRight: 10 }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  marginRight: 5,
-                  textAlignVertical: 'center',
-                  textAlign: 'center'
-                }}
-              >
-                $
-              </Text>
-              <Input
-                placeholder="500"
-                placeholderTextColor="#ABABAB"
-                keyboardType="numeric"
-                value={amount}
-                onChangeText={text => handleChangeText(text)}
-                autoFocus
-              />
-            </View>
+          <Label style={{ fontSize: 35 }}>How much to pay ?</Label>
+          <Item error={error}>
+            <Icon style={{ fontSize: 30 }} name="dollar" type="FontAwesome" />
+            <Input
+              style={{ fontSize: 38 }}
+              placeholderTextColor="#ABABAB"
+              keyboardType="numeric"
+              value={amount}
+              onChangeText={handleChangeText}
+              autoFocus
+            />
+            <Icon style={{ display: error ? 'flex' : 'none' }} name="close-circle" />
           </Item>
-          <View style={{ display: toShowPopUpSection ? 'flex' : 'none' }}>
-            <Item stackedLabel>
-              <Label style={{ fontSize: 20, marginBottom: 20, marginTop: 10 }}>
-                Account to pay from
-              </Label>
+          <Label style={{ display: error ? 'flex' : 'none', color: 'red' }}>
+            * please enter correct number!
+          </Label>
+          <View
+            style={{
+              width: '100%',
+              display: !error && amount ? 'flex' : 'none'
+            }}
+          >
+            <Label style={{ fontSize: 20, marginTop: 10 }}>Account to pay from</Label>
+            <View style={{ borderBottomColor: '#E3E3E3', borderBottomWidth: 1, marginLeft: 10 }}>
               <Picker
+                style={{ flex: 1, margin: 0 }}
                 mode="dropdown"
-                iosHeader="Select your SIM"
-                iosIcon={<Icon name="arrow-down" />}
-                style={{ width: '100%' }}
+                iosHeader="Select your Account"
+                iosIcon={icon}
+                placeholder="Select your Account"
+                placeholderStyle={{ fontSize: 18, color: '#777777' }}
                 selectedValue={selectedAccount}
-                onValueChange={itemValue => selectAnAccount(itemValue)}
+                onValueChange={selectAnAccount}
               >
                 <Picker.Item label="Main account" value="Main account" />
                 <Picker.Item label="Savings account" value="Savings account" />
                 <Picker.Item label="Investment account" value="Investment account" />
               </Picker>
-            </Item>
-            <Item stackedLabel>
-              <Label style={{ fontSize: 20, marginBottom: 20, marginTop: 10 }}>When</Label>
-              <Input placeholder="Now" placeholderTextColor="#ABABAB" />
+            </View>
+            <Label style={{ fontSize: 20, marginTop: 10 }}>When</Label>
+            <Item>
+              <DatePicker
+                defaultDate={date}
+                minimumDate={new Date()}
+                maximumDate={new Date(2020, 12, 12)}
+                locale="en"
+                onDateChange={setDate}
+                modalTransparent={false}
+                animationType="fade"
+                androidMode="default"
+                placeHolderText="Tap to select a date"
+                textStyle={{ fontSize: 18, color: '#777777' }}
+                placeHolderTextStyle={{ fontSize: 18, color: '#777777' }}
+                disabled={false}
+              />
             </Item>
           </View>
         </Form>

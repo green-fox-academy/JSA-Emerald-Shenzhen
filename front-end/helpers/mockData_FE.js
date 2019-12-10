@@ -20,27 +20,27 @@ const data = {
         duration: '5 years fixed',
         interest: 0.03
       },
-      remaining: 3400
+      remaining: 1000
     },
     {
       id: 3,
       type: {
-        id: 132465,
+        id: 333,
         slug: 'student',
         name: 'Student Loan',
         duration: '5 years fixed',
-        interest: 0.03
+        interest: 0.05
       },
-      remaining: 3400
+      remaining: 2000
     },
     {
       id: 4,
       type: {
-        id: 132465,
+        id: 555,
         slug: 'student',
         name: 'Student Loan',
         duration: '5 years fixed',
-        interest: 0.03
+        interest: 0.04
       },
       remaining: 3400
     }
@@ -123,6 +123,46 @@ const data = {
       id: 4,
       label: 'Quarterly from Main Deposit',
       value: 'quarter'
+    }
+  ],
+  detailedLoans: [
+    {
+      id: 1,
+      type: {
+        id: 1,
+        slug: 'student',
+        name: 'Student Loan',
+        duration: '5 years fixed',
+        interest: 0.03
+      },
+      remaining: 3400,
+      history: [
+        {
+          date: '2019-11-22',
+          text: '$900 payment received',
+          type: 'payment',
+          amount: -900,
+          remaining: 3400
+        },
+        {
+          date: '2019-01-03',
+          text: '2018 yearly interest $125',
+          type: 'interest',
+          amount: 125,
+          remaining: 4300
+        }
+      ]
+    },
+    {
+      id: 2,
+      type: {
+        id: 132465,
+        slug: 'student',
+        name: 'Student Loan',
+        duration: '5 years fixed',
+        interest: 0.03
+      },
+      remaining: 1000
     }
   ]
 }

@@ -1,50 +1,68 @@
 import React, { useContext } from 'react'
 import { NavigationContext } from 'react-navigation'
 import PropTypes from 'prop-types'
-import { Image } from 'react-native'
-import { Card, CardItem, Text, Button, Left, Body, Right } from 'native-base'
+import { View, TouchableOpacity } from 'react-native'
+import { Card, CardItem, Text, Left, Body, Right, Icon } from 'native-base'
+import { connect } from 'react-redux'
+
 import style from './LoanCardStyle'
+import { setDetailId } from '../../../lib/actions'
 
-const source = require('../../../../assets/doller.png')
-
-function LoadCard({ loan }) {
+function LoadCard({ loan, setId }) {
+  const { id, type, remaining } = loan
   const navigation = useContext(NavigationContext)
 
+  const goLoanDetails = () => {
+    setId(id)
+    navigation.navigate('LoanDetails', {
+      transition: 'collapseExpand'
+    })
+  }
+
+  const goPayNow = () => {
+    navigation.navigate('PayNow', {
+      transition: 'collapseExpand'
+    })
+  }
+
   return (
-    <Card style={{ flex: 0 }}>
-      <CardItem style={style.loanCardUpPart}>
+    <Card>
+      <CardItem style={style.up}>
         <Body>
-          <Text style={style.loanId}>
-            ID
-            {loan.type.id}
-          </Text>
-          <Text style={style.loanType}>{loan.type.name}</Text>
-          <Text style={style.interest}>{`Current Interest rate: ${loan.type.interest}%`}</Text>
-          <Text style={style.loanPrice}>{`$ ${loan.remaining}`}</Text>
-          <Text style={style.loanRemaining}>remaining</Text>
+          <Text style={style.id}>{`ID - ${id}`}</Text>
+          <Text style={style.type}>{type.name}</Text>
+          <Text style={style.interest}>{`Current Interest rate: ${type.interest}%`}</Text>
+          <Text style={style.price}>{`$ ${remaining}`}</Text>
+          <Text style={style.remaining}>remaining</Text>
         </Body>
       </CardItem>
       <CardItem>
         <Left>
-          <Text>DETAILS</Text>
+          <TouchableOpacity onPress={goLoanDetails}>
+            <Text>DETAILS</Text>
+          </TouchableOpacity>
         </Left>
         <Right>
-          <Button
-            transparent
-            onPress={() => {
-              navigation.navigate('PayNow')
-            }}
-          >
-            <Image style={style.payNowButtonImg} source={source} />
-            <Text style={style.payNowButtonText}>PAY NOW</Text>
-          </Button>
+          <TouchableOpacity style={style.button} onPress={goPayNow}>
+            <View style={style.circle}>
+              <Icon type="FontAwesome" name="dollar" style={style.dollar} />
+            </View>
+            <Text>PAY NOW</Text>
+          </TouchableOpacity>
         </Right>
       </CardItem>
     </Card>
   )
 }
 
-LoadCard.propTypes = {
-  loan: PropTypes.objectOf(PropTypes.any).isRequired
+const mapDispatchToProps = dispatch => {
+  return {
+    setId: id => dispatch(setDetailId(id))
+  }
 }
-export default LoadCard
+
+LoadCard.propTypes = {
+  loan: PropTypes.objectOf(PropTypes.any).isRequired,
+  setId: PropTypes.func.isRequired
+}
+export default connect(null, mapDispatchToProps)(LoadCard)
