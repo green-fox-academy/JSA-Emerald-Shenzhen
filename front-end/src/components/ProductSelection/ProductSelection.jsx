@@ -15,7 +15,7 @@ function ProductSelection({ productList, loading, fetchData }) {
 
   return (
     <Container>
-      {loading ? (
+      {loading === 'PRODUCTS' ? (
         <Spinner color="blue" />
       ) : (
         <Content>
@@ -43,7 +43,7 @@ function ProductSelection({ productList, loading, fetchData }) {
 
 ProductSelection.propTypes = {
   fetchData: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.string.isRequired,
   productList: PropTypes.arrayOf(PropTypes.any).isRequired
 }
 
