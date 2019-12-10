@@ -32,8 +32,15 @@ router.param('id', (req, res, next, name) => {
   return res.status(400).send({ error: 'Loan id should be an integer' })
 })
 
-router.route('/:id').get((req, res) => {
-  res.status(200).send(data.loansDetails)
+router.route('/:id').get(async (req, res) => {
+  const loansData = await getLoansWithProductsByUserId(req.query.id)
+  if (loansData.error) return loansData.error
+  const basicLoan = loansData.find(item => item.id === Number(req.params.id))
+  if (!basicLoan) return res.status(400).send({ error: "Can't find this loan" })
+  const historyItem = data.historyList.find(item => item.id === basicLoan.id)
+  if (!historyItem) return res.status(200).send(basicLoan)
+  basicLoan.history = historyItem.history
+  return res.status(200).send(basicLoan)
 })
 
 module.exports = router
