@@ -94,13 +94,23 @@ const data = {
   receivingAccount: [
     {
       id: 1,
-      label: 'Main Deposit',
-      value: 'Main Deposit'
+      label: 'Salary Account',
+      value: 'Salary Account'
     },
     {
       id: 2,
-      label: 'Main Deposit2',
-      value: 'Main Deposit2'
+      label: 'Pocket Money Account',
+      value: 'Pocket Money Account'
+    },
+    {
+      id: 3,
+      label: 'Investment Account',
+      value: 'Investment Account'
+    },
+    {
+      id: 4,
+      label: 'Stock Account',
+      value: 'Stock Account'
     }
   ],
   defaultPayment: [

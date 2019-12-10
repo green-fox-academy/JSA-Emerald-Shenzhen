@@ -15,7 +15,7 @@ describe('<ProductSelection />', () => {
   let payloads
 
   beforeEach(() => {
-    store = mockStore({ productList: data.products, loading: true })
+    store = mockStore({ productList: data.products, loading: 'DONE' })
     payloads = [
       {
         type: ACTION_TYPE.LOADING
@@ -62,8 +62,6 @@ describe('<ProductSelection />', () => {
     await store.dispatch(fetchProductList())
     const actions = store.getActions()
 
-    expect(actions.pop()).toEqual(payloads.pop())
-    expect(actions.pop()).toEqual(payloads.pop())
     expect(actions.pop()).toEqual(payloads.pop())
     expect(actions.pop()).toEqual(payloads.pop())
   })
