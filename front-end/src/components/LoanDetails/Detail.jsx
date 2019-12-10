@@ -10,7 +10,6 @@ import style from './DetailStyle'
 const Detail = ({ loanList, id }) => {
   const navigation = useContext(NavigationContext)
   const { type, remaining } = loanList.find(loan => loan.id === id)
-  console.log(loanList)
 
   const handlePress = () => {
     navigation.navigate('PayNow')
