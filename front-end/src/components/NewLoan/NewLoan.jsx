@@ -23,7 +23,7 @@ export default function NewLoan({ navigation }) {
 
   const loan =
     product !== undefined
-      ? calculateLoan(amountNum, 6, product.interest)
+      ? calculateLoan(amountNum, 6, product.interest / 100)
       : {
           monthly: 0,
           interest: 0
@@ -63,7 +63,7 @@ export default function NewLoan({ navigation }) {
                   navigation.navigate('ProductSelection')
                 }}
               >
-                <Input disabled placeholder={product ? product.name : ''} />
+                <Input disabled placeholder={product ? product.name : 'Please select a product'} />
                 <Icon
                   active
                   name={Platform.OS === 'ios' ? 'down' : 'caretdown'}
@@ -85,7 +85,7 @@ export default function NewLoan({ navigation }) {
           </View>
         </Form>
         <View style={{ display: !error && product ? 'flex' : 'none' }}>
-          <ProductDescription rate={product ? product.interest : 0} />
+          <ProductDescription title={product ? product.title : ''} />
           <PaymentDetails monthly={loan.monthly} total={loan.interest} />
         </View>
       </Content>
