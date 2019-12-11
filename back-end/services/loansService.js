@@ -1,5 +1,6 @@
 const { selectLoansByUserId, selectAllProductModels } = require('./dbService')
 const dbService = require('./dbService')
+const data = require('../helpers/mockData_BE')
 
 const postLoanBodyFields = ['productId', 'amount', 'duration', 'receivingAccount', 'payment']
 
@@ -44,4 +45,30 @@ const checkMissingField = body => {
   )
 }
 
-module.exports = { getLoansWithProductsByUserId, checkMissingField, addLoan }
+const prepareHistory = async loanId => {
+  try {
+    const matchedLoans = await dbService.getLoansById(loanId)
+    if (matchedLoans.length === 0) return { error: "Can't find this loan" }
+
+    let loan = matchedLoans[0]
+
+    const matchedProducts = await dbService.getProductById(loan.productId)
+    if (matchedProducts.length === 0) return { error: "Can't find this product" }
+
+    loan = {
+      id: loan.id,
+      userId: loan.userId,
+      type: matchedProducts[0],
+      remaining: loan.remaining
+    }
+
+    const historyItem = data.historyList.find(item => item.id === loan.id)
+    if (!historyItem) return loan
+    loan.history = historyItem.history
+    return loan
+  } catch (error) {
+    return { error }
+  }
+}
+
+module.exports = { getLoansWithProductsByUserId, checkMissingField, addLoan, prepareHistory }
