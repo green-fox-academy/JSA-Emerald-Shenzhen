@@ -19,6 +19,7 @@ function LoanList({ loanList, loading, fetchData }) {
   useEffect(() => {
     fetchData()
   }, [])
+
   return (
     <Container>
       {loading ? (

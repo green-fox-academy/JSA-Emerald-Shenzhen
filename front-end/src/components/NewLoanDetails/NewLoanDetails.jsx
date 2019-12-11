@@ -19,9 +19,8 @@ function NewLoanDetails({ navigation, createNewLoan }) {
   const handlePress = () => {
     const productId = navigation.getParam('productId')
     const duration = navigation.getParam('duration')
-    console.log({ amount, productId, duration, receivingAccount, payment })
     createNewLoan(amount, productId, duration, receivingAccount, payment)
-    navigation.navigate('LoanList')
+    navigation.push('LoanList')
   }
   return (
     <Container>
@@ -76,7 +75,6 @@ NewLoanDetails.defaultProps = {
 const mapDispatchToProps = dispatch => {
   return {
     createNewLoan: (amount, productId, duration, receivingAccount, payment) => {
-      console.log(`inside createNewLoan `)
       dispatch(postNewLoan(amount, productId, duration, receivingAccount, payment))
     }
   }

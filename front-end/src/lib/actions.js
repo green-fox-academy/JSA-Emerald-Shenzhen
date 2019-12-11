@@ -63,7 +63,6 @@ const fetchDetail = id => {
 }
 
 async function postData(url, amount, productId, duration, receivingAccount, payment) {
-  console.log(`url = ${url}`)
   return fetch(url, {
     method: 'POST',
     headers: {
@@ -78,7 +77,6 @@ async function postData(url, amount, productId, duration, receivingAccount, paym
 function postNewLoan(amount, productId, duration, receivingAccount, payment) {
   return async dispatch => {
     try {
-      console.log('inside before - postNewLoan')
       const data = await postData(
         URL.postNewLoan,
         amount,
@@ -87,7 +85,6 @@ function postNewLoan(amount, productId, duration, receivingAccount, payment) {
         receivingAccount,
         payment
       )
-      console.log(`inside after - postNewLoan ${JSON.stringify(data)}`)
       dispatch({ type: ACTION_TYPE.POST_NEW_LOAN_SUCCESS, postNewLoanData: data })
     } catch (error) {
       console.log(error)
