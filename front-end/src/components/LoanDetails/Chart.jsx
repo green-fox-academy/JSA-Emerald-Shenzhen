@@ -24,10 +24,22 @@ const Chart = ({ loanHistory }) => {
         }))
         setDataPair(dayDataPair)
       } else {
-        const yearDataPair = loanHistory.map(histItem => ({
-          x: parseInt(histItem.date, 10),
-          y: histItem.remaining
-        }))
+        const yearDataPair = []
+        loanHistory.forEach(histItem => {
+          if (yearDataPair.length === 0) {
+            yearDataPair.push({
+              x: histItem.date,
+              y: histItem.remaining
+            })
+          } else if (
+            parseInt(histItem.date, 10) !== parseInt(yearDataPair[yearDataPair.length - 1].x, 10)
+          ) {
+            yearDataPair.push({
+              x: histItem.date,
+              y: histItem.remaining
+            })
+          }
+        })
         setDataPair(yearDataPair)
       }
     }
