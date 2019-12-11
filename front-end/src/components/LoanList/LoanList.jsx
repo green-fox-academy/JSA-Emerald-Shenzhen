@@ -22,27 +22,27 @@ function LoanList({ loanList, loading, fetchData }) {
 
   return (
     <Container>
-      {loading ? (
+      {loading === 'LOANS' ? (
         <Spinner color="blue" />
       ) : (
-        <>
-          <Content style={style.loanHomeScroll}>
-            <Text style={style.header}>Current active contracts</Text>
-            <FlatList
-              data={loanList}
-              renderItem={({ item }) => <LoadCard loan={item} />}
-              keyExtractor={item => item.id.toString()}
+          <>
+            <Content style={style.loanHomeScroll}>
+              <Text style={style.header}>Current active contracts</Text>
+              <FlatList
+                data={loanList}
+                renderItem={({ item }) => <LoadCard loan={item} />}
+                keyExtractor={item => item.id.toString()}
+              />
+              <View style={style.holder} />
+            </Content>
+            <FloatingButton
+              icon={{ type: 'Entypo', name: 'plus' }}
+              text="New Loan"
+              handlePress={handlePress}
+              buttonStyle={{ width: 160 }}
             />
-            <View style={style.holder} />
-          </Content>
-          <FloatingButton
-            icon={{ type: 'Entypo', name: 'plus' }}
-            text="New Loan"
-            handlePress={handlePress}
-            buttonStyle={{ width: 160 }}
-          />
-        </>
-      )}
+          </>
+        )}
     </Container>
   )
 }
@@ -53,7 +53,7 @@ LoanList.navigationOptions = {
 LoanList.propTypes = {
   loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
   fetchData: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => {

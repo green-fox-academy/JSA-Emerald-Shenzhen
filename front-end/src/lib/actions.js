@@ -21,7 +21,7 @@ async function fetchData(url) {
 
 function fetchLoanList() {
   return async dispatch => {
-    dispatch({ type: ACTION_TYPE.LOADING })
+    dispatch({ type: ACTION_TYPE.LOADING, payload: 'LOANS' })
     dispatch({ type: ACTION_TYPE.INIT_LOANLIST })
 
     try {
@@ -37,7 +37,7 @@ function fetchLoanList() {
 
 function fetchProductList() {
   return async dispatch => {
-    dispatch({ type: ACTION_TYPE.LOADING })
+    dispatch({ type: ACTION_TYPE.LOADING, payload: 'PRODUCTS' })
     dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST })
 
     try {
@@ -53,7 +53,7 @@ function fetchProductList() {
 
 const fetchDetail = id => {
   return dispatch => {
-    dispatch({ type: ACTION_TYPE.LOADING })
+    dispatch({ type: ACTION_TYPE.LOADING, payload: 'DETAIL' })
     dispatch({ type: ACTION_TYPE.INIT_DETAIL })
     return fetchData(URL.getDetail(id))
       .then(data => dispatch({ type: ACTION_TYPE.INIT_DETAIL_SUCCESS, payload: data, id }))

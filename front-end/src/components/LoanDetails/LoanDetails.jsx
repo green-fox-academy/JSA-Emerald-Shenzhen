@@ -18,7 +18,7 @@ function LoanDetails({ loading, fetchData, id }) {
     <Container>
       <Content>
         <Detail />
-        {loading ? (
+        {loading === 'DETAIL' ? (
           <Spinner color="blue" />
         ) : (
           <>
@@ -47,7 +47,7 @@ LoanDetails.navigationOptions = {
 LoanDetails.propTypes = {
   id: PropTypes.number.isRequired,
   fetchData: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoanDetails)

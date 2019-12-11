@@ -13,7 +13,7 @@ const mockStore = configureStore([thunk])
 describe('<LoanDetails />', () => {
   let component
   let payloads
-  const store = mockStore({ detailLoanId: 1, loanList: data.detailedLoans, loading: true })
+  const store = mockStore({ detailLoanId: 1, loanList: data.detailedLoans, loading: 'DONE' })
   beforeEach(() => {
     payloads = [
       {

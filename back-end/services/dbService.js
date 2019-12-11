@@ -33,5 +33,16 @@ dbService.getPromise = (SQL, params = []) => {
     })
   })
 }
+dbService.getLoansById = id => {
+  const SQL = `SELECT * FROM loans${id ? ' WHERE id=?;' : ';'}`
+  const sqlPromise = dbService.getPromise(SQL, [id])
+  return sqlPromise
+}
+
+dbService.getProductById = id => {
+  const SQL = `SELECT * FROM products${id ? ' WHERE id=?;' : ';'}`
+  const sqlPromise = dbService.getPromise(SQL, [id])
+  return sqlPromise
+}
 
 module.exports = dbService

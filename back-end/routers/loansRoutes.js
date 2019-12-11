@@ -5,7 +5,7 @@ const {
   addLoan
 } = require('../services/loansService')
 const { checkContentType } = require('../services/authService')
-const data = require('../helpers/mockData_BE')
+const { prepareHistory } = require('../services/loansService')
 
 const router = express.Router()
 
@@ -33,8 +33,10 @@ router.param('id', (req, res, next, name) => {
   return res.status(400).send({ error: 'Loan id should be an integer' })
 })
 
-router.route('/:id').get((req, res) => {
-  res.status(200).send(data.loansDetails)
+router.route('/:id').get(async (req, res, next) => {
+  const loan = await prepareHistory(req.params.id)
+  if (loan.error) return next(loan.error)
+  return res.status(200).json(loan)
 })
 
 module.exports = router
