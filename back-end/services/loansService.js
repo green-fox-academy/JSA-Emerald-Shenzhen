@@ -25,6 +25,7 @@ const getLoansWithProductsByUserId = async userId => {
 
 const addLoan = async (userId, productId, remaining) => {
   const result = await dbService.addLoan(userId, productId, remaining)
+  console.log(`addLoan result is ${result}`)
   return {
     loanId: result.insertId,
     status: 'granted'

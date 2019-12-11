@@ -15,6 +15,7 @@ import NewLoan from './src/components/NewLoan/NewLoan'
 import NewLoanDetail from './src/components/NewLoanDetails/NewLoanDetails'
 import ProductSelection from './src/components/ProductSelection/ProductSelection'
 import LoanDetails from './src/components/LoanDetails/LoanDetails'
+import ProcessingLoan from './src/components/NewLoanDetails/ProcessingLoan'
 
 import store from './src/lib/store'
 
@@ -76,7 +77,8 @@ const AppStack = createStackNavigator(
     NewLoan,
     NewLoanDetail,
     ProductSelection,
-    LoanDetails
+    LoanDetails,
+    ProcessingLoan
   },
   {
     initialRouteName: 'MainPage',
@@ -116,8 +118,8 @@ export default function App() {
       <AppContainer />
     </Provider>
   ) : (
-    <Provider store={store}>
-      <AppLoading />
-    </Provider>
-  )
+      <Provider store={store}>
+        <AppLoading />
+      </Provider>
+    )
 }
