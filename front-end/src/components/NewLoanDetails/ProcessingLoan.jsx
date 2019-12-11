@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Text, View, Content, Container } from 'native-base'
-import FloatingButton from '../FloatingButton/FloatingButton'
+// import FloatingButton from '../FloatingButton/FloatingButton'
 
 export default function ProcessingLoan({ navigation }) {
   // const handlePress = () => {
