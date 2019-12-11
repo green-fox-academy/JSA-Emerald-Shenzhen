@@ -1,31 +1,41 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Text, View, Content, Icon, Container } from 'native-base'
 import style from './NewLoanDetailsStyle'
 import LoanPickers from './LoanPickers'
 import data from '../../../helpers/mockData_FE'
 import FloatingButton from '../FloatingButton/FloatingButton'
 
-export default function NewLoanDetails() {
+import { postNewLoan } from '../../lib/actions'
+
+function NewLoanDetails({ navigation, createNewLoan }) {
   const [receivingAccount, setreceivingAccount] = useState(data.receivingAccount[0])
   const [defaultPayment, setdefaultPayment] = useState(data.defaultPayment[0])
+
+  const amount = navigation.getParam('amount')
+  const payment = navigation.getParam('monthlyPay')
+
   const handlePress = () => {
-    // eslint-disable-next-line no-undef
-    alert('oh shit!! you pressed me!!')
+    const productId = navigation.getParam('productId')
+    const duration = navigation.getParam('duration')
+    createNewLoan(amount, productId, duration, receivingAccount, payment)
+    navigation.push('LoanList')
   }
   return (
     <Container>
       <Content style={style.content}>
         <View style={style.upDetailsView}>
-          <Text style={style.amountFont}>$ 5000</Text>
+          <Text style={style.amountFont}>{`$ ${amount}`}</Text>
           <Text style={style.transactionFont}>will be added to your</Text>
-          <Text style={style.selectionTitle}>Receiving amount</Text>
+          <Text style={style.selectionTitle}>Receiving account</Text>
           <LoanPickers
             selected={receivingAccount}
             setSelected={setreceivingAccount}
             itemList={data.receivingAccount}
           />
           <Text style={style.transactionFont}>and you will pay</Text>
-          <Text style={style.amountFont}>$ 86.84</Text>
+          <Text style={style.amountFont}>{`$ ${payment.toFixed(2)}`}</Text>
           <Text style={style.selectionTitle}>Default Payment</Text>
           <LoanPickers
             selected={defaultPayment}
@@ -52,3 +62,22 @@ export default function NewLoanDetails() {
 NewLoanDetails.navigationOptions = {
   title: 'New Loan Details'
 }
+
+NewLoanDetails.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any),
+  createNewLoan: PropTypes.func.isRequired
+}
+
+NewLoanDetails.defaultProps = {
+  navigation: undefined
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createNewLoan: (amount, productId, duration, receivingAccount, payment) => {
+      dispatch(postNewLoan(amount, productId, duration, receivingAccount, payment))
+    }
+  }
+}
+
+export default connect(undefined, mapDispatchToProps)(NewLoanDetails)

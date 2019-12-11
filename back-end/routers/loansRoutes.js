@@ -22,7 +22,8 @@ router
     }
     const check = checkMissingField(req.body)
     const { productId, amount } = req.body
-    return check.error ? res.status(400).send(check) : res.json(await addLoan(1, productId, amount))
+    const result = await addLoan(1, productId, amount)
+    return check.error ? res.status(400).send(check) : res.json(result)
   })
 
 router.param('id', (req, res, next, name) => {

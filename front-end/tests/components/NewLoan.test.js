@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('test NewLoan View', () => {
   it('should render a Header, a form of 4 input fields, 2 subcomponents and a button', () => {
-    shallow(<NewLoan />)
+    shallow(<NewLoan navigation={{ getParam: () => {} }} />)
   })
 })
 
@@ -21,6 +21,6 @@ describe('test PaymentDetails View', () => {
 
 describe('test ProductDescription View', () => {
   it('should render ProductDescription', () => {
-    shallow(<ProductDescription rate={0} />)
+    shallow(<ProductDescription title="" />)
   })
 })

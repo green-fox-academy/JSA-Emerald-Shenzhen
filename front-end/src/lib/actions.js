@@ -9,7 +9,8 @@ const ACTION_TYPE = {
   INIT_PRODUCTLIST_SUCCESS: 'INIT_PRODUCTLIST_SUCCESS',
   INIT_DETAIL: 'INIT_DETAIL',
   INIT_DETAIL_SUCCESS: 'INIT_DETAIL_SUCCESS',
-  SET_DETAIL_ID: 'SET_DETAIL_ID'
+  SET_DETAIL_ID: 'SET_DETAIL_ID',
+  POST_NEW_LOAN_SUCCESS: 'POST_NEW_LOAN_SUCCESS'
 }
 
 async function fetchData(url) {
@@ -28,7 +29,8 @@ function fetchLoanList() {
       dispatch({ type: ACTION_TYPE.INIT_LOANLIST_SUCCESS, loanList: data })
       dispatch({ type: ACTION_TYPE.LOADDONE })
     } catch (error) {
-      dispatch({ type: ACTION_TYPE.ERROR, error })
+      // dispatch({ type: ACTION_TYPE.ERROR, error })
+      console.log(error)
     }
   }
 }
@@ -43,7 +45,8 @@ function fetchProductList() {
       dispatch({ type: ACTION_TYPE.INIT_PRODUCTLIST_SUCCESS, productList: data })
       dispatch({ type: ACTION_TYPE.LOADDONE })
     } catch (error) {
-      dispatch({ type: ACTION_TYPE.ERROR, error })
+      // dispatch({ type: ACTION_TYPE.ERROR, error })
+      console.log(error)
     }
   }
 }
@@ -59,6 +62,36 @@ const fetchDetail = id => {
   }
 }
 
+async function postData(url, amount, productId, duration, receivingAccount, payment) {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      Authentication: 'Bearer token',
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ amount, productId, duration, receivingAccount, payment })
+  }).then(res => res.json())
+}
+
+function postNewLoan(amount, productId, duration, receivingAccount, payment) {
+  return async dispatch => {
+    try {
+      const data = await postData(
+        URL.postNewLoan,
+        amount,
+        productId,
+        duration,
+        receivingAccount,
+        payment
+      )
+      dispatch({ type: ACTION_TYPE.POST_NEW_LOAN_SUCCESS, postNewLoanData: data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 const setDetailId = id => dispatch => dispatch({ type: ACTION_TYPE.SET_DETAIL_ID, id })
 
-export { fetchLoanList, fetchProductList, ACTION_TYPE, fetchDetail, setDetailId }
+export { fetchLoanList, fetchProductList, ACTION_TYPE, fetchDetail, setDetailId, postNewLoan }

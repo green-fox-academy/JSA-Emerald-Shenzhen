@@ -19,6 +19,7 @@ function LoanList({ loanList, loading, fetchData }) {
   useEffect(() => {
     fetchData()
   }, [])
+
   return (
     <Container>
       {loading === 'LOANS' ? (
@@ -46,6 +47,15 @@ function LoanList({ loanList, loading, fetchData }) {
   )
 }
 
+LoanList.navigationOptions = {
+  title: 'Loans'
+}
+LoanList.propTypes = {
+  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
+  fetchData: PropTypes.func.isRequired,
+  loading: PropTypes.string.isRequired
+}
+
 const mapStateToProps = state => {
   return { loanList: state.loanList, loading: state.loading }
 }
@@ -55,12 +65,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-LoanList.navigationOptions = {
-  title: 'Loans'
-}
-LoanList.propTypes = {
-  loanList: PropTypes.arrayOf(PropTypes.any).isRequired,
-  fetchData: PropTypes.func.isRequired,
-  loading: PropTypes.string.isRequired
-}
 export default connect(mapStateToProps, mapDispatchToProps)(LoanList)
