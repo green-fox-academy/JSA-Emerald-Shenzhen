@@ -116,23 +116,13 @@ const data = {
   defaultPayment: [
     {
       id: 1,
-      label: 'Monthly from Main Deposit',
+      label: 'Monthly from default account',
       value: 'month'
     },
     {
       id: 2,
-      label: 'Daily from Main Deposit',
+      label: 'Manually',
       value: 'day'
-    },
-    {
-      id: 3,
-      label: 'Yearly from Main Deposit',
-      value: 'year'
-    },
-    {
-      id: 4,
-      label: 'Quarterly from Main Deposit',
-      value: 'quarter'
     }
   ],
   detailedLoans: [
