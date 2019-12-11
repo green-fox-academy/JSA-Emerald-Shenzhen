@@ -246,180 +246,190 @@ exports[`<LoanDetails /> <LoanDetails /> should render correctly 1`] = `
           History
         </Text>
         <RCTScrollView
-          data={
-            Array [
-              Object {
-                "amount": -900,
-                "date": "2019-11-22",
-                "remaining": 3400,
-                "text": "$900 payment received",
-                "type": "payment",
-              },
-              Object {
-                "amount": 125,
-                "date": "2019-01-03",
-                "remaining": 4300,
-                "text": "2018 yearly interest $125",
-                "type": "interest",
-              },
-            ]
+          style={
+            Object {
+              "height": 350,
+            }
           }
-          disableVirtualization={false}
-          getItem={[Function]}
-          getItemCount={[Function]}
-          horizontal={false}
-          initialNumToRender={10}
-          keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
-          numColumns={1}
-          onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
-          onLayout={[Function]}
-          onMomentumScrollEnd={[Function]}
-          onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onScrollEndDrag={[Function]}
-          removeClippedSubviews={false}
-          renderItem={[Function]}
-          scrollEventThrottle={50}
-          stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
-          viewabilityConfigCallbackPairs={Array []}
-          windowSize={21}
         >
           <View>
-            <View
-              onLayout={[Function]}
-              style={null}
-            >
-              <View
-                style={
+            <RCTScrollView
+              data={
+                Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginVertical": 5,
-                  }
-                }
-              >
+                    "amount": -900,
+                    "date": "2019-11-22",
+                    "remaining": 3400,
+                    "text": "$900 payment received",
+                    "type": "payment",
+                  },
+                  Object {
+                    "amount": 125,
+                    "date": "2019-01-03",
+                    "remaining": 4300,
+                    "text": "2018 yearly interest $125",
+                    "type": "interest",
+                  },
+                ]
+              }
+              disableVirtualization={false}
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={false}
+              initialNumToRender={10}
+              keyExtractor={[Function]}
+              maxToRenderPerBatch={10}
+              numColumns={1}
+              onContentSizeChange={[Function]}
+              onEndReachedThreshold={2}
+              onLayout={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              stickyHeaderIndices={Array []}
+              updateCellsBatchingPeriod={50}
+              viewabilityConfigCallbackPairs={Array []}
+              windowSize={21}
+            >
+              <View>
                 <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "borderRadius": 23,
-                        "height": 45,
-                        "justifyContent": "center",
-                        "marginRight": 20,
-                        "width": 45,
-                      },
-                      Object {
-                        "backgroundColor": "#72BB53",
-                      },
-                    ]
-                  }
+                  onLayout={[Function]}
+                  style={null}
                 >
-                  <Text />
-                </View>
-                <View>
-                  <Text
+                  <View
                     style={
                       Object {
-                        "color": "#000",
-                        "fontFamily": "System",
-                        "fontSize": 16,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginVertical": 5,
                       }
                     }
-                    uppercase={false}
                   >
-                    $900 payment received
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#000",
-                          "fontFamily": "System",
-                          "fontSize": 16,
-                        },
-                        Object {
-                          "color": "grey",
-                          "fontSize": 15,
-                        },
-                      ]
-                    }
-                    uppercase={false}
-                  >
-                    2019-11-22
-                  </Text>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "borderRadius": 23,
+                            "height": 45,
+                            "justifyContent": "center",
+                            "marginRight": 20,
+                            "width": 45,
+                          },
+                          Object {
+                            "backgroundColor": "#72BB53",
+                          },
+                        ]
+                      }
+                    >
+                      <Text />
+                    </View>
+                    <View>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontFamily": "System",
+                            "fontSize": 16,
+                          }
+                        }
+                        uppercase={false}
+                      >
+                        $900 payment received
+                      </Text>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#000",
+                              "fontFamily": "System",
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "grey",
+                              "fontSize": 15,
+                            },
+                          ]
+                        }
+                        uppercase={false}
+                      >
+                        2019-11-22
+                      </Text>
+                    </View>
+                  </View>
                 </View>
-              </View>
-            </View>
-            <View
-              onLayout={[Function]}
-              style={null}
-            >
-              <View
-                style={
-                  Object {
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginVertical": 5,
-                  }
-                }
-              >
                 <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "borderRadius": 23,
-                        "height": 45,
-                        "justifyContent": "center",
-                        "marginRight": 20,
-                        "width": 45,
-                      },
-                      Object {
-                        "backgroundColor": "#FC7043",
-                      },
-                    ]
-                  }
+                  onLayout={[Function]}
+                  style={null}
                 >
-                  <Text />
-                </View>
-                <View>
-                  <Text
+                  <View
                     style={
                       Object {
-                        "color": "#000",
-                        "fontFamily": "System",
-                        "fontSize": 16,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginVertical": 5,
                       }
                     }
-                    uppercase={false}
                   >
-                    2018 yearly interest $125
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#000",
-                          "fontFamily": "System",
-                          "fontSize": 16,
-                        },
-                        Object {
-                          "color": "grey",
-                          "fontSize": 15,
-                        },
-                      ]
-                    }
-                    uppercase={false}
-                  >
-                    2019-01-03
-                  </Text>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "borderRadius": 23,
+                            "height": 45,
+                            "justifyContent": "center",
+                            "marginRight": 20,
+                            "width": 45,
+                          },
+                          Object {
+                            "backgroundColor": "#FC7043",
+                          },
+                        ]
+                      }
+                    >
+                      <Text />
+                    </View>
+                    <View>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontFamily": "System",
+                            "fontSize": 16,
+                          }
+                        }
+                        uppercase={false}
+                      >
+                        2018 yearly interest $125
+                      </Text>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#000",
+                              "fontFamily": "System",
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "grey",
+                              "fontSize": 15,
+                            },
+                          ]
+                        }
+                        uppercase={false}
+                      >
+                        2019-01-03
+                      </Text>
+                    </View>
+                  </View>
                 </View>
               </View>
-            </View>
+            </RCTScrollView>
           </View>
         </RCTScrollView>
       </View>

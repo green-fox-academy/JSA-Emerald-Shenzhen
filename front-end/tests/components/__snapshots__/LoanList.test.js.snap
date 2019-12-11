@@ -1215,7 +1215,7 @@ exports[`<LoanList /> <LoanList /> renders correctly 1`] = `
       <View
         style={
           Object {
-            "height": 80,
+            "height": 120,
           }
         }
       />
