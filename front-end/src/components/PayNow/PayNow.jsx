@@ -8,14 +8,20 @@ import data from '../../../helpers/mockData_FE'
 
 export default function PayNow() {
   const navigation = useContext(NavigationContext)
+
+  const [loading, setLoading] = useState(false)
   const handlePress = () => {
-    navigation.navigate('')
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      navigation.navigate('LoanList')
+    }, 800)
   }
 
   const [error, setError] = useState(false)
   const [amount, setAmount] = useState('')
-  const [date, setDate] = useState()
-  const [selectedAccount, setSelectedAccount] = useState()
+  const [date, setDate] = useState(new Date())
+  const [selectedAccount, setSelectedAccount] = useState('')
 
   const icon = (
     <Icon active name="down" type="AntDesign" style={{ fontSize: 18, padding: 0, color: '#000' }} />
@@ -48,7 +54,7 @@ export default function PayNow() {
             <Icon style={{ display: error ? 'flex' : 'none' }} name="close-circle" />
           </Item>
           <Label style={{ display: error ? 'flex' : 'none', color: 'red' }}>
-            * please enter correct number!
+            * please enter a valid number!
           </Label>
           <View
             style={{
@@ -77,8 +83,8 @@ export default function PayNow() {
             <Item>
               <DatePicker
                 defaultDate={date}
-                minimumDate={new Date()}
-                maximumDate={new Date(2020, 12, 12)}
+                minimumDate={date}
+                maximumDate={new Date(2020, 12, 31)}
                 locale="en"
                 onDateChange={setDate}
                 modalTransparent={false}
@@ -93,11 +99,17 @@ export default function PayNow() {
           </View>
         </Form>
       </Content>
-      <FloatingButton
-        icon={{ type: 'Ionicons', name: 'md-arrow-forward' }}
-        text="PAY"
-        handlePress={handlePress}
-      />
+      {amount === '' || selectedAccount === '' ? null : (
+        <FloatingButton
+          icon={
+            loading
+              ? { type: 'FontAwesome', name: 'spinner' }
+              : { type: 'Ionicons', name: 'md-arrow-forward' }
+          }
+          text={loading ? '' : 'Pay'}
+          handlePress={handlePress}
+        />
+      )}
     </Container>
   )
 }
