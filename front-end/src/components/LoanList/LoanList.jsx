@@ -25,24 +25,24 @@ function LoanList({ loanList, loading, fetchData }) {
       {loading === 'LOANS' ? (
         <Spinner color="blue" />
       ) : (
-          <>
-            <Content style={style.loanHomeScroll}>
-              <Text style={style.header}>Current active contracts</Text>
-              <FlatList
-                data={loanList}
-                renderItem={({ item }) => <LoadCard loan={item} />}
-                keyExtractor={item => item.id.toString()}
-              />
-              <View style={style.holder} />
-            </Content>
-            <FloatingButton
-              icon={{ type: 'Entypo', name: 'plus' }}
-              text="New Loan"
-              handlePress={handlePress}
-              buttonStyle={{ width: 160 }}
+        <>
+          <Content style={style.loanHomeScroll}>
+            <Text style={style.header}>Current active contracts</Text>
+            <FlatList
+              data={loanList}
+              renderItem={({ item }) => <LoadCard loan={item} />}
+              keyExtractor={item => item.id.toString()}
             />
-          </>
-        )}
+            <View style={style.holder} />
+          </Content>
+          <FloatingButton
+            icon={{ type: 'Entypo', name: 'plus' }}
+            text="New Loan"
+            handlePress={handlePress}
+            buttonStyle={{ width: 160 }}
+          />
+        </>
+      )}
     </Container>
   )
 }
