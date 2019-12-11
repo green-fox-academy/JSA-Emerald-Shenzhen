@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, FlatList, Text } from 'react-native'
+import { View, ScrollView, FlatList, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -12,11 +12,13 @@ const History = ({ loanHistory }) => {
       {loanHistory ? (
         <>
           <Text style={style.title}>History</Text>
-          <FlatList
-            data={loanHistory}
-            renderItem={({ item }) => <HistoryItem historyItem={item} />}
-            keyExtractor={(_, index) => index.toString()}
-          />
+          <ScrollView style={{ height: 350 }}>
+            <FlatList
+              data={loanHistory}
+              renderItem={({ item }) => <HistoryItem historyItem={item} />}
+              keyExtractor={(_, index) => index.toString()}
+            />
+          </ScrollView>
         </>
       ) : (
         <View style={style.warning}>
