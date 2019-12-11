@@ -2,7 +2,9 @@ import React, { useContext, useState } from 'react'
 import { NavigationContext } from 'react-navigation'
 import { View } from 'react-native'
 import { Container, DatePicker, Content, Form, Input, Item, Label, Icon, Picker } from 'native-base'
+
 import FloatingButton from '../FloatingButton/FloatingButton'
+import data from '../../../helpers/mockData_FE'
 
 export default function PayNow() {
   const navigation = useContext(NavigationContext)
@@ -66,9 +68,9 @@ export default function PayNow() {
                 selectedValue={selectedAccount}
                 onValueChange={selectAnAccount}
               >
-                <Picker.Item label="Main account" value="Main account" />
-                <Picker.Item label="Savings account" value="Savings account" />
-                <Picker.Item label="Investment account" value="Investment account" />
+                {data.receivingAccount.map(item => (
+                  <Picker.Item key={item.id} label={item.label} value={item.value} />
+                ))}
               </Picker>
             </View>
             <Label style={{ fontSize: 20, marginTop: 10 }}>When</Label>
