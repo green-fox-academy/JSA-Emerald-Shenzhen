@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Content, Button, Text } from 'native-base'
+import { Container, Icon } from 'native-base'
+import { View, TouchableOpacity } from 'react-native'
+
+import style from './MainPageStyle'
 
 const MainPage = ({ navigation }) => {
   const handlePress = name => {
@@ -9,15 +12,11 @@ const MainPage = ({ navigation }) => {
 
   return (
     <Container>
-      <Content>
-        <Button
-          onPress={() => {
-            handlePress('LoanList')
-          }}
-        >
-          <Text>Go to the homepage of Loan Section</Text>
-        </Button>
-      </Content>
+      <View style={style.content}>
+        <TouchableOpacity onPress={() => handlePress('LoanList')}>
+          <Icon type="MaterialCommunityIcons" name="glassdoor" style={style.icon} />
+        </TouchableOpacity>
+      </View>
     </Container>
   )
 }
