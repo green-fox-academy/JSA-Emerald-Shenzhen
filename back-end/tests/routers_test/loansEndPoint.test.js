@@ -10,8 +10,9 @@ const {
 } = require('../MockData/loan_mockData')
 
 jest.mock('../../services/loansService')
-loanService.getLoansWithProductsByUserId.mockReturnValue([])
+loanService.getLoansWithProductsByUserId.mockReturnValue({ loans: [] })
 loanService.addLoan.mockReturnValue({ loanId: 1, status: 'granted' })
+loanService.prepareHistory.mockReturnValue({ id: 1, history: [], otherAttributes: '' })
 
 describe('GET /loans', () => {
   commonAuthTest(request(app).get, '/loans')
@@ -22,7 +23,7 @@ describe('GET /loans', () => {
         .get('/loans')
         .set('Authentication', 'Bearer token')
       expect(res.statusCode).toEqual(200)
-      // expect(res.body).toHaveProperty('loans')
+      expect(res.body).toHaveProperty('loans')
     })
   })
 })
@@ -81,11 +82,12 @@ describe('GET /loans/:id', () => {
   })
 
   describe('Vaild id', () => {
-    it('should return all the details of that loan', async () => {
+    it('should return all the details of that loan', done => {
       request(app)
         .get('/loans/1')
         .set('Authentication', 'Bearer token')
-        .expect(400, { error: "Can't find this loan" })
+        .expect(200)
+        .end(done)
     })
   })
 })
