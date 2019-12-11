@@ -5,7 +5,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 10
   },
   holder: {
-    height: 80
+    height: 120
   },
   header: {
     fontSize: 24,
